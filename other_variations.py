@@ -6,6 +6,7 @@ from .producers import electrons as electrons
 #from .producers import taus as taus
 from .producers import event as event
 
+
 def add_PUVariations(configuration):
     configuration.add_shift(
         SystematicShift(
@@ -36,6 +37,8 @@ def add_PUVariations(configuration):
             },
         )
     )
+
+
 
 
     return configuration
