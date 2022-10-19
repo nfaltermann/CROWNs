@@ -139,3 +139,52 @@ LeptonicWQuantities = ProducerGroup(
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb'],
     subproducers=[wlep_pt, wlep_eta, wlep_phi, wlep_mass, wlep_mt],
 )
+
+
+######################################
+############## TOP RECO ##############
+######################################
+
+JetSelection_jjb = Producer(
+    name="JetSelection_jjjbb",
+    call="JetSelection({df}, 2, 1, {input})",
+    input=[
+        q.good_jets_mask,
+        q.good_bjets_mask,
+    ],
+    output=None,
+    scopes=['jjb'],
+)
+
+JetSelection_jjbb = Producer(
+    name="JetSelection_jjjbb",
+    call="JetSelection({df}, 2, 2, {input})",
+    input=[
+        q.good_jets_mask,
+        q.good_bjets_mask,
+    ],
+    output=None,
+    scopes=[ 'jjbb'],
+)
+
+JetSelection_jjjb = Producer(
+    name="JetSelection_jjjbb",
+    call="JetSelection({df}, 3, 1, {input})",
+    input=[
+        q.good_jets_mask,
+        q.good_bjets_mask,
+    ],
+    output=None,
+    scopes=['jjjb'],
+)
+
+JetSelection_jjjbb = Producer(
+    name="JetSelection_jjjbb",
+    call="JetSelection({df}, 3, 2, {input})",
+    input=[
+        q.good_jets_mask,
+        q.good_bjets_mask,
+    ],
+    output=None,
+    scopes=['jjjbb'],
+)

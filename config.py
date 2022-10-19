@@ -309,7 +309,7 @@ def build_config(
     configuration.add_config_parameters(
         "global",
         {
-            "min_jet_pt": 30,
+            "min_jet_pt": 40,
             "max_jet_eta": 4.7,
             "jet_id": 2,  # default: 2==pass tight ID and fail tightLepVeto
             "jet_puid": EraModifier(
@@ -357,8 +357,8 @@ def build_config(
     configuration.add_config_parameters(
         "global",
         {
-            "min_jjbet_pt": 20,
-            "max_jjbet_eta": EraModifier(
+            "min_bjet_pt": 40,
+            "max_bjet_eta": EraModifier(
                 {
                     "2016preVFP": 2.4,
                     "2016postVFP": 2.4,
@@ -435,7 +435,7 @@ def build_config(
         ],
     )
 
-    # iso lep
+    # iso lep + W boson
     configuration.add_producers(
         ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
         [
@@ -466,6 +466,26 @@ def build_config(
             # genparticles.GenMatching,
         ],
     )
+
+    # jet and top related
+    configuration.add_producers(
+        'jjb',
+        topreco.JetSelection_jjb,
+    )
+    configuration.add_producers(
+        'jjbb',
+        topreco.JetSelection_jjbb,
+    )
+    configuration.add_producers(
+        'jjjb',
+        topreco.JetSelection_jjjb,
+    )
+    configuration.add_producers(
+        'jjjbb',
+        topreco.JetSelection_jjjbb,
+    )
+
+
 
 
 
