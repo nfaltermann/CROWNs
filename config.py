@@ -13,9 +13,9 @@ from .producers import muons as muons
 from .producers import scalefactors as scalefactors
 #from .producers import taus as taus
 from .producers import triggers as triggers
+from .producers import topreco as topreco
 from .quantities import nanoAOD as nanoAOD
 from .quantities import output as q
-from .triggersetup import add_TriggerSetup
 from .lep_variations import add_lepVariations
 from .jet_variations import add_jetVariations
 from .btag_variations import add_btagVariations
@@ -50,7 +50,6 @@ def build_config(
     ######################################################################################
     ##############################        CONFIG     #####################################
     ######################################################################################
-
 
     # first add default parameters necessary for all scopes
     configuration.add_config_parameters(
@@ -134,30 +133,178 @@ def build_config(
         },
     )
 
+    configuration.add_config_parameters(
+        ["jjb", "jjbb", "jjjb", "jjjbb"],
+        {
+            "singlemoun_trigger": EraModifier(
+                {
+                    "2018": [
+                        {
+                            "flagname": "trg_single_mu24",
+                            "hlt_path": "HLT_IsoMu24",
+                            "ptcut": 25,
+                            "etacut": 2.5,
+                            "filterbit": 3,
+                            "trigger_particle_id": 13,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2017": [
+                        {
+                            "flagname": "trg_single_mu24",
+                            "hlt_path": "HLT_IsoMu24",
+                            "ptcut": 25,
+                            "etacut": 2.5,
+                            "filterbit": 3,
+                            "trigger_particle_id": 13,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2016preVFP": [
+                        {
+                            "flagname": "trg_single_mu24",
+                            "hlt_path": "HLT_IsoMu24",
+                            "ptcut": 25,
+                            "etacut": 2.5,
+                            "filterbit": 3,
+                            "trigger_particle_id": 13,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2016postVFP": [
+                        {
+                            "flagname": "trg_single_mu24",
+                            "hlt_path": "HLT_IsoMu24",
+                            "ptcut": 25,
+                            "etacut": 2.5,
+                            "filterbit": 3,
+                            "trigger_particle_id": 13,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                }
+            ),
+        },
+    )
+
+    ## trigger single ele
+    configuration.add_config_parameters(
+        ["jjb", "jjbb", "jjjb", "jjjbb"],
+        {
+            "singleelectron_trigger": EraModifier(
+                {
+                    "2018": [
+                        {
+                            "flagname": "trg_single_ele32",
+                            "hlt_path": "HLT_Ele32_WPTight_Gsf",
+                            "ptcut": 33,
+                            "etacut": 2.1,
+                            "filterbit": 1,
+                            "trigger_particle_id": 11,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2017": [
+                        {
+                            "flagname": "trg_single_ele32",
+                            "hlt_path": "HLT_Ele32_WPTight_Gsf_L1DoubleEG",
+                            "ptcut": 33,
+                            "etacut": 2.1,
+                            "filterbit": 1,
+                            "trigger_particle_id": 11,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2016preVFP": [
+                        {
+                            "flagname": "trg_single_ele27",
+                            "hlt_path": "HLT_Ele27_WPTight_Gsf",
+                            "ptcut": 28,
+                            "etacut": 2.1,
+                            "filterbit": 1,
+                            "trigger_particle_id": 11,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2016postVFP": [
+                        {
+                            "flagname": "trg_single_ele27",
+                            "hlt_path": "HLT_Ele27_WPTight_Gsf",
+                            "ptcut": 28,
+                            "etacut": 2.1,
+                            "filterbit": 1,
+                            "trigger_particle_id": 11,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+
+                }
+            ),
+        },
+    )
+
     # muon base selection:
     configuration.add_config_parameters(
         "global",
         {
-            "min_muon_pt": 10.0,
-            "max_muon_eta": 2.4,
-            "max_muon_dxy": 0.045,
-            "max_muon_dz": 0.2,
-            "muon_id": "Muon_mediumId",
-            "muon_iso_cut": 0.3,
+            "min_base_mu_pt": 10.0,
+            "max_base_mu_eta": 2.4,
         },
     )
-    # electron base selection:
+    # # electron base selection:
     configuration.add_config_parameters(
         "global",
         {
-            "min_ele_pt": 10.0,
-            "max_ele_eta": 2.5,
-            "max_ele_dxy": 0.045,
-            "max_ele_dz": 0.2,
-            "max_ele_iso": 0.3,
-            "ele_id": "Electron_mvaFall17V2noIso_WP90",
+            "min_base_el_pt": 10.0,
+            "max_base_el_eta": 2.5,
         },
     )
+
+    # loose lepton base selection:
+    configuration.add_config_parameters(
+        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        {
+            "min_loose_el_pt": 10.0,
+            "max_loose_el_eta": 2.4,
+            "loose_el_id": "Electron_cutBased",
+            "loose_el_id_wp": 1,
+            "min_loose_mu_pt": 10.0,
+            "max_loose_mu_eta": 2.4,
+            "loose_mu_iso": 1,
+        },
+    )
+
+    # good lepton selections
+    configuration.add_config_parameters(
+        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        {
+            "min_el_pt": EraModifier(
+                {
+                    "2016preVFP": 20, # TODO
+                    "2016postVFP": 20, # TODO
+                    "2017": 20, # TODO
+                    "2018": 20, # TODO
+                }
+            ),
+            "max_el_eta": 2.4,
+            "el_id": "Electron_cutBased",
+            "el_id_wp": 1,
+
+            "min_mu_pt": EraModifier(
+                {
+                    "2016preVFP": 20, # TODO
+                    "2016postVFP": 20, # TODO
+                    "2017": 20, # TODO
+                    "2018": 20, # TODO
+                }
+            ),
+            "max_mu_eta": 2.4,
+            "mu_id": "Muon_tightId",
+            "mu_iso": 0.06,
+        },
+    )
+
+
     # jet base selection:
     configuration.add_config_parameters(
         "global",
@@ -206,7 +353,7 @@ def build_config(
             "jet_jec_algo": '"AK4PFchs"',
         },
     )
-    # jjbet base selection:
+    # bjet base selection:
     configuration.add_config_parameters(
         "global",
         {
@@ -229,7 +376,7 @@ def build_config(
             ),
         },
     )
-    # jjbet scale factors
+    # bjet scale factors
     configuration.add_config_parameters(
         scopes,
         {
@@ -245,18 +392,7 @@ def build_config(
             "btag_corr_algo": "deepJet_shape",
         },
     )
-    # leptonveto base selection:
-    configuration.add_config_parameters(
-        "global",
-        {
-            "min_dielectronveto_pt": 15.0,
-            "dielectronveto_id": "Electron_cutBased",
-            "dielectronveto_id_wp": 1,
-            "min_dimuonveto_pt": 15.0,
-            "dimuonveto_id": "Muon_looseId",
-            "dileptonveto_dR": 0.15,
-        },
-    )
+
     ###### scope Specifics ######
 
 
@@ -264,7 +400,6 @@ def build_config(
     ######################################################################################
     ##############################     PRODUCERS     #####################################
     ######################################################################################
-
 
     configuration.add_producers(
         "global",
@@ -281,23 +416,47 @@ def build_config(
             jets.GoodJets,
             jets.GoodBJets,
             # event.DiLeptonVeto,
-            # met.MetBasics,
+            met.MetBasics,
         ],
     )
-    ## add prefiring
-    if era != "2018":
-        configuration.add_producers(
-            "global",
-            [
-                event.PrefireWeight,
-            ],
-        )
     # common
     configuration.add_producers(
         scopes,
         [
-            jets.JetCollection,
-            jets.BasicJetQuantities,
+            # jets.JetCollection,
+            # jets.BasicJetQuantities,
+            # jets.BJetCollection,
+            # jets.BasicBJetQuantities,
+            # scalefactors.btagging_SF,
+            # met.MetCorrections,
+            # met.PFMetCorrections,
+            # pairquantities.DiTauPairMETQuantities,
+            # genparticles.GenMatching,
+        ],
+    )
+
+    # iso lep
+    configuration.add_producers(
+        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        [
+            muons.LooseMuons,
+            muons.NumberOfLooseMuons,
+            electrons.LooseElectrons,
+            electrons.NumberOfLooseElectrons,
+
+            muons.TightMuons,
+            muons.NumberOfTightMuons,
+            electrons.TightElectrons,
+            electrons.NumberOfTightElectrons,
+
+            topreco.LeptonSelection,
+            topreco.LeptonQuantities,
+
+            topreco.LeptonicW,
+            topreco.LeptonicWQuantities,
+
+            # jets.JetCollection,
+            # jets.BasicJetQuantities,
             # jets.BJetCollection,
             # jets.BasicBJetQuantities,
             # scalefactors.btagging_SF,
@@ -309,10 +468,10 @@ def build_config(
     )
 
 
+
     ######################################################################################
     ##############################       OUTPUT      #####################################
     ######################################################################################
-
 
     configuration.add_outputs(
         scopes,
@@ -339,89 +498,81 @@ def build_config(
             # q.phi_1,
             # q.phi_2,
             # q.njets,
-            q.jpt_1,
-            q.jpt_2,
-            q.jeta_1,
-            q.jeta_2,
-            q.jphi_1,
-            q.jphi_2,
-            q.jtag_value_1,
-            q.jtag_value_2,
-            q.mjj,
-            # q.m_vis,
-            # q.deltaR_ditaupair,
-            # q.pt_vis,
-            # q.nbtag,
-            # q.bpt_1,
-            # q.bpt_2,
-            # q.beta_1,
-            # q.beta_2,
-            # q.bphi_1,
-            # q.bphi_2,
-            # q.btag_value_1,
-            # q.btag_value_2,
-            # q.btag_weight,
-            # q.mass_1,
-            # q.mass_2,
-            # q.dxy_1,
-            # q.dxy_2,
-            # q.dz_1,
-            # q.dz_2,
-            # q.q_1,
-            # q.q_2,
-            # q.iso_1,
-            # q.iso_2,
-            # q.gen_pt_1,
-            # q.gen_eta_1,
-            # q.gen_phi_1,
-            # q.gen_mass_1,
-            # q.gen_pdgid_1,
-            # q.gen_pt_2,
-            # q.gen_eta_2,
-            # q.gen_phi_2,
-            # q.gen_mass_2,
-            # q.gen_pdgid_2,
-            # q.gen_m_vis,
-            # q.met,
-            # q.metphi,
-            # q.pfmet,
-            # q.pfmetphi,
-            # q.met_uncorrected,
-            # q.metphi_uncorrected,
-            # q.pfmet_uncorrected,
-            # q.pfmetphi_uncorrected,
-            # q.metSumEt,
-            # q.metcov00,
-            # q.metcov01,
-            # q.metcov10,
-            # q.metcov11,
-            # q.pzetamissvis,
-            # q.mTdileptonMET,
-            # q.mt_1,
-            # q.mt_2,
-            # q.pt_tt,
-            # q.pt_ttjj,
-            # q.mt_tot,
-            # q.genbosonmass,
-            # q.gen_match_1,
-            # q.gen_match_2,
+            # q.jpt_1,
+            # q.jpt_2,
+            # q.jeta_1,
+            # q.jeta_2,
+            # q.jphi_1,
+            # q.jphi_2,
+            # q.jtag_value_1,
+            # q.jtag_value_2,
+            # q.mjj,
         ],
     )
+
+    configuration.add_outputs(
+        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        [
+            q.n_loose_mu,
+            q.n_loose_el,
+            q.n_tight_mu,
+            q.n_tight_el,
+
+            q.n_loose_lep,
+            q.n_tight_lep,
+            q.is_mu,
+            q.is_el,
+
+            q.lep_pt,
+            q.lep_eta,
+            q.lep_phi,
+            q.lep_mass,
+
+            q.wlep_pt,
+            q.wlep_eta,
+            q.wlep_phi,
+            q.wlep_mass,
+            q.wlep_mt,
+
+        ],
+    )
+
     # add gen info for everything but data
     if sample != "data":
         configuration.add_outputs(
-            scopes,
+            ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
             [
             nanoAOD.genWeight,
-            nanoAOD.nPSWeight,
-            nanoAOD.PSWeight,
-            nanoAOD.nLHEScaleWeight,
-            nanoAOD.LHEScaleWeight,
+            # nanoAOD.nPSWeight,
+            # nanoAOD.PSWeight,
+            # nanoAOD.nLHEScaleWeight,
+            # nanoAOD.LHEScaleWeight,
+            # nanoAOD.nLHEPdfWeight,
+            # nanoAOD.LHEPdfWeight,
+            ],
+        )
+
+    ## add prefiring
+    if era != "2018":
+        configuration.add_outputs(
+            ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+            [
+                nanoAOD.L1PreFiringWeight_Nom,
+                nanoAOD.L1PreFiringWeight_Dn,
+                nanoAOD.L1PreFiringWeight_Up,
+                nanoAOD.L1PreFiringWeight_ECAL_Nom,
+                nanoAOD.L1PreFiringWeight_ECAL_Dn,
+                nanoAOD.L1PreFiringWeight_ECAL_Up,
+                nanoAOD.L1PreFiringWeight_Muon_Nom,
+                nanoAOD.L1PreFiringWeight_Muon_StatDn,
+                nanoAOD.L1PreFiringWeight_Muon_StatUp,
+                nanoAOD.L1PreFiringWeight_Muon_SystDn,
+                nanoAOD.L1PreFiringWeight_Muon_SystUp,
+
             ],
         )
 
 
-
     ###########################################################################
     ###########################################################################
     ###########################################################################
@@ -429,28 +580,9 @@ def build_config(
     ###########################################################################
 
 
-    #########################
-    # Prefiring Shifts
-    #########################
-    if era != "2018":
-        configuration.add_shift(
-            SystematicShiftByQuantity(
-                name="prefiringDown",
-                quantity_change={
-                    nanoAOD.prefireWeight: "L1PreFiringWeight_Dn",
-                },
-                scopes=["global"],
-            )
-        )
-        configuration.add_shift(
-            SystematicShiftByQuantity(
-                name="prefiringUp",
-                quantity_change={
-                    nanoAOD.prefireWeight: "L1PreFiringWeight_Up",
-                },
-                scopes=["global"],
-            )
-        )
+
+
+
     #########################
     # Pileup Shifts
     #########################
@@ -494,10 +626,7 @@ def build_config(
         ],
     )
 
-    #########################
-    # Import triggersetup   #
-    #########################
-    #add_TriggerSetup(configuration)
+
 
     #########################
     # Jet energy resolution and jet energy scale
