@@ -350,7 +350,7 @@ btagging_SF = Producer(
         nanoAOD.BJet_discriminator,
         nanoAOD.Jet_flavor,
         q.good_jets_mask,
-        q.good_jjbets_mask,
+        q.good_bjets_mask,
         q.jet_overlap_veto_mask,
     ],
     output=[q.btag_weight],

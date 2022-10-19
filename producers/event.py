@@ -1,8 +1,8 @@
 from ..quantities import output as q
 from ..quantities import nanoAOD as nanoAOD
 from code_generation.producer import BaseFilter, Producer, ProducerGroup, VectorProducer
-from .electrons import DiElectronVeto
-from .muons import DiMuonVeto
+# from .electrons import DiElectronVeto
+# from .muons import DiMuonVeto
 
 ####################
 # Set of general producers for event quantities
@@ -28,13 +28,13 @@ JSONFilter = BaseFilter(
     scopes=["global"],
 )
 
-PrefireWeight = Producer(
-    name="PrefireWeight",
-    call="basefunctions::rename<Float_t>({df}, {input}, {output})",
-    input=[nanoAOD.prefireWeight],
-    output=[q.prefireweight],
-    scopes=["global"],
-)
+# PrefireWeight = Producer(
+#     name="PrefireWeight",
+#     call="basefunctions::rename<Float_t>({df}, {input}, {output})",
+#     input=[nanoAOD.prefireWeight],
+#     output=[q.prefireweight],
+#     scopes=["global"],
+# )
 
 
 

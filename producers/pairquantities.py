@@ -533,7 +533,7 @@ EMDiTauPairQuantities = ProducerGroup(
 ## leptons: q.p4_1, q.p4_2
 ## met: met_p4_recoilcorrected
 ## jets: good_jet_collection (if only the leading two are needed: q.jet_p4_1, q.jet_p4_2
-## jjbets: gen_jjbet_collection
+## bjets: gen_bjet_collection
 
 Pzetamissvis = Producer(
     name="Pzetamissvis",

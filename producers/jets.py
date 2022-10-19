@@ -95,7 +95,7 @@ JetPtCut = Producer(
 )
 BJetPtCut = Producer(
     name="BJetPtCut",
-    call="physicsobject::CutPt({df}, {input}, {output}, {min_jjbet_pt})",
+    call="physicsobject::CutPt({df}, {input}, {output}, {min_bjet_pt})",
     input=[q.Jet_pt_corrected],
     output=[],
     scopes=["global"],
@@ -109,7 +109,7 @@ JetEtaCut = Producer(
 )
 BJetEtaCut = Producer(
     name="BJetEtaCut",
-    call="physicsobject::CutEta({df}, {input}, {output}, {max_jjbet_eta})",
+    call="physicsobject::CutEta({df}, {input}, {output}, {max_bjet_eta})",
     input=[nanoAOD.Jet_eta],
     output=[],
     scopes=["global"],
@@ -147,7 +147,7 @@ GoodBJets = ProducerGroup(
     name="GoodBJets",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.jet_id_mask, q.jet_puid_mask],
-    output=[q.good_jjbets_mask],
+    output=[q.good_bjets_mask],
     scopes=["global"],
     subproducers=[BJetPtCut, BJetEtaCut, BTagCut],
 )
@@ -180,7 +180,7 @@ GoodJetsWithVeto = Producer(
 GoodBJetsWithVeto = Producer(
     name="GoodBJetsWithVeto",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
-    input=[q.good_jjbets_mask, q.jet_overlap_veto_mask],
+    input=[q.good_bjets_mask, q.jet_overlap_veto_mask],
     output=[],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
@@ -198,7 +198,7 @@ BJetCollection = ProducerGroup(
     name="BJetCollection",
     call="jet::OrderJetsByPt({df}, {output}, {input})",
     input=[q.Jet_pt_corrected],
-    output=[q.good_jjbet_collection],
+    output=[q.good_bjet_collection],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
     subproducers=[GoodBJetsWithVeto],
 )
@@ -335,88 +335,88 @@ LVBJet1 = Producer(
     name="LVBJet1",
     call="lorentzvectors::build({df}, {input_vec}, 0, {output})",
     input=[
-        q.good_jjbet_collection,
+        q.good_bjet_collection,
         q.Jet_pt_corrected,
         nanoAOD.Jet_eta,
         nanoAOD.Jet_phi,
         q.Jet_mass_corrected,
     ],
-    output=[q.jjbet_p4_1],
+    output=[q.bjet_p4_1],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 LVBJet2 = Producer(
     name="LVBJet2",
     call="lorentzvectors::build({df}, {input_vec}, 1, {output})",
     input=[
-        q.good_jjbet_collection,
+        q.good_bjet_collection,
         q.Jet_pt_corrected,
         nanoAOD.Jet_eta,
         nanoAOD.Jet_phi,
         q.Jet_mass_corrected,
     ],
-    output=[q.jjbet_p4_2],
+    output=[q.bjet_p4_2],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 NumberOfBJets = Producer(
     name="NumberOfBJets",
     call="quantities::jet::NumberOfJets({df}, {output}, {input})",
-    input=[q.good_jjbet_collection],
+    input=[q.good_bjet_collection],
     output=[q.nbtag],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 bpt_1 = Producer(
     name="bpt_1",
     call="quantities::pt({df}, {output}, {input})",
-    input=[q.jjbet_p4_1],
+    input=[q.bjet_p4_1],
     output=[q.bpt_1],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 bpt_2 = Producer(
     name="bpt_2",
     call="quantities::pt({df}, {output}, {input})",
-    input=[q.jjbet_p4_2],
+    input=[q.bjet_p4_2],
     output=[q.bpt_2],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 beta_1 = Producer(
     name="beta_1",
     call="quantities::eta({df}, {output}, {input})",
-    input=[q.jjbet_p4_1],
+    input=[q.bjet_p4_1],
     output=[q.beta_1],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 beta_2 = Producer(
     name="beta_2",
     call="quantities::eta({df}, {output}, {input})",
-    input=[q.jjbet_p4_2],
+    input=[q.bjet_p4_2],
     output=[q.beta_2],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 bphi_1 = Producer(
     name="bphi_1",
     call="quantities::phi({df}, {output}, {input})",
-    input=[q.jjbet_p4_1],
+    input=[q.bjet_p4_1],
     output=[q.bphi_1],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 bphi_2 = Producer(
     name="bphi_2",
     call="quantities::phi({df}, {output}, {input})",
-    input=[q.jjbet_p4_2],
+    input=[q.bjet_p4_2],
     output=[q.bphi_2],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 btag_value_1 = Producer(
     name="btag_value_1",
     call="quantities::jet::btagValue({df}, {output}, {input}, 0)",
-    input=[nanoAOD.BJet_discriminator, q.good_jjbet_collection],
+    input=[nanoAOD.BJet_discriminator, q.good_bjet_collection],
     output=[q.btag_value_1],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
 btag_value_2 = Producer(
     name="btag_value_2",
     call="quantities::jet::btagValue({df}, {output}, {input}, 1)",
-    input=[nanoAOD.BJet_discriminator, q.good_jjbet_collection],
+    input=[nanoAOD.BJet_discriminator, q.good_bjet_collection],
     output=[q.btag_value_2],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb', 'jjb_antiiso', 'jjbb_antiiso', 'jjjb_antiiso', 'jjjbb_antiiso'],
 )
