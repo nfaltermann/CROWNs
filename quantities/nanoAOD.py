@@ -4,7 +4,17 @@ run = NanoAODQuantity("run")
 luminosityBlock = NanoAODQuantity("luminosityBlock")
 event = NanoAODQuantity("event")
 
-prefireWeight = NanoAODQuantity("L1PreFiringWeight_Nom")
+L1PreFiringWeight_Nom = NanoAODQuantity("L1PreFiringWeight_Nom")
+L1PreFiringWeight_Dn = NanoAODQuantity("L1PreFiringWeight_Dn")
+L1PreFiringWeight_Up = NanoAODQuantity("L1PreFiringWeight_Up")
+L1PreFiringWeight_ECAL_Nom = NanoAODQuantity("L1PreFiringWeight_ECAL_Nom")
+L1PreFiringWeight_ECAL_Dn = NanoAODQuantity("L1PreFiringWeight_ECAL_Dn")
+L1PreFiringWeight_ECAL_Up = NanoAODQuantity("L1PreFiringWeight_ECAL_Up")
+L1PreFiringWeight_Muon_Nom = NanoAODQuantity("L1PreFiringWeight_Muon_Nom")
+L1PreFiringWeight_Muon_StatDn = NanoAODQuantity("L1PreFiringWeight_Muon_StatDn")
+L1PreFiringWeight_Muon_StatUp = NanoAODQuantity("L1PreFiringWeight_Muon_StatUp")
+L1PreFiringWeight_Muon_SystDn = NanoAODQuantity("L1PreFiringWeight_Muon_SystDn")
+L1PreFiringWeight_Muon_SystUp = NanoAODQuantity("L1PreFiringWeight_Muon_SystUp")
 
 Muon_pt = NanoAODQuantity("Muon_pt")
 Muon_eta = NanoAODQuantity("Muon_eta")
@@ -86,13 +96,14 @@ PFMET_sumEt = NanoAODQuantity("MET_sumEt")
 
 
 # other stuff
-PSWeight = NanoAODQuantity("PSWeight")
 nPSWeight = NanoAODQuantity("nPSWeight")
+PSWeight = NanoAODQuantity("PSWeight")
 
-LHEScaleWeight = NanoAODQuantity("LHEScaleWeight")
 nLHEScaleWeight = NanoAODQuantity("nLHEScaleWeight")
+LHEScaleWeight = NanoAODQuantity("LHEScaleWeight")
 
-
+nLHEPdfWeight = NanoAODQuantity("nLHEPdfWeight")
+LHEPdfWeight = NanoAODQuantity("LHEPdfWeight")
 
 
 ####### not used currently
