@@ -31,8 +31,8 @@ LeptonSelection = Producer(
     output=[
         q.n_loose_lep,
         q.n_tight_lep,
-        q.is_mu,
-        q.is_el,
+        q.lep_is_mu,
+        q.lep_is_el,
         q.lep_p4,
     ],
     scopes=['jjb', 'jjbb', 'jjjb', 'jjjbb'],

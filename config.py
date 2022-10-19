@@ -471,19 +471,28 @@ def build_config(
     configuration.add_producers(
         'jjb',
         topreco.JetSelection_jjb,
+        # topreco.TopReco_jjb,
     )
     configuration.add_producers(
         'jjbb',
         topreco.JetSelection_jjbb,
+        # topreco.TopReco_jjbb,
     )
     configuration.add_producers(
         'jjjb',
         topreco.JetSelection_jjjb,
+        # topreco.TopReco_jjjb,
     )
     configuration.add_producers(
         'jjjbb',
         topreco.JetSelection_jjjbb,
+        # topreco.TopReco_jjjbb,
     )
+
+
+
+
+
 
 
 
@@ -540,9 +549,9 @@ def build_config(
 
             q.n_loose_lep,
             q.n_tight_lep,
-            q.is_mu,
-            q.is_el,
 
+            q.lep_is_mu,
+            q.lep_is_el,
             q.lep_pt,
             q.lep_eta,
             q.lep_phi,
