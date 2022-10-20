@@ -20,8 +20,7 @@ def run(args):
         "data",
     ]
     available_eras = ["2016preVFP", "2016",  "2017", "2018"]
-    available_scopes = ["jjb", "jjbb", "jjjb", "jjjbb"]
-    available_scopes += [i + "_antiiso" for i in available_scopes]
+    available_scopes = ["lep_iso", 'lep_antiiso']
 
     #print(available_scopes)
 

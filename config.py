@@ -134,7 +134,14 @@ def build_config(
     )
 
     configuration.add_config_parameters(
-        ["jjb", "jjbb", "jjjb", "jjjbb"],
+        scopes,
+        {
+            "deltaR_jet_lep_veto": 0.4,
+        },
+    )
+
+    configuration.add_config_parameters(
+        ["lep_iso"],
         {
             "singlemoun_trigger": EraModifier(
                 {
@@ -189,7 +196,7 @@ def build_config(
 
     ## trigger single ele
     configuration.add_config_parameters(
-        ["jjb", "jjbb", "jjjb", "jjjbb"],
+        ["lep_iso"],
         {
             "singleelectron_trigger": EraModifier(
                 {
@@ -262,7 +269,7 @@ def build_config(
 
     # loose lepton base selection:
     configuration.add_config_parameters(
-        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        ['lep_iso'],
         {
             "min_loose_el_pt": 10.0,
             "max_loose_el_eta": 2.4,
@@ -276,7 +283,7 @@ def build_config(
 
     # good lepton selections
     configuration.add_config_parameters(
-        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        ['lep_iso'],
         {
             "min_el_pt": EraModifier(
                 {
@@ -415,6 +422,7 @@ def build_config(
             jets.JetEnergyCorrection,
             jets.GoodJets,
             jets.GoodBJets,
+            jets.GoodNonBJets,
             # event.DiLeptonVeto,
             met.MetBasics,
         ],
@@ -437,7 +445,7 @@ def build_config(
 
     # iso lep + W boson
     configuration.add_producers(
-        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        ['lep_iso'],
         [
             muons.LooseMuons,
             muons.NumberOfLooseMuons,
@@ -455,10 +463,12 @@ def build_config(
             topreco.LeptonicW,
             topreco.LeptonicWQuantities,
 
-            # jets.JetCollection,
-            # jets.BasicJetQuantities,
-            # jets.BJetCollection,
-            # jets.BasicBJetQuantities,
+            jets.JetCollection,
+            jets.BasicJetQuantities,
+            jets.BJetCollection,
+            jets.BasicBJetQuantities,
+            jets.NonBJetCollection,
+            jets.BasicNonBJetQuantities,
             # scalefactors.btagging_SF,
             # met.MetCorrections,
             # met.PFMetCorrections,
@@ -469,34 +479,12 @@ def build_config(
 
     # jet and top related
     configuration.add_producers(
-        'jjb',
-        topreco.JetSelection_jjb,
-        # topreco.TopReco_jjb,
+        ['lep_iso'],
+        [
+            topreco.TopReco,
+            topreco.TopRecoQuantities,
+        ],
     )
-    configuration.add_producers(
-        'jjbb',
-        topreco.JetSelection_jjbb,
-        # topreco.TopReco_jjbb,
-    )
-    configuration.add_producers(
-        'jjjb',
-        topreco.JetSelection_jjjb,
-        # topreco.TopReco_jjjb,
-    )
-    configuration.add_producers(
-        'jjjbb',
-        topreco.JetSelection_jjjbb,
-        # topreco.TopReco_jjjbb,
-    )
-
-
-
-
-
-
-
-
-
 
     ######################################################################################
     ##############################       OUTPUT      #####################################
@@ -520,48 +508,42 @@ def build_config(
             q.is_data,
             # q.npartons,
             # q.puweight,
-            # q.pt_1,
-            # q.pt_2,
-            # q.eta_1,
-            # q.eta_2,
-            # q.phi_1,
-            # q.phi_2,
-            # q.njets,
-            # q.jpt_1,
-            # q.jpt_2,
-            # q.jeta_1,
-            # q.jeta_2,
-            # q.jphi_1,
-            # q.jphi_2,
-            # q.jtag_value_1,
-            # q.jtag_value_2,
-            # q.mjj,
+
         ],
     )
 
     configuration.add_outputs(
-        ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+        ['lep_iso'],
         [
-            q.n_loose_mu,
-            q.n_loose_el,
-            q.n_tight_mu,
-            q.n_tight_el,
+            q.n_loose_mu, q.n_loose_el,
+            q.n_tight_mu, q.n_tight_el,
+            q.n_loose_lep, q.n_tight_lep,
 
-            q.n_loose_lep,
-            q.n_tight_lep,
+            q.lep_is_mu, q.lep_is_el,
+            q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass,
 
-            q.lep_is_mu,
-            q.lep_is_el,
-            q.lep_pt,
-            q.lep_eta,
-            q.lep_phi,
-            q.lep_mass,
+            q.wlep_pt, q.wlep_eta, q.wlep_phi, q.wlep_mass, q.wlep_mt,
 
-            q.wlep_pt,
-            q.wlep_eta,
-            q.wlep_phi,
-            q.wlep_mass,
-            q.wlep_mt,
+            # q.n_jets,
+            # q.jet_1_pt, q.jet_1_eta, q.jet_1_phi, q.jet_1_mass, q.jet_1_btag,
+            # q.jet_2_pt, q.jet_2_eta, q.jet_2_phi, q.jet_2_mass, q.jet_2_btag,
+            # q.jet_3_pt, q.jet_3_eta, q.jet_3_phi, q.jet_3_mass, q.jet_3_btag,
+
+            q.n_nonbjets,
+            q.nonbjet_1_pt, q.nonbjet_1_eta, q.nonbjet_1_phi, q.nonbjet_1_mass, q.nonbjet_1_btag,
+            q.nonbjet_2_pt, q.nonbjet_2_eta, q.nonbjet_2_phi, q.nonbjet_2_mass, q.nonbjet_2_btag,
+
+            q.n_bjets,
+            q.bjet_1_pt, q.bjet_1_eta, q.bjet_1_phi, q.bjet_1_mass, q.bjet_1_btag,
+            q.bjet_2_pt, q.bjet_2_eta, q.bjet_2_phi, q.bjet_2_mass, q.bjet_2_btag,
+
+            q.is_reco,
+            q.is_jjb, q.is_jjbb, q.is_jjjb, q.is_jjjbb,
+
+            q.top_pt, q.top_eta, q.top_phi, q.top_mass,
+            q.tb_pt, q.tb_eta, q.tb_phi, q.tb_mass,
+            q.sb_pt, q.sb_eta, q.sb_phi, q.sb_mass,
+
 
         ],
     )
@@ -569,7 +551,7 @@ def build_config(
     # add gen info for everything but data
     if sample != "data":
         configuration.add_outputs(
-            ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+            ['lep_iso'],
             [
             nanoAOD.genWeight,
             # nanoAOD.nPSWeight,
@@ -584,7 +566,7 @@ def build_config(
     ## add prefiring
     if era != "2018":
         configuration.add_outputs(
-            ['jjb', 'jjbb', 'jjjb', 'jjjbb'],
+            ['lep_iso'],
             [
                 nanoAOD.L1PreFiringWeight_Nom,
                 nanoAOD.L1PreFiringWeight_Dn,
