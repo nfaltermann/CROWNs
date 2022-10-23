@@ -140,6 +140,41 @@ def build_config(
         },
     )
 
+    ## all scopes MET selection
+    configuration.add_config_parameters(
+        scopes,
+        {
+            "propagateLeptons": SampleModifier(
+                {"data": False, "embedding": False},
+                default=True,
+            ),
+            "propagateJets": SampleModifier(
+                {"data": False, "embedding": False},
+                default=True,
+            ),
+            "recoil_corrections_file": EraModifier(
+                {
+                    "2016": "data/recoil_corrections/Type1_PuppiMET_2016.root",
+                    "2017": "data/recoil_corrections/Type1_PuppiMET_2017.root",
+                    "2018": "data/recoil_corrections/Type1_PuppiMET_2018.root",
+                }
+            ),
+            "recoil_systematics_file": EraModifier(
+                {
+                    "2016": "data/recoil_corrections/PuppiMETSys_2016.root",
+                    "2017": "data/recoil_corrections/PuppiMETSys_2017.root",
+                    "2018": "data/recoil_corrections/PuppiMETSys_2018.root",
+                }
+            ),
+            "applyRecoilCorrections": SampleModifier({"wj": True}, default=False),
+            "apply_recoil_resolution_systematic": False,
+            "apply_recoil_response_systematic": False,
+            "recoil_systematic_shift_up": False,
+            "recoil_systematic_shift_down": False,
+            "min_jetpt_met_propagation": 15,
+        },
+    )
+
     configuration.add_config_parameters(
         ["lep_iso"],
         {
@@ -416,17 +451,39 @@ def build_config(
             # event.Lumi,
             # event.npartons,
             event.MetFilter,
-            event.PUweights,
             muons.BaseMuons,
             electrons.BaseElectrons,
-            jets.JetEnergyCorrection,
+        ],
+    )
+
+    if sample == "data":
+        configuration.add_producers(
+            "global",
+            [
+                jets.JetEnergyCorrection_data,
+            ],
+        )
+    else:
+        configuration.add_producers(
+            "global",
+            [
+                event.PUweights,
+                jets.JetEnergyCorrection,
+            ],
+        )
+
+
+    configuration.add_producers(
+        "global",
+        [
             jets.GoodJets,
             jets.GoodBJets,
             jets.GoodNonBJets,
-            # event.DiLeptonVeto,
             met.MetBasics,
         ],
     )
+
+
     # common
     configuration.add_producers(
         scopes,
@@ -459,6 +516,8 @@ def build_config(
 
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
+
+            # met.PFMetCorrections,
 
             topreco.LeptonicW,
             topreco.LeptonicWQuantities,
@@ -611,9 +670,7 @@ def build_config(
             },
         ),
         samples=[
-            sample
-            for sample in available_sample_types
-            if sample not in ["data", "embedding", "embedding_mc"]
+            sample for sample in available_sample_types if sample not in ["data", "embedding", "embedding_mc"]
         ],
     )
 
@@ -631,9 +688,7 @@ def build_config(
             },
         ),
         samples=[
-            sample
-            for sample in available_sample_types
-            if sample not in ["data", "embedding", "embedding_mc"]
+            sample for sample in available_sample_types if sample not in ["data", "embedding", "embedding_mc"]
         ],
     )
 
