@@ -238,24 +238,33 @@ btag_weight = Quantity("btag_weight")
 base_muons_mask = Quantity("base_muons_mask")
 loose_muons_mask = Quantity("loose_muons_mask")
 tight_muons_mask = Quantity("tight_muons_mask")
+antiloose_muons_mask = Quantity("antiloose_muons_mask")
+antitight_muons_mask = Quantity("antitight_muons_mask")
 n_loose_el = Quantity("n_loose_el")
 n_tight_el = Quantity("n_tight_el")
+n_antitight_el = Quantity("n_antitight_el")
 
 
 # mu
 base_electrons_mask = Quantity("base_electrons_mask")
 loose_electrons_mask = Quantity("loose_electrons_mask")
 tight_electrons_mask = Quantity("tight_electrons_mask")
+antiloose_electrons_mask = Quantity("antiloose_electrons_mask")
+antitight_electrons_mask = Quantity("antitight_electrons_mask")
 n_loose_mu = Quantity("n_loose_mu")
 n_tight_mu = Quantity("n_tight_mu")
+n_antitight_mu = Quantity("n_antitight_mu")
 
 
 # good lepton
 n_loose_lep = Quantity("n_loose_lep")
 n_tight_lep = Quantity("n_tight_lep")
+n_antitight_lep = Quantity("n_antitight_lep")
 tight_leptons_mask = Quantity("tight_leptons_mask")
 lep_is_mu = Quantity("lep_is_mu")
 lep_is_el = Quantity("lep_is_el")
+lep_is_iso = Quantity("lep_is_iso")
+lep_is_antiiso = Quantity("lep_is_antiiso")
 lep_p4 = Quantity("lep_p4")
 lep_p4_uncorrected = Quantity("lep_p4_uncorrected")
 lep_pt = Quantity("lep_pt")

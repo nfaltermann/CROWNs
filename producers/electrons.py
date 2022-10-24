@@ -42,28 +42,28 @@ LooseElectronPtCut = Producer(
     call="physicsobject::CutPt({df}, {input}, {output}, {min_loose_el_pt})",
     input=[nanoAOD.Electron_pt],
     output=[],
-    scopes=['lep_iso'],
+    scopes=['lep_iso', "lep_antiiso"],
 )
 LooseElectronEtaCut = Producer(
     name="LooseElectronEtaCut",
     call="physicsobject::CutEta({df}, {input}, {output}, {max_loose_el_eta})",
     input=[nanoAOD.Electron_eta],
     output=[],
-    scopes=['lep_iso'],
+    scopes=['lep_iso', "lep_antiiso"],
 )
 LooseElectronIDCut = Producer(
     name="LooseElectronIDCut",
     call='physicsobject::electron::CutCBID({df}, {output}, "{loose_el_id}", {loose_el_id_wp})',
     input=[],
     output=[],
-    scopes=['lep_iso'],
+    scopes=['lep_iso', "lep_antiiso"],
 )
 LooseElectrons = ProducerGroup(
     name="LooseElectrons",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.base_electrons_mask],
     output=[q.loose_electrons_mask],
-    scopes=['lep_iso'],
+    scopes=['lep_iso', "lep_antiiso"],
     subproducers=[
         LooseElectronPtCut,
         LooseElectronEtaCut,
@@ -76,7 +76,7 @@ NumberOfLooseElectrons = Producer(
     call="quantities::NumberOfGoodLeptons({df}, {output}, {input})",
     input=[q.loose_electrons_mask],
     output=[q.n_loose_el],
-    scopes=['lep_iso'],
+    scopes=['lep_iso', "lep_antiiso"],
 )
 
 
@@ -90,14 +90,14 @@ TightElectronPtCut = Producer(
     call="physicsobject::CutPt({df}, {input}, {output}, {min_el_pt})",
     input=[nanoAOD.Electron_pt],
     output=[],
-    scopes=['lep_iso'],
+    scopes=['lep_iso', 'lep_antiiso'],
 )
 TightElectronEtaCut = Producer(
     name="TightElectronEtaCut",
     call="physicsobject::CutEta({df}, {input}, {output}, {max_el_eta})",
     input=[nanoAOD.Electron_eta],
     output=[],
-    scopes=['lep_iso'],
+    scopes=['lep_iso', 'lep_antiiso'],
 )
 TightElectronIDCut = Producer(
     name="ElectronIDCut",
@@ -127,6 +127,73 @@ NumberOfTightElectrons = Producer(
     output=[q.n_tight_el],
     scopes=['lep_iso'],
 )
+
+
+
+####################
+# ANTIISO ELECTRONS
+####################
+
+# AntiLooseElectronIDCut = Producer(
+#     name="AntiLooseElectronIDCut",
+#     call='physicsobject::electron::AntiCutCBID({df}, {output}, "{loose_el_antiid}", {loose_el_antiid_wp})',
+#     input=[],
+#     output=[],
+#     scopes=['lep_antiiso'],
+# )
+# AntiLooseElectrons = ProducerGroup(
+#     name="AntiLooseElectrons",
+#     call="physicsobject::CombineMasks({df}, {output}, {input})",
+#     input=[q.base_electrons_mask],
+#     output=[q.antiloose_electrons_mask],
+#     scopes=['lep_antiiso'],
+#     subproducers=[
+#         LooseElectronPtCut,
+#         LooseElectronEtaCut,
+#         AntiLooseElectronIDCut,
+#     ],
+# )
+
+# NumberOfAntiLooseElectrons = Producer(
+#     name="NumberOfAntiLooseElectrons",
+#     call="quantities::NumberOfGoodLeptons({df}, {output}, {input})",
+#     input=[q.antiloose_electrons_mask],
+#     output=[q.n_loose_el],
+#     scopes=['lep_antiiso'],
+# )
+
+
+
+AntiTightElectronIDCut = Producer(
+    name="AntiElectronIDCut",
+    call='physicsobject::electron::AntiCutCBID({df}, {output}, "{el_antiid}", {el_antiid_wp})',
+    input=[],
+    output=[],
+    scopes=['lep_antiiso'],
+)
+
+AntiTightElectrons = ProducerGroup(
+    name="AntiTightElectrons",
+    call="physicsobject::CombineMasks({df}, {output}, {input})",
+    input=[q.base_electrons_mask],
+    output=[q.antitight_electrons_mask],
+    scopes=['lep_antiiso'],
+    subproducers=[
+        TightElectronPtCut,
+        TightElectronEtaCut,
+        AntiTightElectronIDCut,
+    ],
+)
+
+NumberOfAntiTightElectrons = Producer(
+    name="NumberOfAntiTightElectrons",
+    call="quantities::NumberOfGoodLeptons({df}, {output}, {input})",
+    input=[q.antitight_electrons_mask],
+    output=[q.n_antitight_el],
+    scopes=['lep_antiiso'],
+)
+
+
 
 
 # ####################

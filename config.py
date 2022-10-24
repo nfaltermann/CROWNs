@@ -304,7 +304,7 @@ def build_config(
 
     # loose lepton base selection:
     configuration.add_config_parameters(
-        ['lep_iso'],
+        ['lep_iso', "lep_antiiso"],
         {
             "min_loose_el_pt": 10.0,
             "max_loose_el_eta": 2.4,
@@ -312,13 +312,13 @@ def build_config(
             "loose_el_id_wp": 1,
             "min_loose_mu_pt": 10.0,
             "max_loose_mu_eta": 2.4,
-            "loose_mu_iso": 1,
+            "loose_mu_iso": 0.2,
         },
     )
 
     # good lepton selections
     configuration.add_config_parameters(
-        ['lep_iso'],
+        ['lep_iso', "lep_antiiso"],
         {
             "min_el_pt": EraModifier(
                 {
@@ -330,7 +330,7 @@ def build_config(
             ),
             "max_el_eta": 2.4,
             "el_id": "Electron_cutBased",
-            "el_id_wp": 1,
+            "el_id_wp": 4,
 
             "min_mu_pt": EraModifier(
                 {
@@ -346,6 +346,18 @@ def build_config(
         },
     )
 
+    # cuts for defining antiiso selection
+    configuration.add_config_parameters(
+        ['lep_antiiso'],
+        {
+            "loose_mu_antiiso": 0.2,
+            "mu_antiiso": 0.2,
+            "loose_el_antiid": "Electron_cutBased",
+            "loose_el_antiid_wp": 1,
+            "el_antiid": "Electron_cutBased",
+            "el_antiid_wp": 0,
+        },
+    )
 
     # jet base selection:
     configuration.add_config_parameters(
@@ -488,6 +500,10 @@ def build_config(
     configuration.add_producers(
         scopes,
         [
+            muons.LooseMuons,
+            muons.NumberOfLooseMuons,
+            electrons.LooseElectrons,
+            electrons.NumberOfLooseElectrons,
             # jets.JetCollection,
             # jets.BasicJetQuantities,
             # jets.BJetCollection,
@@ -500,15 +516,10 @@ def build_config(
         ],
     )
 
-    # iso lep + W boson
+    # iso lep
     configuration.add_producers(
         ['lep_iso'],
         [
-            muons.LooseMuons,
-            muons.NumberOfLooseMuons,
-            electrons.LooseElectrons,
-            electrons.NumberOfLooseElectrons,
-
             muons.TightMuons,
             muons.NumberOfTightMuons,
             electrons.TightElectrons,
@@ -519,6 +530,35 @@ def build_config(
 
             # met.PFMetCorrections,
 
+            # scalefactors.btagging_SF,
+            # met.MetCorrections,
+            # met.PFMetCorrections,
+            # pairquantities.DiTauPairMETQuantities,
+            # genparticles.GenMatching,
+        ],
+    )
+
+
+    # antiiso lep
+    configuration.add_producers(
+        ['lep_antiiso'],
+        [
+            muons.AntiTightMuons,
+            muons.NumberOfAntiTightMuons,
+            electrons.AntiTightElectrons,
+            electrons.NumberOfAntiTightElectrons,
+
+            topreco.AntiLeptonSelection,
+            topreco.LeptonQuantities,
+
+        ],
+    )
+
+
+    # jet and top related
+    configuration.add_producers(
+        ['lep_iso', "lep_antiiso"],
+        [
             topreco.LeptonicW,
             topreco.LeptonicWQuantities,
 
@@ -528,18 +568,7 @@ def build_config(
             jets.BasicBJetQuantities,
             jets.NonBJetCollection,
             jets.BasicNonBJetQuantities,
-            # scalefactors.btagging_SF,
-            # met.MetCorrections,
-            # met.PFMetCorrections,
-            # pairquantities.DiTauPairMETQuantities,
-            # genparticles.GenMatching,
-        ],
-    )
 
-    # jet and top related
-    configuration.add_producers(
-        ['lep_iso'],
-        [
             topreco.TopReco,
             topreco.TopRecoQuantities,
         ],
@@ -577,9 +606,23 @@ def build_config(
             q.n_loose_mu, q.n_loose_el,
             q.n_tight_mu, q.n_tight_el,
             q.n_loose_lep, q.n_tight_lep,
+        ],
+    )
 
+    configuration.add_outputs(
+        ["lep_antiiso"],
+        [
+            q.n_loose_mu, q.n_loose_el,
+            q.n_antitight_mu, q.n_antitight_el,
+            q.n_loose_lep, q.n_antitight_lep,
+        ],
+    )
+
+    configuration.add_outputs(
+        ['lep_iso', "lep_antiiso"],
+        [
             q.lep_is_mu, q.lep_is_el,
-            q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass,
+            q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso,
 
             q.wlep_pt, q.wlep_eta, q.wlep_phi, q.wlep_mass, q.wlep_mt,
 
