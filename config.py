@@ -11,6 +11,7 @@ from .producers import muons as muons
 #from .producers import pairquantities as pairquantities
 #from .producers import pairselection as pairselection
 from .producers import scalefactors as scalefactors
+from .producers import systematics as systematics
 #from .producers import taus as taus
 from .producers import triggers as triggers
 from .producers import topreco as topreco
@@ -528,6 +529,8 @@ def build_config(
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
 
+            # scalefactors.leptons,
+
             # met.PFMetCorrections,
 
             # scalefactors.btagging_SF,
@@ -573,6 +576,18 @@ def build_config(
             topreco.TopRecoQuantities,
         ],
     )
+
+
+    # syst producers
+    if sample != "data":
+        configuration.add_producers(
+            "lep_iso",
+            [
+                systematics.SystPSWeights,
+                systematics.SystLHEScaleWeights,
+                systematics.SystLHEPdfWeights,
+            ],
+        )
 
     ######################################################################################
     ##############################       OUTPUT      #####################################
@@ -656,12 +671,9 @@ def build_config(
             ['lep_iso'],
             [
             nanoAOD.genWeight,
-            # nanoAOD.nPSWeight,
-            # nanoAOD.PSWeight,
-            # nanoAOD.nLHEScaleWeight,
-            # nanoAOD.LHEScaleWeight,
-            # nanoAOD.nLHEPdfWeight,
-            # nanoAOD.LHEPdfWeight,
+            q.PSWeight,
+            q.LHEScaleWeight,
+            q.LHEPdfWeight,
             ],
         )
 

@@ -303,3 +303,8 @@ sb_pt = Quantity("sb_pt")
 sb_eta = Quantity("sb_eta")
 sb_phi = Quantity("sb_phi")
 sb_mass = Quantity("sb_mass")
+
+#systs
+PSWeight = Quantity("PSWeight_vector")
+LHEScaleWeight = Quantity("LHEScaleWeight_vector")
+LHEPdfWeight = Quantity("LHEPdfWeight_vector")
