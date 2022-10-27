@@ -200,6 +200,7 @@ TopReco = Producer(
         q.is_jjbb,
         q.is_jjjb,
         q.is_jjjbb,
+        q.reco_p4s,
         q.top_p4,
         q.tb_p4,
         q.sb_p4,
