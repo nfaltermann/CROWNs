@@ -456,10 +456,19 @@ def build_config(
     ##############################     PRODUCERS     #####################################
     ######################################################################################
 
+
+    if sample == "data":
+        configuration.add_producers(
+            "global",
+            [
+                event.JSONFilter,
+            ],
+        )
+
+
     configuration.add_producers(
         "global",
         [
-            # event.RunLumiEventFilter,
             event.SampleFlags,
             # event.Lumi,
             # event.npartons,
