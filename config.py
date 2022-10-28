@@ -323,22 +323,22 @@ def build_config(
         {
             "min_el_pt": EraModifier(
                 {
-                    "2016preVFP": 20, # TODO
-                    "2016postVFP": 20, # TODO
-                    "2017": 20, # TODO
-                    "2018": 20, # TODO
+                    "2016preVFP": 30,
+                    "2016postVFP": 30,
+                    "2017": 32,
+                    "2018": 32,
                 }
             ),
-            "max_el_eta": 2.4,
+            "max_el_eta": 2.1,
             "el_id": "Electron_cutBased",
             "el_id_wp": 4,
 
             "min_mu_pt": EraModifier(
                 {
-                    "2016preVFP": 20, # TODO
-                    "2016postVFP": 20, # TODO
-                    "2017": 20, # TODO
-                    "2018": 20, # TODO
+                    "2016preVFP": 26,
+                    "2016postVFP": 26,
+                    "2017": 30,
+                    "2018": 26,
                 }
             ),
             "max_mu_eta": 2.4,
