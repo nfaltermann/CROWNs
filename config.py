@@ -626,29 +626,7 @@ def build_config(
 
 
     ### HLTs
-    if era == "2016preVFP":
-        configuration.add_outputs(
-            ['lep_iso'],
-            [
-                nanoAOD.HLT_IsoMu24,
-                nanoAOD.HLT_Ele25_eta2p1_WPTight_Gsf,
-                nanoAOD.HLT_Ele27_WPTight_Gsf,
-                nanoAOD.HLT_Ele32_eta2p1_WPTight_Gsf,
-            ],
-        )
-        configuration.add_outputs(
-            ['lep_antiiso'],
-            [
-                nanoAOD.HLT_IsoMu24,
-                nanoAOD.HLT_Mu20,
-                nanoAOD.HLT_Mu27,
-                nanoAOD.HLT_Ele25_eta2p1_WPTight_Gsf,
-                nanoAOD.HLT_Ele27_WPTight_Gsf,
-                nanoAOD.HLT_Ele32_eta2p1_WPTight_Gsf,
-            ],
-        )
-
-    if era == "2016postVFP":
+    if era == "2016preVFP" or era == "2016postVFP":
         configuration.add_outputs(
             ['lep_iso'],
             [
