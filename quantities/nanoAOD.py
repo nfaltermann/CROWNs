@@ -150,3 +150,20 @@ TauEmbedding_InitialPairCandidates = NanoAODQuantity(
 )
 TauEmbedding_SelectionOldMass = NanoAODQuantity("TauEmbedding_SelectionOldMass")
 TauEmbedding_SelectionNewMass = NanoAODQuantity("TauEmbedding_SelectionNewMass")
+
+## HLTs
+
+HLT_IsoMu24 = NanoAODQuantity("HLT_IsoMu24")
+HLT_IsoMu27 = NanoAODQuantity("HLT_IsoMu27")
+HLT_IsoMu24_eta2p1 = NanoAODQuantity("HLT_IsoMu24_eta2p1")
+HLT_Ele25_eta2p1_WPTight_Gsf = NanoAODQuantity("HLT_Ele25_eta2p1_WPTight_Gsf")
+HLT_Ele27_WPTight_Gsf = NanoAODQuantity("HLT_Ele27_WPTight_Gsf")
+HLT_Ele28_eta2p1_WPTight_Gsf_HT150 = NanoAODQuantity("HLT_Ele28_eta2p1_WPTight_Gsf_HT150")
+HLT_Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned = NanoAODQuantity("HLT_Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned")
+HLT_Ele32_WPTight_Gsf = NanoAODQuantity("HLT_Ele32_WPTight_Gsf")
+HLT_Ele32_eta2p1_WPTight_Gsf = NanoAODQuantity("HLT_Ele32_eta2p1_WPTight_Gsf")
+HLT_Ele32_WPTight_Gsf_L1DoubleEG = NanoAODQuantity("HLT_Ele32_WPTight_Gsf_L1DoubleEG")
+HLT_Ele35_WPTight_Gsf = NanoAODQuantity("HLT_Ele35_WPTight_Gsf")
+
+HLT_Mu20 = NanoAODQuantity("HLT_Mu20")
+HLT_Mu27 = NanoAODQuantity("HLT_Mu27")
