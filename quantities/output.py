@@ -199,9 +199,9 @@ met_uncorrected = Quantity("met_uncorrected")
 metphi_uncorrected = Quantity("metphi_uncorrected")
 
 ## PFMET quantities
-pfmet = Quantity("pfmet")
+pfmet = Quantity("PFMET_pt")
 pfmet_p4 = Quantity("pfmet_p4")
-pfmetphi = Quantity("pfmetphi")
+pfmetphi = Quantity("PFMET_phi")
 pfmet_uncorrected = Quantity("pfmet_uncorrected")
 pfmetphi_uncorrected = Quantity("pfmetphi_uncorrected")
 pfmet_p4_leptoncorrected = Quantity("pfmet_p4_leptoncorrected")

@@ -571,6 +571,8 @@ def build_config(
     configuration.add_producers(
         ['lep_iso', "lep_antiiso"],
         [
+
+            met.PFMetCorrections,
             topreco.LeptonicW,
             topreco.LeptonicWQuantities,
 
@@ -722,6 +724,8 @@ def build_config(
             q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso,
 
             q.wlep_pt, q.wlep_eta, q.wlep_phi, q.wlep_mass, q.wlep_mt,
+
+            q.pfmet, q.pfmetphi,
 
             # q.n_jets,
             # q.jet_1_pt, q.jet_1_eta, q.jet_1_phi, q.jet_1_mass, q.jet_1_btag,

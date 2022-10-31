@@ -110,6 +110,21 @@ LeptonQuantities = ProducerGroup(
 )
 
 
+# LeptonCorrections  = Producer(
+#     name="LeptonCorrections",
+#     call='LeptonCorrections({df}, {input}, {output}, "{muon_sf_year_id}", "{muon_sf_file}", "{muon_id_sf_name}")',
+#     input=[
+#         q.lep_pt,
+#         q.lep_eta,
+#         q.lep_is_mu,
+#         q.lep_is_el,
+#     ],
+#     output=[
+#         None,
+#     ],
+#     scopes=['lep_iso'],
+# )
+
 #####################################
 ############## W BOSON ##############
 #####################################
@@ -119,7 +134,8 @@ LeptonicW = Producer(
     call="ReconstructLeptonicW({df}, {input}, {output})",
     input=[
         q.lep_p4,
-        q.pfmet_p4,
+        # q.pfmet_p4,
+        q.pfmet_p4_jetcorrected,
     ],
     output=[
         q.wlep_p4,

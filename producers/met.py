@@ -162,9 +162,9 @@ MetBasics = ProducerGroup(
 PropagateLeptonToPFMet = Producer(
     name="PropagateLeptonToPFMet",
     call="met::propagateLeptonsToMet({df}, {input}, {output}, {propagateLeptons})",
-    input=[q.pfmet_p4, q.lep_p4_uncorrected, q.lep_p4],
+    input=[q.pfmet_p4, q.lep_p4, q.lep_p4, q.lep_p4, q.lep_p4],
     output=[q.pfmet_p4_leptoncorrected],
-    scopes=["lep_iso"],
+    scopes=["lep_iso", "lep_antiiso"],
 )
 
 # PropagateJetsToMet = Producer(
@@ -199,7 +199,7 @@ PropagateJetsToPFMet = Producer(
         nanoAOD.Jet_mass,
     ],
     output=[q.pfmet_p4_jetcorrected],
-    scopes=["lep_iso"],
+    scopes=["lep_iso", "lep_antiiso"],
 )
 
 # ApplyRecoilCorrections = Producer(
@@ -243,7 +243,7 @@ PFMetPt = Producer(
     call="quantities::pt({df}, {output}, {input})",
     input=[q.pfmet_p4_jetcorrected],
     output=[q.pfmet],
-    scopes=["lep_iso"],
+    scopes=["lep_iso", "lep_antiiso"],
 )
 # MetPhi = Producer(
 #     name="MetPhi",
@@ -264,7 +264,7 @@ PFMetPhi = Producer(
     call="quantities::phi({df}, {output}, {input})",
     input=[q.pfmet_p4_jetcorrected],
     output=[q.pfmetphi],
-    scopes=["lep_iso"],
+    scopes=["lep_iso", "lep_antiiso"],
 )
 # MetCorrections = ProducerGroup(
 #     name="MetCorrections",
@@ -285,7 +285,7 @@ PFMetCorrections = ProducerGroup(
     call=None,
     input=None,
     output=None,
-    scopes=["lep_iso"],
+    scopes=["lep_iso", "lep_antiiso"],
     subproducers=[
         PropagateLeptonToPFMet,
         PropagateJetsToPFMet,
