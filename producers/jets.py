@@ -93,6 +93,13 @@ JetPtCut = Producer(
     output=[],
     scopes=["global"],
 )
+JetLowPtCut = Producer(
+    name="JetLowPtCut",
+    call="physicsobject::CutPt({df}, {input}, {output}, {min_jet_lowpt})",
+    input=[q.Jet_pt_corrected],
+    output=[],
+    scopes=["global"],
+)
 BJetPtCut = Producer(
     name="BJetPtCut",
     call="physicsobject::CutPt({df}, {input}, {output}, {min_bjet_pt})",
@@ -111,7 +118,7 @@ JetEtaCut = Producer(
     name="JetEtaCut",
     call="physicsobject::CutEta({df}, {input}, {output}, {max_jet_eta})",
     input=[nanoAOD.Jet_eta],
-    output=[],
+    output=[q.jet_eta_mask],
     scopes=["global"],
 )
 BJetEtaCut = Producer(
@@ -156,13 +163,22 @@ BTagAntiCut = Producer(
     output=[],
     scopes=["global"],
 )
+
+GoodJetsLowPt = ProducerGroup(
+    name="GoodJetsLowPt",
+    call="physicsobject::CombineMasks({df}, {output}, {input})",
+    input=[],
+    output=[q.good_jetslowpt_mask],
+    scopes=["global"],
+    subproducers=[JetLowPtCut, JetEtaCut, JetIDCut, JetPUIDCut],
+)
 GoodJets = ProducerGroup(
     name="GoodJets",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
-    input=[],
+    input=[q.jet_eta_mask, q.jet_id_mask, q.jet_puid_mask],
     output=[q.good_jets_mask],
     scopes=["global"],
-    subproducers=[JetPtCut, JetEtaCut, JetIDCut, JetPUIDCut],
+    subproducers=[JetPtCut],
 )
 GoodBJets = ProducerGroup(
     name="GoodBJets",
@@ -181,7 +197,6 @@ GoodNonBJets= ProducerGroup(
     subproducers=[NonBJetPtCut, NonBJetEtaCut, BTagAntiCut],
 )
 
-
 ####################
 # Set of producers to apply a veto of jets overlapping with ditaupair candidates and ordering jets by their pt
 # 1. check all jets vs the two lepton candidates, if they are not within deltaR = 0.5, keep them --> mask
@@ -197,13 +212,20 @@ VetoOverlappingJets = Producer(
     scopes=['lep_iso', 'lep_antiiso']
 )
 
-GoodJetsWithVeto = ProducerGroup(
-    name="GoodJetsWithVeto",
+GoodJetsLowPtWithVeto = ProducerGroup(
+    name="GoodJetsLowPtWithVeto",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
-    input=[q.good_jets_mask],
+    input=[q.good_jetslowpt_mask],
     output=[],
     scopes=['lep_iso', 'lep_antiiso'],
     subproducers=[VetoOverlappingJets],
+)
+GoodJetsWithVeto = Producer(
+    name="GoodJetsWithVeto",
+    call="physicsobject::CombineMasks({df}, {output}, {input})",
+    input=[q.good_jets_mask, q.jet_overlap_veto_mask],
+    output=[],
+    scopes=['lep_iso', 'lep_antiiso'],
 )
 GoodBJetsWithVeto = Producer(
     name="GoodBJetsWithVeto",
@@ -243,6 +265,14 @@ NonBJetCollection = ProducerGroup(
     output=[q.good_nonbjet_collection],
     scopes=['lep_iso', 'lep_antiiso'],
     subproducers=[GoodNonBJetsWithVeto],
+)
+JetLowPtCollection = ProducerGroup(
+    name="JetLowPtCollection",
+    call="jet::OrderJetsByPt({df}, {output}, {input})",
+    input=[q.Jet_pt_corrected],
+    output=[q.good_jetlowpt_collection],
+    scopes=['lep_iso', 'lep_antiiso'],
+    subproducers=[GoodJetsLowPtWithVeto],
 )
 
 
