@@ -23,10 +23,12 @@ LeptonSelection = Producer(
         nanoAOD.Muon_eta,
         nanoAOD.Muon_phi,
         nanoAOD.Muon_mass,
+        nanoAOD.Muon_charge,
         nanoAOD.Electron_pt,
         nanoAOD.Electron_eta,
         nanoAOD.Electron_phi,
         nanoAOD.Electron_mass,
+        nanoAOD.Electron_charge,
     ],
     output=[
         q.n_loose_lep,
@@ -35,6 +37,7 @@ LeptonSelection = Producer(
         q.lep_is_el,
         q.lep_is_iso,
         q.lep_p4,
+        q.lep_charge,
     ],
     scopes=['lep_iso'],
 )
@@ -53,10 +56,12 @@ AntiLeptonSelection = Producer(
         nanoAOD.Muon_eta,
         nanoAOD.Muon_phi,
         nanoAOD.Muon_mass,
+        nanoAOD.Muon_charge,
         nanoAOD.Electron_pt,
         nanoAOD.Electron_eta,
         nanoAOD.Electron_phi,
         nanoAOD.Electron_mass,
+        nanoAOD.Electron_charge,
     ],
     output=[
         q.n_loose_lep,
@@ -65,6 +70,7 @@ AntiLeptonSelection = Producer(
         q.lep_is_el,
         q.lep_is_iso,
         q.lep_p4,
+        q.lep_charge,
     ],
     scopes=['lep_antiiso'],
 )
@@ -134,7 +140,6 @@ LeptonicW = Producer(
     call="ReconstructLeptonicW({df}, {input}, {output})",
     input=[
         q.lep_p4,
-        # q.pfmet_p4,
         q.pfmet_p4_jetcorrected,
     ],
     output=[
@@ -320,4 +325,45 @@ TopRecoQuantities = ProducerGroup(
     subproducers=[top_pt, top_eta, top_phi, top_mass,
                   tb_pt, tb_eta, tb_phi, tb_mass,
                   sb_pt, sb_eta, sb_phi, sb_mass],
+)
+
+
+DNNQuantities = Producer(
+    name="DNNQuantities",
+    call="DNNQuantities({df}, {input}, {output})",
+    input=[
+        q.is_reco,
+        q.lep_p4,
+        q.pfmet_p4_jetcorrected,
+        q.wlep_p4,
+        q.nonbjet_1_p4,
+        q.nonbjet_1_btag,
+        q.nonbjet_2_p4,
+        q.nonbjet_2_btag,
+        q.bjet_1_p4,
+        q.bjet_1_btag,
+        q.bjet_2_p4,
+        q.bjet_2_btag,
+        q.top_p4,
+        q.tb_p4,
+        q.sb_p4,
+        q.good_jetslowpt_mask,
+        q.Jet_pt_corrected,
+        nanoAOD.Jet_eta,
+        nanoAOD.Jet_phi,
+        q.Jet_mass_corrected,
+   ],
+    output=[
+        q.dphi_top_bjet,
+        q.deta_top_sb,
+        q.dphi_bjet1_bjet2,
+        q.deta_lep_bjet1,
+        q.m_lep_bjet2,
+        q.pt_bjet1_bjet2,
+        q.costhetastar,
+        q.sumht,
+        q.wolfram,
+        q.deta_topbjet2_bjet1,
+    ],
+    scopes=['lep_iso', "lep_antiiso"],
 )

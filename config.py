@@ -364,6 +364,7 @@ def build_config(
     configuration.add_config_parameters(
         "global",
         {
+            "min_jet_lowpt": 30,
             "min_jet_pt": 40,
             "max_jet_eta": 4.7,
             "jet_id": 2,  # default: 2==pass tight ID and fail tightLepVeto
@@ -501,6 +502,7 @@ def build_config(
             jets.GoodJets,
             jets.GoodBJets,
             jets.GoodNonBJets,
+            jets.GoodJetsLowPt,
             met.MetBasics,
         ],
     )
@@ -571,11 +573,7 @@ def build_config(
     configuration.add_producers(
         ['lep_iso', "lep_antiiso"],
         [
-
-            met.PFMetCorrections,
-            topreco.LeptonicW,
-            topreco.LeptonicWQuantities,
-
+            jets.JetLowPtCollection,
             jets.JetCollection,
             jets.BasicJetQuantities,
             jets.BJetCollection,
@@ -583,8 +581,14 @@ def build_config(
             jets.NonBJetCollection,
             jets.BasicNonBJetQuantities,
 
+            met.PFMetCorrections,
+
+            topreco.LeptonicW,
+            topreco.LeptonicWQuantities,
+
             topreco.TopReco,
             topreco.TopRecoQuantities,
+            topreco.DNNQuantities,
         ],
     )
 
@@ -721,7 +725,7 @@ def build_config(
         ['lep_iso', "lep_antiiso"],
         [
             q.lep_is_mu, q.lep_is_el,
-            q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso,
+            q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge,
 
             q.wlep_pt, q.wlep_eta, q.wlep_phi, q.wlep_mass, q.wlep_mt,
 
@@ -747,6 +751,16 @@ def build_config(
             q.tb_pt, q.tb_eta, q.tb_phi, q.tb_mass,
             q.sb_pt, q.sb_eta, q.sb_phi, q.sb_mass,
 
+            q.dphi_top_bjet,
+            q.deta_top_sb,
+            q.dphi_bjet1_bjet2,
+            q.deta_lep_bjet1,
+            q.m_lep_bjet2,
+            q.pt_bjet1_bjet2,
+            q.costhetastar,
+            q.sumht,
+            q.wolfram,
+            q.deta_topbjet2_bjet1,
 
         ],
     )
