@@ -751,16 +751,16 @@ def build_config(
             q.tb_pt, q.tb_eta, q.tb_phi, q.tb_mass,
             q.sb_pt, q.sb_eta, q.sb_phi, q.sb_mass,
 
-            q.dphi_top_bjet,
+            q.dphi_top_tb,
             q.deta_top_sb,
-            q.dphi_bjet1_bjet2,
-            q.deta_lep_bjet1,
-            q.m_lep_bjet2,
-            q.pt_bjet1_bjet2,
+            q.dphi_tb_sb,
+            q.deta_lep_tb,
+            q.m_lep_sb,
+            q.pt_tb_sb,
             q.costhetastar,
             q.sumht,
             q.wolfram,
-            q.deta_topbjet2_bjet1,
+            q.deta_topsb_tb,
 
         ],
     )
