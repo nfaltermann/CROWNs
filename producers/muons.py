@@ -41,28 +41,28 @@ LooseMuonPtCut = Producer(
     call="physicsobject::CutPt({df}, {input}, {output}, {min_loose_mu_pt})",
     input=[nanoAOD.Muon_pt],
     output=[],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 LooseMuonEtaCut = Producer(
     name="LooseMuonEtaCut",
     call="physicsobject::CutEta({df}, {input}, {output}, {max_loose_mu_eta})",
     input=[nanoAOD.Muon_eta],
     output=[],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 LooseMuonIsoCut = Producer(
     name="LooseMuonIsoCut",
     call="physicsobject::muon::CutIsolation({df}, {output}, {input}, {loose_mu_iso})",
     input=[nanoAOD.Muon_iso],
     output=[],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 LooseMuons = ProducerGroup(
     name="LooseMuons",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.base_muons_mask],
     output=[q.loose_muons_mask],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
     subproducers=[
         LooseMuonPtCut,
         LooseMuonEtaCut,
@@ -75,7 +75,7 @@ NumberOfLooseMuons = Producer(
     call="quantities::NumberOfGoodLeptons({df}, {output}, {input})",
     input=[q.loose_muons_mask],
     output=[q.n_loose_mu],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 
@@ -89,35 +89,35 @@ TightMuonPtCut = Producer(
     call="physicsobject::CutPt({df}, {input}, {output}, {min_mu_pt})",
     input=[nanoAOD.Muon_pt],
     output=[],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 TightMuonEtaCut = Producer(
     name="TightMuonEtaCut",
     call="physicsobject::CutEta({df}, {input}, {output}, {max_mu_eta})",
     input=[nanoAOD.Muon_eta],
     output=[],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 TightMuonIDCut = Producer(
     name="MuonIDCut",
     call='physicsobject::muon::CutID({df}, {output}, "{mu_id}")',
     input=[],
     output=[],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 TightMuonIsoCut = Producer(
     name="TightMuonIsoCut",
     call="physicsobject::electron::CutIsolation({df}, {output}, {input}, {mu_iso})",
     input=[nanoAOD.Muon_iso],
     output=[],
-    scopes=['lep_iso'],
+    scopes=['lep'],
 )
 TightMuons = ProducerGroup(
     name="TightMuons",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.loose_muons_mask],
     output=[q.tight_muons_mask],
-    scopes=['lep_iso'],
+    scopes=['lep'],
     subproducers=[
         TightMuonPtCut,
         TightMuonEtaCut,
@@ -131,7 +131,7 @@ NumberOfTightMuons = Producer(
     call="quantities::NumberOfGoodLeptons({df}, {output}, {input})",
     input=[q.tight_muons_mask],
     output=[q.n_tight_mu],
-    scopes=['lep_iso'],
+    scopes=['lep'],
 )
 
 
@@ -144,7 +144,7 @@ NumberOfTightMuons = Producer(
 #     call="physicsobject::muon::AntiCutIsolation({df}, {output}, {input}, {loose_mu_antiiso})",
 #     input=[nanoAOD.Muon_iso],
 #     output=[],
-#     scopes=['lep_antiiso'],
+#     scopes=['lep'],
 # )
 
 # AntiLooseMuons = ProducerGroup(
@@ -152,7 +152,7 @@ NumberOfTightMuons = Producer(
 #     call="physicsobject::CombineMasks({df}, {output}, {input})",
 #     input=[q.base_muons_mask],
 #     output=[q.antiloose_muons_mask],
-#     scopes=['lep_antiiso'],
+#     scopes=['lep'],
 #     subproducers=[
 #         LooseMuonPtCut,
 #         LooseMuonEtaCut,
@@ -165,28 +165,49 @@ NumberOfTightMuons = Producer(
 #     call="quantities::NumberOfGoodLeptons({df}, {output}, {input})",
 #     input=[q.antiloose_muons_mask],
 #     output=[q.n_loose_mu],
-#     scopes=['lep_antiiso'],
+#     scopes=['lep'],
 # )
 
 
 
+AntiTightMuonPtCut = Producer(
+    name="AntiTightMuonPtCut",
+    call="physicsobject::CutPt({df}, {input}, {output}, {min_mu_pt})",
+    input=[nanoAOD.Muon_pt],
+    output=[],
+    scopes=['lep'],
+)
+AntiTightMuonEtaCut = Producer(
+    name="AntiTightMuonEtaCut",
+    call="physicsobject::CutEta({df}, {input}, {output}, {max_mu_eta})",
+    input=[nanoAOD.Muon_eta],
+    output=[],
+    scopes=['lep'],
+)
+AntiTightMuonIDCut = Producer(
+    name="AntiMuonIDCut",
+    call='physicsobject::muon::CutID({df}, {output}, "{mu_id}")',
+    input=[],
+    output=[],
+    scopes=['lep'],
+)
 AntiTightMuonIsoCut = Producer(
     name="AntiTightMuonIsoCut",
     call="physicsobject::muon::AntiCutIsolation({df}, {output}, {input}, {mu_antiiso})",
     input=[nanoAOD.Muon_iso],
     output=[],
-    scopes=['lep_antiiso'],
+    scopes=['lep'],
 )
 AntiTightMuons = ProducerGroup(
     name="AntiTightMuons",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.base_muons_mask],
     output=[q.antitight_muons_mask],
-    scopes=['lep_antiiso'],
+    scopes=['lep'],
     subproducers=[
-        TightMuonPtCut,
-        TightMuonEtaCut,
-        TightMuonIDCut,
+        AntiTightMuonPtCut,
+        AntiTightMuonEtaCut,
+        AntiTightMuonIDCut,
         AntiTightMuonIsoCut,
     ],
 )
@@ -196,7 +217,7 @@ NumberOfAntiTightMuons = Producer(
     call="quantities::NumberOfGoodLeptons({df}, {output}, {input})",
     input=[q.antitight_muons_mask],
     output=[q.n_antitight_mu],
-    scopes=['lep_antiiso'],
+    scopes=['lep'],
 )
 
 

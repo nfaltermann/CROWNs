@@ -209,7 +209,7 @@ VetoOverlappingJets = Producer(
     call="jet::VetoOverlappingJets({df}, {output}, {input}, {deltaR_jet_lep_veto})",
     input=[nanoAOD.Jet_eta, nanoAOD.Jet_phi, q.lep_p4, q.lep_p4],
     output=[q.jet_overlap_veto_mask],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 
 GoodJetsLowPtWithVeto = ProducerGroup(
@@ -217,7 +217,7 @@ GoodJetsLowPtWithVeto = ProducerGroup(
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.good_jetslowpt_mask],
     output=[],
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[VetoOverlappingJets],
 )
 GoodJetsWithVeto = Producer(
@@ -225,21 +225,21 @@ GoodJetsWithVeto = Producer(
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.good_jets_mask, q.jet_overlap_veto_mask],
     output=[],
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
 )
 GoodBJetsWithVeto = Producer(
     name="GoodBJetsWithVeto",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.good_bjets_mask, q.jet_overlap_veto_mask],
     output=[],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 GoodNonBJetsWithVeto = Producer(
     name="GoodNonBJetsWithVeto",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
     input=[q.good_nonbjets_mask, q.jet_overlap_veto_mask],
     output=[],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 
 JetCollection = ProducerGroup(
@@ -247,7 +247,7 @@ JetCollection = ProducerGroup(
     call="jet::OrderJetsByPt({df}, {output}, {input})",
     input=[q.Jet_pt_corrected],
     output=[q.good_jet_collection],
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[GoodJetsWithVeto],
 )
 BJetCollection = ProducerGroup(
@@ -255,7 +255,7 @@ BJetCollection = ProducerGroup(
     call="jet::OrderJetsByPt({df}, {output}, {input})",
     input=[q.Jet_pt_corrected],
     output=[q.good_bjet_collection],
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[GoodBJetsWithVeto],
 )
 NonBJetCollection = ProducerGroup(
@@ -263,7 +263,7 @@ NonBJetCollection = ProducerGroup(
     call="jet::OrderJetsByPt({df}, {output}, {input})",
     input=[q.Jet_pt_corrected],
     output=[q.good_nonbjet_collection],
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[GoodNonBJetsWithVeto],
 )
 JetLowPtCollection = ProducerGroup(
@@ -271,7 +271,7 @@ JetLowPtCollection = ProducerGroup(
     call="jet::OrderJetsByPt({df}, {output}, {input})",
     input=[q.Jet_pt_corrected],
     output=[q.good_jetlowpt_collection],
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[GoodJetsLowPtWithVeto],
 )
 
@@ -293,7 +293,7 @@ LVJet1 = Producer(
         q.Jet_mass_corrected,
     ],
     output=[q.jet_1_p4],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 LVJet2 = Producer(
     name="LVJet2",
@@ -306,7 +306,7 @@ LVJet2 = Producer(
         q.Jet_mass_corrected,
     ],
     output=[q.jet_2_p4],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 LVJet3 = Producer(
     name="LVJet3",
@@ -319,126 +319,126 @@ LVJet3 = Producer(
         q.Jet_mass_corrected,
     ],
     output=[q.jet_3_p4],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 NumberOfJets = Producer(
     name="NumberOfJets",
     call="quantities::jet::NumberOfJets({df}, {output}, {input})",
     input=[q.good_jet_collection],
     output=[q.n_jets],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jpt_1 = Producer(
     name="jpt_1",
     call="quantities::pt({df}, {output}, {input})",
     input=[q.jet_1_p4],
     output=[q.jet_1_pt],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jpt_2 = Producer(
     name="jpt_2",
     call="quantities::pt({df}, {output}, {input})",
     input=[q.jet_2_p4],
     output=[q.jet_2_pt],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jpt_3 = Producer(
     name="jpt_3",
     call="quantities::pt({df}, {output}, {input})",
     input=[q.jet_3_p4],
     output=[q.jet_3_pt],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jeta_1 = Producer(
     name="jeta_1",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.jet_1_p4],
     output=[q.jet_1_eta],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jeta_2 = Producer(
     name="jeta_2",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.jet_2_p4],
     output=[q.jet_2_eta],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jeta_3 = Producer(
     name="jeta_3",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.jet_3_p4],
     output=[q.jet_3_eta],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jphi_1 = Producer(
     name="jphi_1",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.jet_1_p4],
     output=[q.jet_1_phi],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jphi_2 = Producer(
     name="jphi_2",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.jet_2_p4],
     output=[q.jet_2_phi],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jphi_3 = Producer(
     name="jphi_3",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.jet_3_p4],
     output=[q.jet_3_phi],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jmass_1 = Producer(
     name="jmass_1",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.jet_1_p4],
     output=[q.jet_1_mass],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jmass_2 = Producer(
     name="jmass_2",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.jet_2_p4],
     output=[q.jet_2_mass],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jmass_3 = Producer(
     name="jmass_3",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.jet_3_p4],
     output=[q.jet_3_mass],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jtag_value_1 = Producer(
     name="jtag_value_1",
     call="quantities::jet::btagValue({df}, {output}, {input}, 0)",
     input=[nanoAOD.BJet_discriminator, q.good_jet_collection],
     output=[q.jet_1_btag],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jtag_value_2 = Producer(
     name="jtag_value_2",
     call="quantities::jet::btagValue({df}, {output}, {input}, 1)",
     input=[nanoAOD.BJet_discriminator, q.good_jet_collection],
     output=[q.jet_2_btag],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 jtag_value_3 = Producer(
     name="jtag_value_3",
     call="quantities::jet::btagValue({df}, {output}, {input}, 2)",
     input=[nanoAOD.BJet_discriminator, q.good_jet_collection],
     output=[q.jet_3_btag],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 BasicJetQuantities = ProducerGroup(
     name="BasicJetQuantities",
     call=None,
     input=None,
     output=None,
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[
         LVJet1,
         LVJet2,
@@ -478,7 +478,7 @@ LVBJet1 = Producer(
         q.Jet_mass_corrected,
     ],
     output=[q.bjet_1_p4],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 LVBJet2 = Producer(
     name="LVBJet2",
@@ -491,91 +491,91 @@ LVBJet2 = Producer(
         q.Jet_mass_corrected,
     ],
     output=[q.bjet_2_p4],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 NumberOfBJets = Producer(
     name="NumberOfBJets",
     call="quantities::jet::NumberOfJets({df}, {output}, {input})",
     input=[q.good_bjet_collection],
     output=[q.n_bjets],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 bpt_1 = Producer(
     name="bpt_1",
     call="quantities::pt({df}, {output}, {input})",
     input=[q.bjet_1_p4],
     output=[q.bjet_1_pt],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 bpt_2 = Producer(
     name="bpt_2",
     call="quantities::pt({df}, {output}, {input})",
     input=[q.bjet_2_p4],
     output=[q.bjet_2_pt],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 beta_1 = Producer(
     name="beta_1",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.bjet_1_p4],
     output=[q.bjet_1_eta],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 beta_2 = Producer(
     name="beta_2",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.bjet_2_p4],
     output=[q.bjet_2_eta],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 bphi_1 = Producer(
     name="bphi_1",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.bjet_1_p4],
     output=[q.bjet_1_phi],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 bphi_2 = Producer(
     name="bphi_2",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.bjet_2_p4],
     output=[q.bjet_2_phi],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 bmass_1 = Producer(
     name="bmass_1",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.bjet_1_p4],
     output=[q.bjet_1_mass],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 bmass_2 = Producer(
     name="bmass_2",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.bjet_2_p4],
     output=[q.bjet_2_mass],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 btag_value_1 = Producer(
     name="btag_value_1",
     call="quantities::jet::btagValue({df}, {output}, {input}, 0)",
     input=[nanoAOD.BJet_discriminator, q.good_bjet_collection],
     output=[q.bjet_1_btag],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 btag_value_2 = Producer(
     name="btag_value_2",
     call="quantities::jet::btagValue({df}, {output}, {input}, 1)",
     input=[nanoAOD.BJet_discriminator, q.good_bjet_collection],
     output=[q.bjet_2_btag],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 BasicBJetQuantities = ProducerGroup(
     name="BasicBJetQuantities",
     call=None,
     input=None,
     output=None,
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[
         LVBJet1,
         LVBJet2,
@@ -609,7 +609,7 @@ LVNonBJet1 = Producer(
         q.Jet_mass_corrected,
     ],
     output=[q.nonbjet_1_p4],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 LVNonBJet2 = Producer(
     name="LVNonBJet2",
@@ -622,91 +622,91 @@ LVNonBJet2 = Producer(
         q.Jet_mass_corrected,
     ],
     output=[q.nonbjet_2_p4],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 NumberOfNonBJets = Producer(
     name="NumberOfNonBJets",
     call="quantities::jet::NumberOfJets({df}, {output}, {input})",
     input=[q.good_nonbjet_collection],
     output=[q.n_nonbjets],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbpt_1 = Producer(
     name="nonbpt_1",
     call="quantities::pt({df}, {output}, {input})",
     input=[q.nonbjet_1_p4],
     output=[q.nonbjet_1_pt],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbpt_2 = Producer(
     name="nonbpt_2",
     call="quantities::pt({df}, {output}, {input})",
     input=[q.nonbjet_2_p4],
     output=[q.nonbjet_2_pt],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbeta_1 = Producer(
     name="nonbeta_1",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.nonbjet_1_p4],
     output=[q.nonbjet_1_eta],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbeta_2 = Producer(
     name="nonbeta_2",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.nonbjet_2_p4],
     output=[q.nonbjet_2_eta],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbphi_1 = Producer(
     name="nonbphi_1",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.nonbjet_1_p4],
     output=[q.nonbjet_1_phi],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbphi_2 = Producer(
     name="nonbphi_2",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.nonbjet_2_p4],
     output=[q.nonbjet_2_phi],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbmass_1 = Producer(
     name="nonbmass_1",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.nonbjet_1_p4],
     output=[q.nonbjet_1_mass],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbmass_2 = Producer(
     name="nonbmass_2",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.nonbjet_2_p4],
     output=[q.nonbjet_2_mass],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbbtag_value_1 = Producer(
     name="nonbtag_value_1",
     call="quantities::jet::btagValue({df}, {output}, {input}, 0)",
     input=[nanoAOD.BJet_discriminator, q.good_nonbjet_collection],
     output=[q.nonbjet_1_btag],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 nonbbtag_value_2 = Producer(
     name="nonbtag_value_2",
     call="quantities::jet::btagValue({df}, {output}, {input}, 1)",
     input=[nanoAOD.BJet_discriminator, q.good_nonbjet_collection],
     output=[q.nonbjet_2_btag],
-    scopes=['lep_iso', 'lep_antiiso']
+    scopes=['lep']
 )
 BasicNonBJetQuantities = ProducerGroup(
     name="BasicNonBJetQuantities",
     call=None,
     input=None,
     output=None,
-    scopes=['lep_iso', 'lep_antiiso'],
+    scopes=['lep'],
     subproducers=[
         LVNonBJet1,
         LVNonBJet2,

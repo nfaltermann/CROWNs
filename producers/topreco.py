@@ -19,35 +19,6 @@ LeptonSelection = Producer(
         q.n_tight_el,
         q.tight_muons_mask,
         q.tight_electrons_mask,
-        nanoAOD.Muon_pt,
-        nanoAOD.Muon_eta,
-        nanoAOD.Muon_phi,
-        nanoAOD.Muon_mass,
-        nanoAOD.Muon_charge,
-        nanoAOD.Electron_pt,
-        nanoAOD.Electron_eta,
-        nanoAOD.Electron_phi,
-        nanoAOD.Electron_mass,
-        nanoAOD.Electron_charge,
-    ],
-    output=[
-        q.n_loose_lep,
-        q.n_tight_lep,
-        q.lep_is_mu,
-        q.lep_is_el,
-        q.lep_is_iso,
-        q.lep_p4,
-        q.lep_charge,
-    ],
-    scopes=['lep_iso'],
-)
-
-AntiLeptonSelection = Producer(
-    name="AntiLeptonSelection",
-    call="AntiLeptonSelection({df}, {input}, {output})",
-    input=[
-        q.n_loose_mu,
-        q.n_loose_el,
         q.n_antitight_mu,
         q.n_antitight_el,
         q.antitight_muons_mask,
@@ -65,6 +36,7 @@ AntiLeptonSelection = Producer(
     ],
     output=[
         q.n_loose_lep,
+        q.n_tight_lep,
         q.n_antitight_lep,
         q.lep_is_mu,
         q.lep_is_el,
@@ -72,9 +44,8 @@ AntiLeptonSelection = Producer(
         q.lep_p4,
         q.lep_charge,
     ],
-    scopes=['lep_antiiso'],
+    scopes=['lep'],
 )
-
 
 
 lep_pt = Producer(
@@ -82,28 +53,28 @@ lep_pt = Producer(
     call="quantities::pt({df}, {output}, {input})",
     input=[q.lep_p4],
     output=[q.lep_pt],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 lep_eta = Producer(
     name="lep_eta",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.lep_p4],
     output=[q.lep_eta],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 lep_phi = Producer(
     name="lep_phi",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.lep_p4],
     output=[q.lep_phi],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 lep_mass = Producer(
     name="lep_mass",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.lep_p4],
     output=[q.lep_mass],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 LeptonQuantities = ProducerGroup(
@@ -111,7 +82,7 @@ LeptonQuantities = ProducerGroup(
     call=None,
     input=None,
     output=None,
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
     subproducers=[lep_pt, lep_eta, lep_phi, lep_mass],
 )
 
@@ -128,7 +99,7 @@ LeptonQuantities = ProducerGroup(
 #     output=[
 #         None,
 #     ],
-#     scopes=['lep_iso'],
+#     scopes=['lep'],
 # )
 
 #####################################
@@ -145,7 +116,7 @@ LeptonicW = Producer(
     output=[
         q.wlep_p4,
     ],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 wlep_pt = Producer(
@@ -153,28 +124,28 @@ wlep_pt = Producer(
     call="quantities::pt({df}, {output}, {input})",
     input=[q.wlep_p4],
     output=[q.wlep_pt],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 wlep_eta = Producer(
     name="wlep_eta",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.wlep_p4],
     output=[q.wlep_eta],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 wlep_phi = Producer(
     name="wlep_phi",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.wlep_p4],
     output=[q.wlep_phi],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 wlep_mass = Producer(
     name="wlep_mass",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.wlep_p4],
     output=[q.wlep_mass],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 wlep_mt = Producer(
     name="wlep_mt",
@@ -182,7 +153,7 @@ wlep_mt = Producer(
     input=[q.lep_p4,
            q.pfmet_p4],
     output=[q.wlep_mt],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 LeptonicWQuantities = ProducerGroup(
@@ -190,7 +161,7 @@ LeptonicWQuantities = ProducerGroup(
     call=None,
     input=None,
     output=None,
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
     subproducers=[wlep_pt, wlep_eta, wlep_phi, wlep_mass, wlep_mt],
 )
 
@@ -226,7 +197,7 @@ TopReco = Producer(
         q.tb_p4,
         q.sb_p4,
     ],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 top_pt = Producer(
@@ -234,28 +205,28 @@ top_pt = Producer(
     call="quantities::pt({df}, {output}, {input})",
     input=[q.top_p4],
     output=[q.top_pt],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 top_eta = Producer(
     name="top_eta",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.top_p4],
     output=[q.top_eta],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 top_phi = Producer(
     name="top_phi",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.top_p4],
     output=[q.top_phi],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 top_mass = Producer(
     name="top_mass",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.top_p4],
     output=[q.top_mass],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 tb_pt = Producer(
@@ -263,28 +234,28 @@ tb_pt = Producer(
     call="quantities::pt({df}, {output}, {input})",
     input=[q.tb_p4],
     output=[q.tb_pt],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 tb_eta = Producer(
     name="tb_eta",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.tb_p4],
     output=[q.tb_eta],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 tb_phi = Producer(
     name="tb_phi",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.tb_p4],
     output=[q.tb_phi],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 tb_mass = Producer(
     name="tb_mass",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.tb_p4],
     output=[q.tb_mass],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 sb_pt = Producer(
@@ -292,28 +263,28 @@ sb_pt = Producer(
     call="quantities::pt({df}, {output}, {input})",
     input=[q.sb_p4],
     output=[q.sb_pt],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 sb_eta = Producer(
     name="sb_eta",
     call="quantities::eta({df}, {output}, {input})",
     input=[q.sb_p4],
     output=[q.sb_eta],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 sb_phi = Producer(
     name="sb_phi",
     call="quantities::phi({df}, {output}, {input})",
     input=[q.sb_p4],
     output=[q.sb_phi],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 sb_mass = Producer(
     name="sb_mass",
     call="quantities::mass({df}, {output}, {input})",
     input=[q.sb_p4],
     output=[q.sb_mass],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )
 
 TopRecoQuantities = ProducerGroup(
@@ -321,7 +292,7 @@ TopRecoQuantities = ProducerGroup(
     call=None,
     input=None,
     output=None,
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
     subproducers=[top_pt, top_eta, top_phi, top_mass,
                   tb_pt, tb_eta, tb_phi, tb_mass,
                   sb_pt, sb_eta, sb_phi, sb_mass],
@@ -365,5 +336,5 @@ DNNQuantities = Producer(
         q.wolfram,
         q.deta_topsb_tb,
     ],
-    scopes=['lep_iso', "lep_antiiso"],
+    scopes=['lep'],
 )

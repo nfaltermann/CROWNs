@@ -9,7 +9,7 @@ SystPSWeights = Producer(
     call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
     input=[nanoAOD.PSWeight],
     output=[q.PSWeight],
-    scopes=["lep_iso"],
+    scopes=["lep"],
 )
 
 SystLHEScaleWeights = Producer(
@@ -17,7 +17,7 @@ SystLHEScaleWeights = Producer(
     call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
     input=[nanoAOD.LHEScaleWeight],
     output=[q.LHEScaleWeight],
-    scopes=["lep_iso"],
+    scopes=["lep"],
 )
 
 SystLHEPdfWeights = Producer(
@@ -25,5 +25,5 @@ SystLHEPdfWeights = Producer(
     call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
     input=[nanoAOD.LHEPdfWeight],
     output=[q.LHEPdfWeight],
-    scopes=["lep_iso"],
+    scopes=["lep"],
 )

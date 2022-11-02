@@ -177,7 +177,7 @@ def build_config(
     )
 
     configuration.add_config_parameters(
-        ["lep_iso"],
+        ["lep"],
         {
             "singlemoun_trigger": EraModifier(
                 {
@@ -232,7 +232,7 @@ def build_config(
 
     ## trigger single ele
     configuration.add_config_parameters(
-        ["lep_iso"],
+        ["lep"],
         {
             "singleelectron_trigger": EraModifier(
                 {
@@ -305,7 +305,7 @@ def build_config(
 
     # loose lepton base selection:
     configuration.add_config_parameters(
-        ['lep_iso', "lep_antiiso"],
+        ['lep'],
         {
             "min_loose_el_pt": 10.0,
             "max_loose_el_eta": 2.4,
@@ -319,7 +319,7 @@ def build_config(
 
     # good lepton selections
     configuration.add_config_parameters(
-        ['lep_iso', "lep_antiiso"],
+        ['lep'],
         {
             "min_el_pt": EraModifier(
                 {
@@ -349,7 +349,7 @@ def build_config(
 
     # cuts for defining antiiso selection
     configuration.add_config_parameters(
-        ['lep_antiiso'],
+        ['lep'],
         {
             "loose_mu_antiiso": 0.2,
             "mu_antiiso": 0.2,
@@ -530,12 +530,17 @@ def build_config(
 
     # iso lep
     configuration.add_producers(
-        ['lep_iso'],
+        ['lep'],
         [
             muons.TightMuons,
             muons.NumberOfTightMuons,
             electrons.TightElectrons,
             electrons.NumberOfTightElectrons,
+
+            muons.AntiTightMuons,
+            muons.NumberOfAntiTightMuons,
+            electrons.AntiTightElectrons,
+            electrons.NumberOfAntiTightElectrons,
 
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
@@ -553,25 +558,9 @@ def build_config(
     )
 
 
-    # antiiso lep
-    configuration.add_producers(
-        ['lep_antiiso'],
-        [
-            muons.AntiTightMuons,
-            muons.NumberOfAntiTightMuons,
-            electrons.AntiTightElectrons,
-            electrons.NumberOfAntiTightElectrons,
-
-            topreco.AntiLeptonSelection,
-            topreco.LeptonQuantities,
-
-        ],
-    )
-
-
     # jet and top related
     configuration.add_producers(
-        ['lep_iso', "lep_antiiso"],
+        ['lep'],
         [
             jets.JetLowPtCollection,
             jets.JetCollection,
@@ -596,7 +585,7 @@ def build_config(
     # syst producers
     if sample != "data":
         configuration.add_producers(
-            "lep_iso",
+            "lep",
             [
                 systematics.SystPSWeights,
                 systematics.SystLHEScaleWeights,
@@ -634,29 +623,21 @@ def build_config(
     ### HLTs
     if era == "2016preVFP" or era == "2016postVFP":
         configuration.add_outputs(
-            ['lep_iso'],
+            ['lep'],
             [
                 nanoAOD.HLT_IsoMu24,
                 nanoAOD.HLT_Ele25_eta2p1_WPTight_Gsf,
                 nanoAOD.HLT_Ele27_WPTight_Gsf,
                 nanoAOD.HLT_Ele32_eta2p1_WPTight_Gsf,
-            ],
-        )
-        configuration.add_outputs(
-            ['lep_antiiso'],
-            [
                 nanoAOD.HLT_IsoMu24,
                 nanoAOD.HLT_Mu20,
                 nanoAOD.HLT_Mu27,
-                nanoAOD.HLT_Ele25_eta2p1_WPTight_Gsf,
-                nanoAOD.HLT_Ele27_WPTight_Gsf,
-                nanoAOD.HLT_Ele32_eta2p1_WPTight_Gsf,
             ],
         )
 
     if era == "2017":
         configuration.add_outputs(
-            ['lep_iso'],
+            ['lep'],
             [
                 nanoAOD.HLT_IsoMu24_eta2p1,
                 nanoAOD.HLT_IsoMu27,
@@ -664,66 +645,31 @@ def build_config(
                 nanoAOD.HLT_Ele35_WPTight_Gsf,
                 nanoAOD.HLT_Ele28_eta2p1_WPTight_Gsf_HT150,
                 nanoAOD.HLT_Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned,
-            ],
-        )
-        configuration.add_outputs(
-            ['lep_antiiso'],
-            [
-                nanoAOD.HLT_IsoMu24_eta2p1,
-                nanoAOD.HLT_IsoMu27,
                 nanoAOD.HLT_Mu20,
                 nanoAOD.HLT_Mu27,
-                nanoAOD.HLT_Ele32_WPTight_Gsf_L1DoubleEG,
-                nanoAOD.HLT_Ele35_WPTight_Gsf,
-                nanoAOD.HLT_Ele28_eta2p1_WPTight_Gsf_HT150,
-                nanoAOD.HLT_Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned,
             ],
         )
 
     if era == "2018":
         configuration.add_outputs(
-            ['lep_iso'],
+            ['lep'],
             [
                 nanoAOD.HLT_IsoMu24,
                 nanoAOD.HLT_Ele32_WPTight_Gsf,
                 nanoAOD.HLT_Ele28_eta2p1_WPTight_Gsf_HT150,
                 nanoAOD.HLT_Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned,
-            ],
-        )
-        configuration.add_outputs(
-            ['lep_antiiso'],
-            [
-                nanoAOD.HLT_IsoMu24,
                 nanoAOD.HLT_Mu20,
                 nanoAOD.HLT_Mu27,
-                nanoAOD.HLT_Ele32_WPTight_Gsf,
-                nanoAOD.HLT_Ele28_eta2p1_WPTight_Gsf_HT150,
-                nanoAOD.HLT_Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned,
             ],
         )
 
-
     configuration.add_outputs(
-        ['lep_iso'],
+        ['lep'],
         [
             q.n_loose_mu, q.n_loose_el,
-            q.n_tight_mu, q.n_tight_el,
-            q.n_loose_lep, q.n_tight_lep,
-        ],
-    )
+            q.n_tight_mu, q.n_tight_el, q.n_antitight_el,
+            q.n_loose_lep, q.n_tight_lep, q.n_antitight_lep,
 
-    configuration.add_outputs(
-        ["lep_antiiso"],
-        [
-            q.n_loose_mu, q.n_loose_el,
-            q.n_antitight_mu, q.n_antitight_el,
-            q.n_loose_lep, q.n_antitight_lep,
-        ],
-    )
-
-    configuration.add_outputs(
-        ['lep_iso', "lep_antiiso"],
-        [
             q.lep_is_mu, q.lep_is_el,
             q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge,
 
@@ -768,7 +714,7 @@ def build_config(
     # add gen info for everything but data
     if sample != "data":
         configuration.add_outputs(
-            ['lep_iso'],
+            ['lep'],
             [
             nanoAOD.genWeight,
             q.PSWeight,
@@ -780,7 +726,7 @@ def build_config(
     ## add prefiring
     if era != "2018":
         configuration.add_outputs(
-            ['lep_iso'],
+            ['lep'],
             [
                 nanoAOD.L1PreFiringWeight_Nom,
                 nanoAOD.L1PreFiringWeight_Dn,
