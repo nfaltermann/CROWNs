@@ -139,13 +139,38 @@ MetFilter = VectorProducer(
 #     scopes=["global"],
 # )
 
+# PUweights = Producer(
+#     name="PUweights",
+#     call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file}", "{PU_reweighting_era}", "{PU_reweighting_variation}")',
+#     input=[nanoAOD.Pileup_nTrueInt],
+#     output=[q.puweight],
+#     scopes=["global"],
+# )
+
 PUweights = Producer(
     name="PUweights",
-    call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file}", "{PU_reweighting_era}", "{PU_reweighting_variation}")',
+    call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file}", "{PU_reweighting_era}", "nominal")',
     input=[nanoAOD.Pileup_nTrueInt],
     output=[q.puweight],
     scopes=["global"],
 )
+
+PUweights_up = Producer(
+    name="PUweights_up",
+    call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file}", "{PU_reweighting_era}", "up")',
+    input=[nanoAOD.Pileup_nTrueInt],
+    output=[q.puweight_up],
+    scopes=["global"],
+)
+
+PUweights_down = Producer(
+    name="PUweights_down",
+    call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file}", "{PU_reweighting_era}", "down")',
+    input=[nanoAOD.Pileup_nTrueInt],
+    output=[q.puweight_down],
+    scopes=["global"],
+)
+
 
 PUweightsFromHistogram = Producer(
     name="PUweightsFromHistogram",

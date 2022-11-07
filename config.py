@@ -20,7 +20,6 @@ from .quantities import output as q
 from .lep_variations import add_lepVariations
 from .jet_variations import add_jetVariations
 from .btag_variations import add_btagVariations
-from .other_variations import add_PUVariations
 from .jec_data import add_jetCorrectionData
 from code_generation.configuration import Configuration
 from code_generation.modifiers import EraModifier, SampleModifier
@@ -491,6 +490,8 @@ def build_config(
             "global",
             [
                 event.PUweights,
+                event.PUweights_up,
+                event.PUweights_down,
                 jets.JetEnergyCorrection,
             ],
         )
@@ -614,8 +615,6 @@ def build_config(
             q.is_wjets,
             q.is_data,
             # q.npartons,
-            # q.puweight,
-
         ],
     )
 
@@ -720,6 +719,9 @@ def build_config(
             q.PSWeight,
             q.LHEScaleWeight,
             q.LHEPdfWeight,
+            q.puweight,
+            q.puweight_up,
+            q.puweight_down,
             ],
         )
 
@@ -749,49 +751,6 @@ def build_config(
     ###########################################################################
     ###########################################################################
     ###########################################################################
-
-
-
-
-
-    #########################
-    # Pileup Shifts
-    #########################
-    configuration.add_shift(
-        SystematicShift(
-            name="PileUpUp",
-            scopes=["global"],
-            shift_config={
-                ("global"): {"PU_reweighting_variation": "up"},
-            },
-            producers={
-                "global": [
-                    event.PUweights,
-                ],
-            },
-        ),
-        samples=[
-            sample for sample in available_sample_types if sample not in ["data", "embedding", "embedding_mc"]
-        ],
-    )
-
-    configuration.add_shift(
-        SystematicShift(
-            name="PileUpDown",
-            scopes=["global"],
-            shift_config={
-                ("global"): {"PU_reweighting_variation": "down"},
-            },
-            producers={
-                "global": [
-                    event.PUweights,
-                ],
-            },
-        ),
-        samples=[
-            sample for sample in available_sample_types if sample not in ["data", "embedding", "embedding_mc"]
-        ],
-    )
 
 
 

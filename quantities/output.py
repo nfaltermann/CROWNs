@@ -1,7 +1,6 @@
 from code_generation.quantity import Quantity
 
 lumi = Quantity("lumi")
-puweight = Quantity("puweight")
 prefireweight = Quantity("prefiring_wgt")
 
 base_taus_mask = Quantity("base_taus_mask")
@@ -313,9 +312,13 @@ sb_mass = Quantity("sb_mass")
 PSWeight = Quantity("PSWeight_vector")
 LHEScaleWeight = Quantity("LHEScaleWeight_vector")
 LHEPdfWeight = Quantity("LHEPdfWeight_vector")
+puweight = Quantity("puweight")
+puweight_up = Quantity("puweight_up")
+puweight_down = Quantity("puweight_down")
+
+
 
 # DNN vars
-
 dphi_top_tb = Quantity("DNN_dphi_top_tb")
 deta_top_sb = Quantity("DNN_deta_top_sb")
 dphi_tb_sb = Quantity("DNN_dphi_tb_sb")
