@@ -1,5 +1,4 @@
 from code_generation.systematics import SystematicShift
-from .producers import scalefactors as scalefactors
 
 
 def add_btagVariations(configuration, available_sample_types):

@@ -4,7 +4,6 @@ from typing import List
 from code_generation.configuration import Configuration
 from code_generation.systematics import SystematicShift
 from .producers import jets as jets
-from .producers import scalefactors as scalefactors
 
 
 def add_jetVariations(
