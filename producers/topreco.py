@@ -87,20 +87,30 @@ LeptonQuantities = ProducerGroup(
 )
 
 
-# LeptonCorrections  = Producer(
-#     name="LeptonCorrections",
-#     call='LeptonCorrections({df}, {input}, {output}, "{muon_sf_year_id}", "{muon_sf_file}", "{muon_id_sf_name}")',
-#     input=[
-#         q.lep_pt,
-#         q.lep_eta,
-#         q.lep_is_mu,
-#         q.lep_is_el,
-#     ],
-#     output=[
-#         None,
-#     ],
-#     scopes=['lep'],
-# )
+
+LeptonScaleFactors  = Producer(
+    name="LeptonScaleFactors",
+    call='LeptonScaleFactors({df}, {input}, {output}, "{sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}")',
+    input=[
+        q.lep_pt,
+        q.lep_eta,
+        q.lep_is_mu,
+        q.lep_is_el,
+        q.lep_is_iso,
+    ],
+    output=[
+        q.lep_sf_mu_trigger_nom,
+        q.lep_sf_mu_trigger_up,
+        q.lep_sf_mu_trigger_down,
+        q.lep_sf_mu_iso_nom,
+        q.lep_sf_mu_iso_up,
+        q.lep_sf_mu_iso_down,
+        q.lep_sf_mu_id_nom,
+        q.lep_sf_mu_id_up,
+        q.lep_sf_mu_id_down,
+    ],
+    scopes=['lep'],
+)
 
 #####################################
 ############## W BOSON ##############

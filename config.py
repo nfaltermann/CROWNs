@@ -8,16 +8,12 @@ from .producers import genparticles as genparticles
 from .producers import jets as jets
 from .producers import met as met
 from .producers import muons as muons
-#from .producers import pairquantities as pairquantities
-#from .producers import pairselection as pairselection
-from .producers import scalefactors as scalefactors
 from .producers import systematics as systematics
 #from .producers import taus as taus
 from .producers import triggers as triggers
 from .producers import topreco as topreco
 from .quantities import nanoAOD as nanoAOD
 from .quantities import output as q
-from .lep_variations import add_lepVariations
 from .jet_variations import add_jetVariations
 from .btag_variations import add_btagVariations
 from .jec_data import add_jetCorrectionData
@@ -359,6 +355,94 @@ def build_config(
         },
     )
 
+    # lepton scale factors configuration
+    configuration.add_config_parameters(
+        ["lep"],
+        {
+            "muon_trigger_sf_file": EraModifier(
+                {
+                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
+                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
+                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL.json.gz",
+                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL.json.gz",
+                }
+            ),
+            "muon_trigger_sf_file_syst": EraModifier(
+                {
+                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
+                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
+                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
+                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
+                }
+            ),
+            "muon_trigger_sf_name": EraModifier(
+                {
+                    "2016preVFP": "NUM_IsoMu24_or_IsoTkMu24_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt",
+                    "2016postVFP": "NUM_IsoMu24_or_IsoTkMu24_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt",
+                    "2017": "NUM_IsoMu27_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt",
+                    "2018": "NUM_IsoMu24_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt",
+                }
+            ),
+            "muon_trigger_sf_name_syst": EraModifier(
+                {
+                    "2016preVFP": "NUM_IsoMu24_or_IsoTkMu24_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt_combined_syst",
+                    "2016postVFP": "NUM_IsoMu24_or_IsoTkMu24_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt_combined_syst",
+                    "2017": "NUM_IsoMu27_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt_combined_syst",
+                    "2018": "NUM_IsoMu24_DEN_CutBasedIdTight_and_PFIsoVeryTight_abseta_pt_combined_syst",
+                }
+            ),
+
+            "muon_iso_sf_file": EraModifier(
+                {
+                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
+                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
+                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL.json.gz",
+                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL.json.gz",
+                }
+            ),
+            "muon_iso_sf_file_syst": EraModifier(
+                {
+                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
+                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
+                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
+                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
+                }
+            ),
+            "muon_iso_sf_name": "NUM_VeryTightRelIso_DEN_TightIDandIPCut_abseta_pt",
+            "muon_iso_sf_name_syst": "NUM_VeryTightRelIso_DEN_TightIDandIPCut_abseta_pt_combined_syst",
+
+            "muon_sf_file": EraModifier(
+                {
+                    "2016preVFP": "data/jsonpog-integration/POG/MUO/2016preVFP_UL/muon_Z.json.gz",
+                    "2016postVFP": "data/jsonpog-integration/POG/MUO/2016postVFP_UL/muon_Z.json.gz",
+                    "2017": "data/jsonpog-integration/POG/MUO/2017_UL/muon_Z.json.gz",
+                    "2018": "data/jsonpog-integration/POG/MUO/2018_UL/muon_Z.json.gz",
+                }
+            ),
+            "muon_id_sf_name": "NUM_TightID_DEN_TrackerMuons",
+
+            "ele_sf_file": EraModifier(
+                {
+                    "2016preVFP": "data/jsonpog-integration/POG/EGM/2016preVFP_UL/electron.json.gz",
+                    "2016postVFP": "data/jsonpog-integration/POG/EGM/2016postVFP_UL/electron.json.gz",
+                    "2017": "data/jsonpog-integration/POG/EGM/2017_UL/electron.json.gz",
+                    "2018": "data/jsonpog-integration/POG/EGM/2018_UL/electron.json.gz",
+                }
+            ),
+            "ele_id_sf_name": "UL-Electron-ID-SF",
+
+            "sf_era": EraModifier(
+                {
+                    "2016preVFP": "2016preVFP_UL",
+                    "2016postVFP": "2016postVFP_UL",
+                    "2017": "2017_UL",
+                    "2018": "2018_UL",
+                }
+            ),
+        },
+    )
+
+
     # jet base selection:
     configuration.add_config_parameters(
         "global",
@@ -546,6 +630,8 @@ def build_config(
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
 
+            topreco.LeptonScaleFactors,
+
             # scalefactors.leptons,
 
             # met.PFMetCorrections,
@@ -671,6 +757,10 @@ def build_config(
 
             q.lep_is_mu, q.lep_is_el,
             q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge,
+
+            q.lep_sf_mu_trigger_nom, q.lep_sf_mu_trigger_up, q.lep_sf_mu_trigger_down,
+            q.lep_sf_mu_iso_nom, q.lep_sf_mu_iso_up, q.lep_sf_mu_iso_down,
+            q.lep_sf_mu_id_nom, q.lep_sf_mu_id_up, q.lep_sf_mu_id_down,
 
             q.wlep_pt, q.wlep_eta, q.wlep_phi, q.wlep_mass, q.wlep_mt,
 

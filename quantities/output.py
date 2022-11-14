@@ -329,3 +329,15 @@ costhetastar = Quantity("DNN_costhetastar")
 sumht = Quantity("DNN_sumht")
 wolfram = Quantity("DNN_wolfram")
 deta_topsb_tb = Quantity("DNN_deta_topsb_tb")
+
+
+# lep SFs
+lep_sf_mu_trigger_nom = Quantity("lep_sf_mu_trigger_nom")
+lep_sf_mu_trigger_up = Quantity("lep_sf_mu_trigger_up")
+lep_sf_mu_trigger_down = Quantity("lep_sf_mu_trigger_down")
+lep_sf_mu_iso_nom = Quantity("lep_sf_mu_iso_nom")
+lep_sf_mu_iso_up = Quantity("lep_sf_mu_iso_up")
+lep_sf_mu_iso_down = Quantity("lep_sf_mu_iso_down")
+lep_sf_mu_id_nom = Quantity("lep_sf_mu_id_nom")
+lep_sf_mu_id_up = Quantity("lep_sf_mu_id_up")
+lep_sf_mu_id_down = Quantity("lep_sf_mu_id_down")
