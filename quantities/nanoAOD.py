@@ -33,6 +33,7 @@ Muon_isGlobal = NanoAODQuantity("Muon_isGlobal")
 
 Electron_pt = NanoAODQuantity("Electron_pt")
 Electron_eta = NanoAODQuantity("Electron_eta")
+Electron_deltaEtaSC = NanoAODQuantity("Electron_deltaEtaSC")
 Electron_dxy = NanoAODQuantity("Electron_dxy")
 Electron_dz = NanoAODQuantity("Electron_dz")
 Electron_phi = NanoAODQuantity("Electron_phi")

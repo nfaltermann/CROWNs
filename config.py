@@ -359,6 +359,14 @@ def build_config(
     configuration.add_config_parameters(
         ["lep"],
         {
+            "muon_sf_era": EraModifier(
+                {
+                    "2016preVFP": "2016preVFP_UL",
+                    "2016postVFP": "2016postVFP_UL",
+                    "2017": "2017_UL",
+                    "2018": "2018_UL",
+                }
+            ),
             "muon_trigger_sf_file": EraModifier(
                 {
                     "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
@@ -421,6 +429,14 @@ def build_config(
             ),
             "muon_id_sf_name": "NUM_TightID_DEN_TrackerMuons",
 
+            "ele_sf_era": EraModifier(
+                {
+                    "2016preVFP": "2016preVFP",
+                    "2016postVFP": "2016postVFP",
+                    "2017": "2017",
+                    "2018": "2018",
+                }
+            ),
             "ele_sf_file": EraModifier(
                 {
                     "2016preVFP": "data/jsonpog-integration/POG/EGM/2016preVFP_UL/electron.json.gz",
@@ -431,14 +447,6 @@ def build_config(
             ),
             "ele_id_sf_name": "UL-Electron-ID-SF",
 
-            "sf_era": EraModifier(
-                {
-                    "2016preVFP": "2016preVFP_UL",
-                    "2016postVFP": "2016postVFP_UL",
-                    "2017": "2017_UL",
-                    "2018": "2018_UL",
-                }
-            ),
         },
     )
 
@@ -758,10 +766,6 @@ def build_config(
             q.lep_is_mu, q.lep_is_el,
             q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge,
 
-            q.lep_sf_mu_trigger_nom, q.lep_sf_mu_trigger_up, q.lep_sf_mu_trigger_down,
-            q.lep_sf_mu_iso_nom, q.lep_sf_mu_iso_up, q.lep_sf_mu_iso_down,
-            q.lep_sf_mu_id_nom, q.lep_sf_mu_id_up, q.lep_sf_mu_id_down,
-
             q.wlep_pt, q.wlep_eta, q.wlep_phi, q.wlep_mass, q.wlep_mt,
 
             q.pfmet, q.pfmetphi,
@@ -800,7 +804,7 @@ def build_config(
         ],
     )
 
-    # add gen info for everything but data
+    # add gen info and weights for everything but data
     if sample != "data":
         configuration.add_outputs(
             ['lep'],
@@ -812,6 +816,14 @@ def build_config(
             q.puweight,
             q.puweight_up,
             q.puweight_down,
+
+            q.lep_sf_mu_trigger_nom, q.lep_sf_mu_trigger_up, q.lep_sf_mu_trigger_down,
+            q.lep_sf_mu_iso_nom, q.lep_sf_mu_iso_up, q.lep_sf_mu_iso_down,
+            q.lep_sf_mu_id_nom, q.lep_sf_mu_id_up, q.lep_sf_mu_id_down,
+
+            q.lep_sf_el_id_nom, q.lep_sf_el_id_up, q.lep_sf_el_id_down,
+            q.lep_sf_el_reco_nom, q.lep_sf_el_reco_up, q.lep_sf_el_reco_down,
+
             ],
         )
 
