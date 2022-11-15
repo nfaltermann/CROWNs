@@ -11,7 +11,7 @@ from .muons import TightMuons
 
 LeptonSelection = Producer(
     name="LeptonSelection",
-    call="LeptonSelection({df}, {input}, {output})",
+    call="topreco::LeptonSelection({df}, {input}, {output})",
     input=[
         q.n_loose_mu,
         q.n_loose_el,
@@ -92,7 +92,7 @@ LeptonQuantities = ProducerGroup(
 
 LeptonScaleFactors  = Producer(
     name="LeptonScaleFactors",
-    call='LeptonScaleFactors({df}, {input}, {output}, "{muon_sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}", "{ele_sf_era}", "{ele_sf_file}", "{ele_id_sf_name}")',
+    call='topreco::LeptonScaleFactors({df}, {input}, {output}, "{muon_sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}", "{ele_sf_era}", "{ele_sf_file}", "{ele_id_sf_name}")',
     input=[
         q.lep_pt,
         q.lep_eta,
@@ -127,7 +127,7 @@ LeptonScaleFactors  = Producer(
 
 LeptonicW = Producer(
     name="LeptonicW",
-    call="ReconstructLeptonicW({df}, {input}, {output})",
+    call="topreco::ReconstructLeptonicW({df}, {input}, {output})",
     input=[
         q.lep_p4,
         q.pfmet_p4_jetcorrected,
@@ -191,7 +191,7 @@ LeptonicWQuantities = ProducerGroup(
 
 TopReco = Producer(
     name="TopReco",
-    call="TopReco({df}, {input}, {output})",
+    call="topreco::TopReco({df}, {input}, {output})",
     input=[
         q.wlep_p4,
         q.n_nonbjets,
@@ -320,7 +320,7 @@ TopRecoQuantities = ProducerGroup(
 
 DNNQuantities = Producer(
     name="DNNQuantities",
-    call="DNNQuantities({df}, {input}, {output})",
+    call="topreco::DNNQuantities({df}, {input}, {output})",
     input=[
         q.is_reco,
         q.lep_p4,
