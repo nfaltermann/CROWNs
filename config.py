@@ -509,8 +509,8 @@ def build_config(
                 {
                     "2016preVFP": 2.4,
                     "2016postVFP": 2.4,
-                    "2017": 2.4,
-                    "2018": 2.4,
+                    "2017": 2.5,
+                    "2018": 2.5,
                 }
             ),
             "btag_cut": EraModifier(  # medium
