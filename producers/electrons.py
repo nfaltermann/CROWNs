@@ -21,6 +21,28 @@ BaseElectronEtaCut = Producer(
     output=[],
     scopes=["global"],
 )
+BaseElectronIPCut = Producer(
+    name="BaseElectronIPCut",
+    call="physicsobject::electron::CutIP({df}, {input}, {output}, {abseta_eb_ee}, {max_dxy_eb}, {max_dz_eb}, {max_dxy_ee}, {max_dz_ee})",
+    input=[
+        nanoAOD.Electron_eta,
+        nanoAOD.Electron_deltaEtaSC,
+        nanoAOD.Electron_dxy,
+        nanoAOD.Electron_dz,
+    ],
+    output=[],
+    scopes=["global"],
+)
+BaseElectronGapCut = Producer(
+    name="BaseElectronGapCut",
+    call="physicsobject::electron::CutGap({df}, {input}, {output}, {eb_ee_gap_start}, {eb_ee_gap_end})",
+    input=[
+        nanoAOD.Electron_eta,
+        nanoAOD.Electron_deltaEtaSC,
+    ],
+    output=[],
+    scopes=["global"],
+)
 BaseElectrons = ProducerGroup(
     name="BaseElectrons",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
@@ -30,6 +52,8 @@ BaseElectrons = ProducerGroup(
     subproducers=[
         BaseElectronPtCut,
         BaseElectronEtaCut,
+        BaseElectronIPCut,
+        BaseElectronGapCut,
     ],
 )
 

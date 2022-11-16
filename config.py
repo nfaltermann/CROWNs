@@ -295,6 +295,13 @@ def build_config(
         {
             "min_base_el_pt": 10.0,
             "max_base_el_eta": 2.5,
+            "eb_ee_gap_start": 1.4442,
+            "eb_ee_gap_end": 1.5660,
+            "abseta_eb_ee": 1.479,
+            "max_dxy_eb": 0.05,
+            "max_dz_eb": 0.1,
+            "max_dxy_ee": 0.1,
+            "max_dz_ee": 0.2,
         },
     )
 
