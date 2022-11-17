@@ -73,7 +73,7 @@ GenParticle_statusFlags = NanoAODQuantity("GenPart_statusFlags")
 GenParticle_motherid = NanoAODQuantity("GenPart_genPartIdxMother")
 
 ## Trigger Objects
-TriggerObject_bit = NanoAODQuantity("TrigObj_filterBits")
+TriggerObject_filterBits = NanoAODQuantity("TrigObj_filterBits")
 TriggerObject_pt = NanoAODQuantity("TrigObj_pt")
 TriggerObject_eta = NanoAODQuantity("TrigObj_eta")
 TriggerObject_phi = NanoAODQuantity("TrigObj_phi")
@@ -155,6 +155,7 @@ TauEmbedding_SelectionNewMass = NanoAODQuantity("TauEmbedding_SelectionNewMass")
 ## HLTs
 
 HLT_IsoMu24 = NanoAODQuantity("HLT_IsoMu24")
+HLT_IsoTkMu24 = NanoAODQuantity("HLT_IsoTkMu24")
 HLT_IsoMu27 = NanoAODQuantity("HLT_IsoMu27")
 HLT_IsoMu24_eta2p1 = NanoAODQuantity("HLT_IsoMu24_eta2p1")
 HLT_Ele25_eta2p1_WPTight_Gsf = NanoAODQuantity("HLT_Ele25_eta2p1_WPTight_Gsf")
