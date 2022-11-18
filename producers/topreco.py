@@ -90,9 +90,10 @@ LeptonQuantities = ProducerGroup(
 
 
 
+
 LeptonScaleFactors  = Producer(
     name="LeptonScaleFactors",
-    call='topreco::LeptonScaleFactors({df}, {input}, {output}, "{muon_sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}", "{ele_sf_era}", "{ele_sf_file}", "{ele_id_sf_name}")',
+    call='topreco::LeptonScaleFactors({df}, {input}, {output}, "{muon_sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}", "{ele_sf_era}", "{ele_trigger_sf_file}", "{ele_trigger_sf_name}", "{ele_sf_file}", "{ele_id_sf_name}")',
     input=[
         q.lep_pt,
         q.lep_eta,
@@ -111,6 +112,9 @@ LeptonScaleFactors  = Producer(
         q.lep_sf_mu_id_nom,
         q.lep_sf_mu_id_up,
         q.lep_sf_mu_id_down,
+        q.lep_sf_el_trigger_nom,
+        q.lep_sf_el_trigger_up,
+        q.lep_sf_el_trigger_down,
         q.lep_sf_el_id_nom,
         q.lep_sf_el_id_up,
         q.lep_sf_el_id_down,

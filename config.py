@@ -436,6 +436,16 @@ def build_config(
             ),
             "muon_id_sf_name": "NUM_TightID_DEN_TrackerMuons",
 
+            "ele_trigger_sf_file": EraModifier(
+                {
+                    "2016preVFP": "data/custom_sf/electron/2016preVFP_UL/trigger_2016preVFP.json.gz",
+                    "2016postVFP": "data/custom_sf/electron/2016postVFP_UL/trigger_2016postVFP.json.gz",
+                    "2017": "data/custom_sf/electron/2017_UL/trigger_2017.json.gz",
+                    "2018": "data/custom_sf/electron/2018_UL/trigger_2018.json.gz",
+                }
+            ),
+            "ele_trigger_sf_name": "h2_scaleFactorsEGamma",
+
             "ele_sf_era": EraModifier(
                 {
                     "2016preVFP": "2016preVFP",
@@ -822,6 +832,7 @@ def build_config(
             q.lep_sf_mu_iso_nom, q.lep_sf_mu_iso_up, q.lep_sf_mu_iso_down,
             q.lep_sf_mu_id_nom, q.lep_sf_mu_id_up, q.lep_sf_mu_id_down,
 
+            q.lep_sf_el_trigger_nom, q.lep_sf_el_trigger_up, q.lep_sf_el_trigger_down,
             q.lep_sf_el_id_nom, q.lep_sf_el_id_up, q.lep_sf_el_id_down,
             q.lep_sf_el_reco_nom, q.lep_sf_el_reco_up, q.lep_sf_el_reco_down,
 
