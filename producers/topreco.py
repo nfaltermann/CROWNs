@@ -93,7 +93,7 @@ LeptonQuantities = ProducerGroup(
 
 LeptonScaleFactors  = Producer(
     name="LeptonScaleFactors",
-    call='topreco::LeptonScaleFactors({df}, {input}, {output}, "{muon_sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}", "{ele_sf_era}", "{ele_trigger_sf_file}", "{ele_trigger_sf_name}", "{ele_sf_file}", "{ele_id_sf_name}")',
+    call='topreco::LeptonScaleFactors({df}, {input}, {output}, "{muon_sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}", "{ele_sf_era}", "{ele_trigger_sf_file}", "{ele_trigger_sf_file_syst}", "{ele_trigger_sf_name}", "{ele_trigger_sf_name_syst}", "{ele_sf_file}", "{ele_id_sf_name}")',
     input=[
         q.lep_pt,
         q.lep_eta,

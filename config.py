@@ -444,7 +444,16 @@ def build_config(
                     "2018": "data/custom_sf/electron/2018_UL/trigger_2018.json.gz",
                 }
             ),
+            "ele_trigger_sf_file_syst": EraModifier(
+                {
+                    "2016preVFP": "data/custom_sf/electron/2016preVFP_UL/trigger_2016preVFP_syststat.json.gz",
+                    "2016postVFP": "data/custom_sf/electron/2016postVFP_UL/trigger_2016postVFP_syststat.json.gz",
+                    "2017": "data/custom_sf/electron/2017_UL/trigger_2017_syststat.json.gz",
+                    "2018": "data/custom_sf/electron/2018_UL/trigger_2018_syststat.json.gz",
+                }
+            ),
             "ele_trigger_sf_name": "h2_scaleFactorsEGamma",
+            "ele_trigger_sf_name_syst": "h2_uncertaintiesEGamma",
 
             "ele_sf_era": EraModifier(
                 {
