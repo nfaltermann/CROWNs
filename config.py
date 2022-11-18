@@ -376,18 +376,18 @@ def build_config(
             ),
             "muon_trigger_sf_file": EraModifier(
                 {
-                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
-                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
-                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL.json.gz",
-                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL.json.gz",
+                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
+                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
+                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL.json.gz",
+                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL.json.gz",
                 }
             ),
             "muon_trigger_sf_file_syst": EraModifier(
                 {
-                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
-                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
-                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
-                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
+                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
+                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
+                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
+                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
                 }
             ),
             "muon_trigger_sf_name": EraModifier(
@@ -409,18 +409,18 @@ def build_config(
 
             "muon_iso_sf_file": EraModifier(
                 {
-                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
-                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
-                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL.json.gz",
-                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL.json.gz",
+                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
+                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
+                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL.json.gz",
+                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL.json.gz",
                 }
             ),
             "muon_iso_sf_file_syst": EraModifier(
                 {
-                    "2016preVFP": "data/muon_corrections/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
-                    "2016postVFP": "data/muon_corrections/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
-                    "2017": "data/muon_corrections/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
-                    "2018": "data/muon_corrections/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
+                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
+                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
+                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
+                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
                 }
             ),
             "muon_iso_sf_name": "NUM_VeryTightRelIso_DEN_TightIDandIPCut_abseta_pt",
