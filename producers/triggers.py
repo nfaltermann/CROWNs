@@ -1,217 +1,16 @@
 from ..quantities import output as q
 from ..quantities import nanoAOD as nanoAOD
-from code_generation.producer import ExtendedVectorProducer
+from code_generation.producer import Producer, ExtendedVectorProducer
 
 ####################
 # Set of producers used for trigger flags
 ####################
 
-# MuMuGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
-#     name="MuMuGenerateSingleMuonTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_1,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["mm"],
-#     vec_config="singlemoun_trigger",
-# )
-# MuMuGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
-#     name="MuMuGenerateSingleMuonTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_1,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["mm"],
-#     vec_config="singlemoun_trigger",
-# )
-# MuMuGenerateDoubleMuonTriggerFlags = ExtendedVectorProducer(
-#     name="MuMuGenerateDoubleMuonTriggerFlags",
-#     call='trigger::GenerateDoubleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {p1_ptcut}, {p2_ptcut}, {p1_etacut}, {p2_etacut}, {p1_trigger_particle_id}, {p2_trigger_particle_id}, {p1_filterbit}, {p2_filterbit}, {max_deltaR_triggermatch})',
-#     input=[
-#         q.p4_1,
-#         q.p4_2,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["mm"],
-#     vec_config="doublemuon_trigger",
-# )
-# MTGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
-#     name="MTGenerateSingleMuonTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_1,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["mt"],
-#     vec_config="singlemoun_trigger",
-# )
-# ETGenerateSingleElectronTriggerFlags = ExtendedVectorProducer(
-#     name="ETGenerateSingleElectronTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_1,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["et"],
-#     vec_config="singleelectron_trigger",
-# )
-# EMGenerateSingleElectronTriggerFlags = ExtendedVectorProducer(
-#     name="EMGenerateSingleElectronTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_1,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["em"],
-#     vec_config="singleelectron_trigger",
-# )
-# GenerateSingleLeadingTauTriggerFlags = ExtendedVectorProducer(
-#     name="GenerateSingleLeadingTauTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_1,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["tt"],
-#     vec_config="singletau_trigger_leading",
-# )
-# GenerateSingleTrailingTauTriggerFlags = ExtendedVectorProducer(
-#     name="GenerateSingleTrailingTauTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_2,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["et", "mt", "tt"],
-#     vec_config="singletau_trigger_trailing",
-# )
-# EMGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
-#     name="EMGenerateSingleMuonTriggerFlags",
-#     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
-#     input=[
-#         q.p4_2,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["em"],
-#     vec_config="singlemoun_trigger",
-# )
-# MTGenerateCrossTriggerFlags = ExtendedVectorProducer(
-#     name="GenerateCrossTriggerFlags",
-#     call='trigger::GenerateDoubleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {p1_ptcut}, {p2_ptcut}, {p1_etacut}, {p2_etacut}, {p1_trigger_particle_id}, {p2_trigger_particle_id}, {p1_filterbit}, {p2_filterbit}, {max_deltaR_triggermatch})',
-#     input=[
-#         q.p4_1,
-#         q.p4_2,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["mt"],
-#     vec_config="mutau_cross_trigger",
-# )
-# ETGenerateCrossTriggerFlags = ExtendedVectorProducer(
-#     name="GenerateCrossTriggerFlags",
-#     call='trigger::GenerateDoubleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {p1_ptcut}, {p2_ptcut}, {p1_etacut}, {p2_etacut}, {p1_trigger_particle_id}, {p2_trigger_particle_id}, {p1_filterbit}, {p2_filterbit}, {max_deltaR_triggermatch})',
-#     input=[
-#         q.p4_1,
-#         q.p4_2,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["et"],
-#     vec_config="eltau_cross_trigger",
-# )
-# TTGenerateDoubleTriggerFlags = ExtendedVectorProducer(
-#     name="TTGenerateDoubleTriggerFlags",
-#     call='trigger::GenerateDoubleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {p1_ptcut}, {p2_ptcut}, {p1_etacut}, {p2_etacut}, {p1_trigger_particle_id}, {p2_trigger_particle_id}, {p1_filterbit}, {p2_filterbit}, {max_deltaR_triggermatch})',
-#     input=[
-#         q.p4_1,
-#         q.p4_2,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["tt"],
-#     vec_config="doubletau_trigger",
-# )
-# EMGenerateCrossTriggerFlags = ExtendedVectorProducer(
-#     name="EMGenerateCrossTriggerFlags",
-#     call='trigger::GenerateDoubleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {p1_ptcut}, {p2_ptcut}, {p1_etacut}, {p2_etacut}, {p1_trigger_particle_id}, {p2_trigger_particle_id}, {p1_filterbit}, {p2_filterbit}, {max_deltaR_triggermatch})',
-#     input=[
-#         q.p4_1,
-#         q.p4_2,
-#         nanoAOD.TriggerObject_filterBits,
-#         nanoAOD.TriggerObject_id,
-#         nanoAOD.TriggerObject_pt,
-#         nanoAOD.TriggerObject_eta,
-#         nanoAOD.TriggerObject_phi,
-#     ],
-#     output="flagname",
-#     scope=["em"],
-#     vec_config="elmu_cross_trigger",
-# )
-
-MuGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
-    name="MuGenerateSingleMuonTriggerFlags",
+GenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
+    name="GenerateSingleMuonTriggerFlags",
     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
     input=[
-        q.p4_1,
+        q.lep_p4,
         nanoAOD.TriggerObject_filterBits,
         nanoAOD.TriggerObject_id,
         nanoAOD.TriggerObject_pt,
@@ -219,15 +18,15 @@ MuGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
         nanoAOD.TriggerObject_phi,
     ],
     output="flagname",
-    scope=["global"],
+    scope=["lep"],
     vec_config="singlemoun_trigger",
 )
 
-ElGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
-    name="MuGenerateSingleMuonTriggerFlags",
+GenerateSingleElectronTriggerFlags = ExtendedVectorProducer(
+    name="GenerateSingleElectronTriggerFlags",
     call='trigger::GenerateSingleTriggerFlag({df}, {output}, {input}, "{hlt_path}", {ptcut}, {etacut}, {trigger_particle_id}, {filterbit}, {max_deltaR_triggermatch} )',
     input=[
-        q.p4_1,
+        q.lep_p4,
         nanoAOD.TriggerObject_filterBits,
         nanoAOD.TriggerObject_id,
         nanoAOD.TriggerObject_pt,
@@ -235,6 +34,48 @@ ElGenerateSingleMuonTriggerFlags = ExtendedVectorProducer(
         nanoAOD.TriggerObject_phi,
     ],
     output="flagname",
-    scope=["global"],
+    scope=["lep"],
     vec_config="singleelectron_trigger",
+)
+
+
+
+TriggerObject_filterBits = Producer(
+    name="TriggerObject_filterBits",
+    call="basefunctions::rename<ROOT::RVec<Int_t>>({df}, {input}, {output})",
+    input=[nanoAOD.TriggerObject_filterBits],
+    output=[q.TriggerObject_filterBits_vector],
+    scopes=["lep"],
+)
+
+TriggerObject_pt = Producer(
+    name="TriggerObject_pt",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.TriggerObject_pt],
+    output=[q.TriggerObject_pt_vector],
+    scopes=["lep"],
+)
+
+TriggerObject_eta = Producer(
+    name="TriggerObject_eta",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.TriggerObject_eta],
+    output=[q.TriggerObject_eta_vector],
+    scopes=["lep"],
+)
+
+TriggerObject_phi = Producer(
+    name="TriggerObject_phi",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.TriggerObject_phi],
+    output=[q.TriggerObject_phi_vector],
+    scopes=["lep"],
+)
+
+TriggerObject_id = Producer(
+    name="TriggerObject_id",
+    call="basefunctions::rename<ROOT::RVec<Int_t>>({df}, {input}, {output})",
+    input=[nanoAOD.TriggerObject_id],
+    output=[q.TriggerObject_id_vector],
+    scopes=["lep"],
 )

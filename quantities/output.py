@@ -352,3 +352,12 @@ lep_sf_el_id_down = Quantity("lep_sf_el_id_down")
 lep_sf_el_reco_nom = Quantity("lep_sf_el_reco_nom")
 lep_sf_el_reco_up = Quantity("lep_sf_el_reco_up")
 lep_sf_el_reco_down = Quantity("lep_sf_el_reco_down")
+
+# HLT
+HLT_match = Quantity("HLT_match")
+
+TriggerObject_filterBits_vector = Quantity("TrigObj_filterBits_vector")
+TriggerObject_pt_vector = Quantity("TrigObj_pt_vector")
+TriggerObject_eta_vector = Quantity("TrigObj_eta_vector")
+TriggerObject_phi_vector = Quantity("TrigObj_phi_vector")
+TriggerObject_id_vector = Quantity("TrigObj_id_vector")

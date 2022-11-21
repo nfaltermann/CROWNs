@@ -176,46 +176,46 @@ def build_config(
         {
             "singlemoun_trigger": EraModifier(
                 {
-                    "2018": [
-                        {
-                            "flagname": "trg_single_mu24",
-                            "hlt_path": "HLT_IsoMu24",
-                            "ptcut": 25,
-                            "etacut": 2.5,
-                            "filterbit": 3,
-                            "trigger_particle_id": 13,
-                            "max_deltaR_triggermatch": 0.4,
-                        },
-                    ],
-                    "2017": [
-                        {
-                            "flagname": "trg_single_mu24",
-                            "hlt_path": "HLT_IsoMu24",
-                            "ptcut": 25,
-                            "etacut": 2.5,
-                            "filterbit": 3,
-                            "trigger_particle_id": 13,
-                            "max_deltaR_triggermatch": 0.4,
-                        },
-                    ],
                     "2016preVFP": [
                         {
-                            "flagname": "trg_single_mu24",
+                            "flagname": "trg_single_mu",
                             "hlt_path": "HLT_IsoMu24",
-                            "ptcut": 25,
+                            "ptcut": 24,
                             "etacut": 2.5,
-                            "filterbit": 3,
+                            "filterbit": -1,
                             "trigger_particle_id": 13,
                             "max_deltaR_triggermatch": 0.4,
                         },
                     ],
                     "2016postVFP": [
                         {
-                            "flagname": "trg_single_mu24",
+                            "flagname": "trg_single_mu",
                             "hlt_path": "HLT_IsoMu24",
-                            "ptcut": 25,
+                            "ptcut": 24,
                             "etacut": 2.5,
-                            "filterbit": 3,
+                            "filterbit": -1,
+                            "trigger_particle_id": 13,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2017": [
+                        {
+                            "flagname": "trg_single_mu",
+                            "hlt_path": "HLT_IsoMu27",
+                            "ptcut": 27,
+                            "etacut": 2.5,
+                            "filterbit": -1,
+                            "trigger_particle_id": 13,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2018": [
+                        {
+                            "flagname": "trg_single_mu",
+                            "hlt_path": "HLT_IsoMu24",
+                            "ptcut": 24,
+                            "etacut": 2.5,
+                            "filterbit": -1,
                             "trigger_particle_id": 13,
                             "max_deltaR_triggermatch": 0.4,
                         },
@@ -231,51 +231,50 @@ def build_config(
         {
             "singleelectron_trigger": EraModifier(
                 {
-                    "2018": [
-                        {
-                            "flagname": "trg_single_ele32",
-                            "hlt_path": "HLT_Ele32_WPTight_Gsf",
-                            "ptcut": 33,
-                            "etacut": 2.1,
-                            "filterbit": 1,
-                            "trigger_particle_id": 11,
-                            "max_deltaR_triggermatch": 0.4,
-                        },
-                    ],
-                    "2017": [
-                        {
-                            "flagname": "trg_single_ele32",
-                            "hlt_path": "HLT_Ele32_WPTight_Gsf_L1DoubleEG",
-                            "ptcut": 33,
-                            "etacut": 2.1,
-                            "filterbit": 1,
-                            "trigger_particle_id": 11,
-                            "max_deltaR_triggermatch": 0.4,
-                        },
-                    ],
                     "2016preVFP": [
                         {
-                            "flagname": "trg_single_ele27",
+                            "flagname": "trg_single_ele",
                             "hlt_path": "HLT_Ele27_WPTight_Gsf",
-                            "ptcut": 28,
-                            "etacut": 2.1,
-                            "filterbit": 1,
+                            "ptcut": 27,
+                            "etacut": 2.5,
+                            "filterbit": -1,
                             "trigger_particle_id": 11,
                             "max_deltaR_triggermatch": 0.4,
                         },
                     ],
                     "2016postVFP": [
                         {
-                            "flagname": "trg_single_ele27",
+                            "flagname": "trg_single_ele",
                             "hlt_path": "HLT_Ele27_WPTight_Gsf",
-                            "ptcut": 28,
-                            "etacut": 2.1,
-                            "filterbit": 1,
+                            "ptcut": 27,
+                            "etacut": 2.5,
+                            "filterbit": -1,
                             "trigger_particle_id": 11,
                             "max_deltaR_triggermatch": 0.4,
                         },
                     ],
-
+                    "2017": [
+                        {
+                            "flagname": "trg_single_ele",
+                            "hlt_path": "HLT_Ele32_WPTight_Gsf_L1DoubleEG",
+                            "ptcut": 32,
+                            "etacut": 2.5,
+                            "filterbit": 10,
+                            "trigger_particle_id": 11,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
+                    "2018": [
+                        {
+                            "flagname": "trg_single_ele",
+                            "hlt_path": "HLT_Ele32_WPTight_Gsf",
+                            "ptcut": 32,
+                            "etacut": 2.5,
+                            "filterbit": -1,
+                            "trigger_particle_id": 11,
+                            "max_deltaR_triggermatch": 0.4,
+                        },
+                    ],
                 }
             ),
         },
@@ -647,7 +646,7 @@ def build_config(
         ],
     )
 
-    # iso lep
+    # iso and antiiso lep
     configuration.add_producers(
         ['lep'],
         [
@@ -665,6 +664,15 @@ def build_config(
             topreco.LeptonQuantities,
 
             topreco.LeptonScaleFactors,
+
+            triggers.GenerateSingleMuonTriggerFlags,
+            triggers.GenerateSingleElectronTriggerFlags,
+
+            # triggers.TriggerObject_filterBits,
+            # triggers.TriggerObject_id,
+            # triggers.TriggerObject_pt,
+            # triggers.TriggerObject_eta,
+            # triggers.TriggerObject_phi,
 
             # scalefactors.leptons,
 
@@ -759,7 +767,6 @@ def build_config(
                 nanoAOD.HLT_IsoMu24_eta2p1,
                 nanoAOD.HLT_IsoMu27,
                 nanoAOD.HLT_Ele32_WPTight_Gsf_L1DoubleEG,
-                nanoAOD.TriggerObject_filterBits, # == 1024 in combination with HLT_Ele32_WPTight_Gsf_L1DoubleEG,
                 nanoAOD.HLT_Mu20,
                 nanoAOD.HLT_Mu27,
             ],
@@ -785,6 +792,14 @@ def build_config(
 
             q.lep_is_mu, q.lep_is_el,
             q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge,
+
+            triggers.GenerateSingleMuonTriggerFlags.output_group,
+            triggers.GenerateSingleElectronTriggerFlags.output_group,
+            # q.TriggerObject_filterBits_vector,
+            # q.TriggerObject_id_vector,
+            # q.TriggerObject_pt_vector,
+            # q.TriggerObject_eta_vector,
+            # q.TriggerObject_phi_vector,
 
             q.wlep_pt, q.wlep_eta, q.wlep_phi, q.wlep_mass, q.wlep_mt,
 
@@ -829,21 +844,21 @@ def build_config(
         configuration.add_outputs(
             ['lep'],
             [
-            nanoAOD.genWeight,
-            q.PSWeight,
-            q.LHEScaleWeight,
-            q.LHEPdfWeight,
-            q.puweight,
-            q.puweight_up,
-            q.puweight_down,
+                nanoAOD.genWeight,
+                q.PSWeight,
+                q.LHEScaleWeight,
+                q.LHEPdfWeight,
+                q.puweight,
+                q.puweight_up,
+                q.puweight_down,
 
-            q.lep_sf_mu_trigger_nom, q.lep_sf_mu_trigger_up, q.lep_sf_mu_trigger_down,
-            q.lep_sf_mu_iso_nom, q.lep_sf_mu_iso_up, q.lep_sf_mu_iso_down,
-            q.lep_sf_mu_id_nom, q.lep_sf_mu_id_up, q.lep_sf_mu_id_down,
+                q.lep_sf_mu_trigger_nom, q.lep_sf_mu_trigger_up, q.lep_sf_mu_trigger_down,
+                q.lep_sf_mu_iso_nom, q.lep_sf_mu_iso_up, q.lep_sf_mu_iso_down,
+                q.lep_sf_mu_id_nom, q.lep_sf_mu_id_up, q.lep_sf_mu_id_down,
 
-            q.lep_sf_el_trigger_nom, q.lep_sf_el_trigger_up, q.lep_sf_el_trigger_down,
-            q.lep_sf_el_id_nom, q.lep_sf_el_id_up, q.lep_sf_el_id_down,
-            q.lep_sf_el_reco_nom, q.lep_sf_el_reco_up, q.lep_sf_el_reco_down,
+                q.lep_sf_el_trigger_nom, q.lep_sf_el_trigger_up, q.lep_sf_el_trigger_down,
+                q.lep_sf_el_id_nom, q.lep_sf_el_id_up, q.lep_sf_el_id_down,
+                q.lep_sf_el_reco_nom, q.lep_sf_el_reco_up, q.lep_sf_el_reco_down,
 
             ],
         )
