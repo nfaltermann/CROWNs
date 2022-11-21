@@ -309,7 +309,7 @@ def build_config(
         ['lep'],
         {
             "min_loose_el_pt": 10.0,
-            "max_loose_el_eta": 2.4,
+            "max_loose_el_eta": 2.5,
             "loose_el_id": "Electron_cutBased",
             "loose_el_id_wp": 1,
             "min_loose_mu_pt": 10.0,
@@ -330,7 +330,7 @@ def build_config(
                     "2018": 32,
                 }
             ),
-            "max_el_eta": 2.1,
+            "max_el_eta": 2.5,
             "el_id": "Electron_cutBased",
             "el_id_wp": 4,
 
