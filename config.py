@@ -178,7 +178,7 @@ def build_config(
                 {
                     "2016preVFP": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_mu",
                             "hlt_path": "HLT_IsoMu24",
                             "ptcut": 24,
                             "etacut": 2.5,
@@ -189,7 +189,7 @@ def build_config(
                     ],
                     "2016postVFP": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_mu",
                             "hlt_path": "HLT_IsoMu24",
                             "ptcut": 24,
                             "etacut": 2.5,
@@ -200,7 +200,7 @@ def build_config(
                     ],
                     "2017": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_mu",
                             "hlt_path": "HLT_IsoMu27",
                             "ptcut": 27,
                             "etacut": 2.5,
@@ -211,7 +211,7 @@ def build_config(
                     ],
                     "2018": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_mu",
                             "hlt_path": "HLT_IsoMu24",
                             "ptcut": 24,
                             "etacut": 2.5,
@@ -233,7 +233,7 @@ def build_config(
                 {
                     "2016preVFP": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_el",
                             "hlt_path": "HLT_Ele27_WPTight_Gsf",
                             "ptcut": 27,
                             "etacut": 2.5,
@@ -244,7 +244,7 @@ def build_config(
                     ],
                     "2016postVFP": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_el",
                             "hlt_path": "HLT_Ele27_WPTight_Gsf",
                             "ptcut": 27,
                             "etacut": 2.5,
@@ -255,7 +255,7 @@ def build_config(
                     ],
                     "2017": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_el",
                             "hlt_path": "HLT_Ele32_WPTight_Gsf_L1DoubleEG",
                             "ptcut": 32,
                             "etacut": 2.5,
@@ -266,7 +266,7 @@ def build_config(
                     ],
                     "2018": [
                         {
-                            "flagname": "trg_single_lepton",
+                            "flagname": "trg_single_el",
                             "hlt_path": "HLT_Ele32_WPTight_Gsf",
                             "ptcut": 32,
                             "etacut": 2.5,
