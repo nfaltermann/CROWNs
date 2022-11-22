@@ -279,7 +279,7 @@ JetLowPtCollection = ProducerGroup(
 
 ##########################
 # Basic Jet Quantities
-# njets, pt, eta, phi, b-tag value
+# njets, pt, eta, phi, b-tag value, hadron flavor
 ##########################
 
 LVJet1 = Producer(
@@ -433,6 +433,27 @@ jtag_value_3 = Producer(
     output=[q.jet_3_btag],
     scopes=['lep']
 )
+jflavor_1 = Producer(
+    name="jflavor_1",
+    call="quantities::jet::flavor({df}, {output}, {input}, 0)",
+    input=[nanoAOD.Jet_flavor, q.good_jet_collection],
+    output=[q.jet_1_flavor],
+    scopes=['lep']
+)
+jflavor_2 = Producer(
+    name="jflavor_2",
+    call="quantities::jet::flavor({df}, {output}, {input}, 1)",
+    input=[nanoAOD.Jet_flavor, q.good_jet_collection],
+    output=[q.jet_2_flavor],
+    scopes=['lep']
+)
+jflavor_3 = Producer(
+    name="jflavor_3",
+    call="quantities::jet::flavor({df}, {output}, {input}, 2)",
+    input=[nanoAOD.Jet_flavor, q.good_jet_collection],
+    output=[q.jet_3_flavor],
+    scopes=['lep']
+)
 BasicJetQuantities = ProducerGroup(
     name="BasicJetQuantities",
     call=None,
@@ -449,22 +470,25 @@ BasicJetQuantities = ProducerGroup(
         jphi_1,
         jmass_1,
         jtag_value_1,
+        jflavor_1,
         jpt_2,
         jeta_2,
         jphi_2,
         jmass_2,
         jtag_value_2,
+        jflavor_2,
         jpt_3,
         jeta_3,
         jphi_3,
         jmass_3,
         jtag_value_3,
+        jflavor_3,
     ],
 )
 
 ##########################
 # Basic b-Jet Quantities
-# nbtag, pt, eta, phi, b-tag value
+# nbtag, pt, eta, phi, b-tag value, hadron flavor
 ##########################
 
 LVBJet1 = Producer(
@@ -570,6 +594,20 @@ btag_value_2 = Producer(
     output=[q.bjet_2_btag],
     scopes=['lep']
 )
+bflavor_1 = Producer(
+    name="bflavor_1",
+    call="quantities::jet::flavor({df}, {output}, {input}, 0)",
+    input=[nanoAOD.Jet_flavor, q.good_bjet_collection],
+    output=[q.bjet_1_flavor],
+    scopes=['lep']
+)
+bflavor_2 = Producer(
+    name="bflavor_2",
+    call="quantities::jet::flavor({df}, {output}, {input}, 1)",
+    input=[nanoAOD.Jet_flavor, q.good_bjet_collection],
+    output=[q.bjet_2_flavor],
+    scopes=['lep']
+)
 BasicBJetQuantities = ProducerGroup(
     name="BasicBJetQuantities",
     call=None,
@@ -585,17 +623,19 @@ BasicBJetQuantities = ProducerGroup(
         bphi_1,
         bmass_1,
         btag_value_1,
+        bflavor_1,
         bpt_2,
         beta_2,
         bphi_2,
         bmass_2,
         btag_value_2,
+        bflavor_2,
     ],
 )
 
 ##########################
 # Basic non-b-Jet Quantities
-# nbtag, pt, eta, phi, b-tag value
+# nbtag, pt, eta, phi, b-tag value, hadron flavor
 ##########################
 
 LVNonBJet1 = Producer(
@@ -701,6 +741,20 @@ nonbbtag_value_2 = Producer(
     output=[q.nonbjet_2_btag],
     scopes=['lep']
 )
+nonbflavor_1 = Producer(
+    name="nonbflavor_1",
+    call="quantities::jet::flavor({df}, {output}, {input}, 0)",
+    input=[nanoAOD.Jet_flavor, q.good_nonbjet_collection],
+    output=[q.nonbjet_1_flavor],
+    scopes=['lep']
+)
+nonbflavor_2 = Producer(
+    name="nonbflavor_2",
+    call="quantities::jet::flavor({df}, {output}, {input}, 1)",
+    input=[nanoAOD.Jet_flavor, q.good_nonbjet_collection],
+    output=[q.nonbjet_2_flavor],
+    scopes=['lep']
+)
 BasicNonBJetQuantities = ProducerGroup(
     name="BasicNonBJetQuantities",
     call=None,
@@ -716,10 +770,12 @@ BasicNonBJetQuantities = ProducerGroup(
         nonbphi_1,
         nonbmass_1,
         nonbbtag_value_1,
+        nonbflavor_1,
         nonbpt_2,
         nonbeta_2,
         nonbphi_2,
         nonbmass_2,
         nonbbtag_value_2,
+        nonbflavor_2,
     ],
 )
