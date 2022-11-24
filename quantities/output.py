@@ -369,6 +369,7 @@ TriggerObject_eta_vector = Quantity("TrigObj_eta_vector")
 TriggerObject_phi_vector = Quantity("TrigObj_phi_vector")
 TriggerObject_id_vector = Quantity("TrigObj_id_vector")
 
+btag_sf_vec = Quantity("btag_sf_vec")
 btag_sf_nom = Quantity("btag_sf_nom")
 btag_sf_HFup_corr= Quantity("btag_sf_HFup_corr")
 btag_sf_HFup_uncorr= Quantity("btag_sf_HFup_uncorr")

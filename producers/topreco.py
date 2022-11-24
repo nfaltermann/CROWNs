@@ -391,6 +391,7 @@ BTagScaleFactors  = Producer(
         q.bjet_2_flavor,
     ],
     output=[
+        q.btag_sf_vec,
         q.btag_sf_nom,
         q.btag_sf_HFup_corr,
         q.btag_sf_HFup_uncorr,
