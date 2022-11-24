@@ -561,11 +561,38 @@ def build_config(
                 }
             ),
             "btag_sf_variation": "central",
-            "btag_corr_algo": "deepJet_shape",
+            "btag_corr_algo_HF": "deepJet_mujets",
+            "btag_corr_algo_LF": "deepJet_incl",
+
+            "btag_eff_file" : EraModifier(
+                {
+                    "2016preVFP": "data/custom_sf/btag_eff/2016preVFP_UL/btag_eff_2016preVFP.json.gz",
+                    "2016postVFP": "data/custom_sf/btag_eff/2016postVFP_UL/btag_eff_2016postVFP.json.gz",
+                    "2017": "data/custom_sf/btag_eff/2017_UL/btag_eff_2017.json.gz",
+                    "2018": "data/custom_sf/btag_eff/2018_UL/btag_eff_2018.json.gz",
+                }
+            ),
+            "btag_wp" : "M",
+
+            "btag_eff_type": SampleModifier(
+                {
+                    "diboson": "vjets",
+                    "dy": "vjets",
+                    "wjets": "vjets",
+                },
+                default = "ttbar",
+            ),
+
+
+
+
+
         },
     )
 
     ###### scope Specifics ######
+
+
 
 
 
@@ -663,8 +690,6 @@ def build_config(
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
 
-            topreco.LeptonScaleFactors,
-
             triggers.GenerateSingleMuonTriggerFlags,
             triggers.GenerateSingleElectronTriggerFlags,
 
@@ -719,6 +744,8 @@ def build_config(
                 systematics.SystPSWeights,
                 systematics.SystLHEScaleWeights,
                 systematics.SystLHEPdfWeights,
+                topreco.LeptonScaleFactors,
+                topreco.BTagScaleFactors,
             ],
         )
 
@@ -860,8 +887,15 @@ def build_config(
                 q.lep_sf_el_id_nom, q.lep_sf_el_id_up, q.lep_sf_el_id_down,
                 q.lep_sf_el_reco_nom, q.lep_sf_el_reco_up, q.lep_sf_el_reco_down,
 
+                q.btag_sf_nom,
+                q.btag_sf_HFup_corr, q.btag_sf_HFup_uncorr,
+                q.btag_sf_HFdown_corr, q.btag_sf_HFdown_uncorr,
+                q.btag_sf_LFup_corr, q.btag_sf_LFup_uncorr,
+                q.btag_sf_LFdown_corr, q.btag_sf_LFdown_uncorr,
+
             ],
         )
+
 
     ## add prefiring
     if era != "2018":
