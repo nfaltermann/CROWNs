@@ -718,12 +718,35 @@ def build_config(
         [
             jets.JetLowPtCollection,
             jets.JetCollection,
-            jets.BasicJetQuantities,
             jets.BJetCollection,
-            jets.BasicBJetQuantities,
             jets.NonBJetCollection,
-            jets.BasicNonBJetQuantities,
+        ],
+    )
 
+    if sample == "data":
+        configuration.add_producers(
+            ['lep'],
+            [
+                # jets.BasicJetQuantitiesData,
+                jets.BasicBJetQuantitiesData,
+                jets.BasicNonBJetQuantitiesData,
+            ],
+        )
+    else:
+        configuration.add_producers(
+            ['lep'],
+            [
+                # jets.BasicJetQuantitiesMC,
+                jets.BasicBJetQuantitiesMC,
+                jets.BasicNonBJetQuantitiesMC,
+            ],
+        )
+
+
+
+    configuration.add_producers(
+        ['lep'],
+        [
             met.PFMetCorrections,
 
             topreco.LeptonicW,
@@ -734,6 +757,8 @@ def build_config(
             topreco.DNNQuantities,
         ],
     )
+
+
 
 
     # syst producers

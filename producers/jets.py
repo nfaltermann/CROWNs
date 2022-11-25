@@ -454,7 +454,7 @@ jflavor_3 = Producer(
     output=[q.jet_3_flavor],
     scopes=['lep']
 )
-BasicJetQuantities = ProducerGroup(
+BasicJetQuantitiesMC = ProducerGroup(
     name="BasicJetQuantities",
     call=None,
     input=None,
@@ -483,6 +483,35 @@ BasicJetQuantities = ProducerGroup(
         jmass_3,
         jtag_value_3,
         jflavor_3,
+    ],
+)
+
+BasicJetQuantitiesData = ProducerGroup(
+    name="BasicJetQuantities",
+    call=None,
+    input=None,
+    output=None,
+    scopes=['lep'],
+    subproducers=[
+        LVJet1,
+        LVJet2,
+        LVJet3,
+        NumberOfJets,
+        jpt_1,
+        jeta_1,
+        jphi_1,
+        jmass_1,
+        jtag_value_1,
+        jpt_2,
+        jeta_2,
+        jphi_2,
+        jmass_2,
+        jtag_value_2,
+        jpt_3,
+        jeta_3,
+        jphi_3,
+        jmass_3,
+        jtag_value_3,
     ],
 )
 
@@ -608,7 +637,7 @@ bflavor_2 = Producer(
     output=[q.bjet_2_flavor],
     scopes=['lep']
 )
-BasicBJetQuantities = ProducerGroup(
+BasicBJetQuantitiesMC = ProducerGroup(
     name="BasicBJetQuantities",
     call=None,
     input=None,
@@ -630,6 +659,29 @@ BasicBJetQuantities = ProducerGroup(
         bmass_2,
         btag_value_2,
         bflavor_2,
+    ],
+)
+
+BasicBJetQuantitiesData = ProducerGroup(
+    name="BasicBJetQuantities",
+    call=None,
+    input=None,
+    output=None,
+    scopes=['lep'],
+    subproducers=[
+        LVBJet1,
+        LVBJet2,
+        NumberOfBJets,
+        bpt_1,
+        beta_1,
+        bphi_1,
+        bmass_1,
+        btag_value_1,
+        bpt_2,
+        beta_2,
+        bphi_2,
+        bmass_2,
+        btag_value_2,
     ],
 )
 
@@ -755,7 +807,7 @@ nonbflavor_2 = Producer(
     output=[q.nonbjet_2_flavor],
     scopes=['lep']
 )
-BasicNonBJetQuantities = ProducerGroup(
+BasicNonBJetQuantitiesMC = ProducerGroup(
     name="BasicNonBJetQuantities",
     call=None,
     input=None,
@@ -777,5 +829,28 @@ BasicNonBJetQuantities = ProducerGroup(
         nonbmass_2,
         nonbbtag_value_2,
         nonbflavor_2,
+    ],
+)
+
+BasicNonBJetQuantitiesData = ProducerGroup(
+    name="BasicNonBJetQuantities",
+    call=None,
+    input=None,
+    output=None,
+    scopes=['lep'],
+    subproducers=[
+        LVNonBJet1,
+        LVNonBJet2,
+        NumberOfNonBJets,
+        nonbpt_1,
+        nonbeta_1,
+        nonbphi_1,
+        nonbmass_1,
+        nonbbtag_value_1,
+        nonbpt_2,
+        nonbeta_2,
+        nonbphi_2,
+        nonbmass_2,
+        nonbbtag_value_2,
     ],
 )
