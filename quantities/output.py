@@ -327,16 +327,16 @@ puweight_down = Quantity("puweight_down")
 
 
 # DNN vars
-dphi_top_tb = Quantity("DNN_dphi_top_tb")
+dphi_top_b1 = Quantity("DNN_dphi_top_b1")
 deta_top_sb = Quantity("DNN_deta_top_sb")
-dphi_tb_sb = Quantity("DNN_dphi_tb_sb")
-deta_lep_tb = Quantity("DNN_deta_lep_tb")
-m_lep_sb = Quantity("DNN_m_lep_sb")
-pt_tb_sb = Quantity("DNN_pt_tb_sb")
+dphi_b1_b2 = Quantity("DNN_dphi_b1_b2")
+deta_lep_b1 = Quantity("DNN_deta_lep_b1")
+m_lep_b2 = Quantity("DNN_m_lep_b2")
+pt_b1_b2 = Quantity("DNN_pt_b1_b2")
 costhetastar = Quantity("DNN_costhetastar")
 sumht = Quantity("DNN_sumht")
 wolfram = Quantity("DNN_wolfram")
-deta_topsb_tb = Quantity("DNN_deta_topsb_tb")
+deta_topb2_b1 = Quantity("DNN_deta_topb2_b1")
 
 
 # lep SFs

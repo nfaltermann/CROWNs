@@ -877,16 +877,16 @@ def build_config(
             q.tb_pt, q.tb_eta, q.tb_phi, q.tb_mass,
             q.sb_pt, q.sb_eta, q.sb_phi, q.sb_mass,
 
-            q.dphi_top_tb,
+            q.dphi_top_b1,
             q.deta_top_sb,
-            q.dphi_tb_sb,
-            q.deta_lep_tb,
-            q.m_lep_sb,
-            q.pt_tb_sb,
+            q.dphi_b1_b2,
+            q.deta_lep_b1,
+            q.m_lep_b2,
+            q.pt_b1_b2,
             q.costhetastar,
             q.sumht,
             q.wolfram,
-            q.deta_topsb_tb,
+            q.deta_topb2_b1,
 
         ],
     )

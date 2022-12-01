@@ -348,19 +348,21 @@ DNNQuantities = Producer(
         q.Jet_mass_corrected,
    ],
     output=[
-        q.dphi_top_tb,
+        q.dphi_top_b1,
         q.deta_top_sb,
-        q.dphi_tb_sb,
-        q.deta_lep_tb,
-        q.m_lep_sb,
-        q.pt_tb_sb,
+        q.dphi_b1_b2,
+        q.deta_lep_b1,
+        q.m_lep_b2,
+        q.pt_b1_b2,
         q.costhetastar,
         q.sumht,
         q.wolfram,
-        q.deta_topsb_tb,
+        q.deta_topb2_b1,
     ],
     scopes=['lep'],
 )
+
+
 
 
 BTagScaleFactors  = Producer(
