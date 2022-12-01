@@ -838,9 +838,9 @@ def build_config(
     configuration.add_outputs(
         ['lep'],
         [
-            q.n_loose_mu, q.n_loose_el,
-            q.n_tight_mu, q.n_tight_el, q.n_antitight_el,
-            q.n_loose_lep, q.n_tight_lep, q.n_antitight_lep,
+            q.n_loose_lep, q.n_loose_mu, q.n_loose_el,
+            q.n_tight_lep, q.n_tight_mu, q.n_tight_el,
+            q.n_antitight_lep, q.n_antitight_mu, q.n_antitight_el,
 
             q.lep_is_mu, q.lep_is_el,
             q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge,
