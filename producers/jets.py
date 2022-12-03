@@ -109,7 +109,7 @@ BJetPtCut = Producer(
 )
 NonBJetPtCut = Producer(
     name="BJetPtCut",
-    call="physicsobject::CutPt({df}, {input}, {output}, {min_bjet_pt})",
+    call="physicsobject::CutPt({df}, {input}, {output}, {min_jet_pt})",
     input=[q.Jet_pt_corrected],
     output=[],
     scopes=["global"],
