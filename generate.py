@@ -19,7 +19,7 @@ def run(args):
         "wjets",
         "data",
     ]
-    available_eras = ["2016preVFP", "2016",  "2017", "2018"]
+    available_eras = ["2016preVFP", "2016postVFP",  "2017", "2018"]
     available_scopes = ["lep"]
 
     #print(available_scopes)
