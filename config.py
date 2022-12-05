@@ -53,8 +53,8 @@ def build_config(
         {
             "PU_reweighting_file": EraModifier(
                 {
-                    "2016preVFP": "data/jsonpog-integration/POG/LUM/2016_preVFP_UL/puWeights.json.gz",
-                    "2016postVFP": "data/jsonpog-integration/POG/LUM/2016_postVFP_UL/puWeights.json.gz",
+                    "2016preVFP": "data/jsonpog-integration/POG/LUM/2016preVFP_UL/puWeights.json.gz",
+                    "2016postVFP": "data/jsonpog-integration/POG/LUM/2016postVFP_UL/puWeights.json.gz",
                     "2017": "data/jsonpog-integration/POG/LUM/2017_UL/puWeights.json.gz",
                     "2018": "data/jsonpog-integration/POG/LUM/2018_UL/puWeights.json.gz",
                 }
@@ -150,14 +150,16 @@ def build_config(
             ),
             "recoil_corrections_file": EraModifier(
                 {
-                    "2016": "data/recoil_corrections/Type1_PuppiMET_2016.root",
+                    "2016preVFP": "data/recoil_corrections/Type1_PuppiMET_2016.root",
+                    "2016postVFP": "data/recoil_corrections/Type1_PuppiMET_2016.root",
                     "2017": "data/recoil_corrections/Type1_PuppiMET_2017.root",
                     "2018": "data/recoil_corrections/Type1_PuppiMET_2018.root",
                 }
             ),
             "recoil_systematics_file": EraModifier(
                 {
-                    "2016": "data/recoil_corrections/PuppiMETSys_2016.root",
+                    "2016preVFP": "data/recoil_corrections/PuppiMETSys_2016.root",
+                    "2016postVFP": "data/recoil_corrections/PuppiMETSys_2016.root",
                     "2017": "data/recoil_corrections/PuppiMETSys_2017.root",
                     "2018": "data/recoil_corrections/PuppiMETSys_2018.root",
                 }
@@ -583,9 +585,14 @@ def build_config(
                 default = "ttbar",
             ),
 
-
-
-
+            "max_bjet_eta_sf": EraModifier(
+                {
+                    "2016preVFP": 2.4,
+                    "2016postVFP": 2.4,
+                    "2017": 2.5,
+                    "2018": 2.5,
+                }
+            ),
 
         },
     )

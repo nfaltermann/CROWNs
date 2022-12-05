@@ -367,7 +367,7 @@ DNNQuantities = Producer(
 
 BTagScaleFactors  = Producer(
     name="BTagScaleFactors",
-    call='topreco::BTagScaleFactors({df}, {input}, {output}, "{btag_sf_file}", "{btag_corr_algo_HF}", "{btag_corr_algo_LF}", "{btag_eff_file}", "{btag_eff_type}", "{btag_wp}")',
+    call='topreco::BTagScaleFactors({df}, {input}, {output}, "{btag_sf_file}", "{btag_corr_algo_HF}", "{btag_corr_algo_LF}", "{btag_eff_file}", "{btag_eff_type}", "{btag_wp}", {max_bjet_eta_sf})',
     input=[
         q.lep_is_iso,
         q.is_reco,
