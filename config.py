@@ -578,11 +578,11 @@ def build_config(
 
             "btag_eff_type": SampleModifier(
                 {
-                    "diboson": "vjets",
-                    "dy": "vjets",
-                    "wjets": "vjets",
+                    "diboson": "ewk",
+                    "dy": "ewk",
+                    "wjets": "ewk",
                 },
-                default = "ttbar",
+                default = "top",
             ),
 
             "max_bjet_eta_sf": EraModifier(
