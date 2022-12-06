@@ -313,7 +313,7 @@ def build_config(
             "min_loose_el_pt": 10.0,
             "max_loose_el_eta": 2.5,
             "loose_el_id": "Electron_cutBased",
-            "loose_el_id_wp": 1,
+            "loose_el_id_wp": 2,
             "min_loose_mu_pt": 10.0,
             "max_loose_mu_eta": 2.4,
             "loose_mu_iso": 0.2,
@@ -357,9 +357,10 @@ def build_config(
             "loose_mu_antiiso": 0.2,
             "mu_antiiso": 0.2,
             "loose_el_antiid": "Electron_cutBased",
-            "loose_el_antiid_wp": 1,
+            "loose_el_antiid_wp": 2,
             "el_antiid": "Electron_cutBased",
-            "el_antiid_wp": 0,
+            "el_antiid_wp": 1,
+            "el_antiiso_max_iso": 1.0,
         },
     )
 

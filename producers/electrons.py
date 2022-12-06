@@ -210,6 +210,14 @@ AntiTightElectronIDCut = Producer(
     scopes=['lep'],
 )
 
+AntiTightElectronIsoCut = Producer(
+    name="AntiElectronIsoCut",
+    call="physicsobject::electron::CutIsolation({df}, {output}, {input}, {el_antiiso_max_iso})",
+    input=[nanoAOD.Electron_iso],
+    output=[],
+    scopes=["lep"],
+)
+
 AntiTightElectrons = ProducerGroup(
     name="AntiTightElectrons",
     call="physicsobject::CombineMasks({df}, {output}, {input})",
@@ -220,6 +228,7 @@ AntiTightElectrons = ProducerGroup(
         AntiTightElectronPtCut,
         AntiTightElectronEtaCut,
         AntiTightElectronIDCut,
+        AntiTightElectronIsoCut,
     ],
 )
 
