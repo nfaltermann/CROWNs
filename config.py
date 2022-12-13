@@ -290,7 +290,23 @@ def build_config(
             "max_base_mu_eta": 2.4,
         },
     )
-    # # electron base selection:
+
+    # muon Rochester corrections
+    configuration.add_config_parameters(
+        "global",
+        {
+            "muon_roccor_corrections_file": EraModifier(
+                {
+                    "2016preVFP": "data/data/RoccoR_files/RoccoR2016aUL.txt",
+                    "2016postVFP": "data/data/RoccoR_files/RoccoR2016bUL.txt",
+                    "2017": "data/data/RoccoR_files/RoccoR2017UL.txt",
+                    "2018": "data/data/RoccoR_files/RoccoR2018UL.txt",
+                }
+            ),
+        },
+    )
+
+    # electron base selection:
     configuration.add_config_parameters(
         "global",
         {
@@ -328,8 +344,8 @@ def build_config(
                 {
                     "2016preVFP": 30,
                     "2016postVFP": 30,
-                    "2017": 32,
-                    "2018": 32,
+                    "2017": 35,
+                    "2018": 35,
                 }
             ),
             "max_el_eta": 2.5,
