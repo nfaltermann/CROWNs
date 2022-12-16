@@ -45,6 +45,8 @@ LeptonSelection = Producer(
         q.lep_p4,
         q.lep_sceta,
         q.lep_charge,
+        q.lep_mu_index,
+        q.lep_el_index,
     ],
     scopes=['lep'],
 )

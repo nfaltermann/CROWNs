@@ -283,6 +283,8 @@ lep_phi = Quantity("lep_phi")
 lep_mass = Quantity("lep_mass")
 lep_e = Quantity("lep_e")
 lep_charge = Quantity("lep_charge")
+lep_mu_index = Quantity("lep_mu_index")
+lep_el_index = Quantity("lep_el_index")
 
 # W reco
 wlep_p4 = Quantity("wlep_p4")

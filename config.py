@@ -867,7 +867,7 @@ def build_config(
             q.n_antitight_lep, q.n_antitight_mu, q.n_antitight_el,
 
             q.lep_is_mu, q.lep_is_el,
-            q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge,
+            q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge, q.lep_mu_index, q.lep_el_index,
 
             triggers.GenerateSingleMuonTriggerFlags.output_group,
             triggers.GenerateSingleElectronTriggerFlags.output_group,
