@@ -714,6 +714,8 @@ def build_config(
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
 
+            topreco.LeptonAllQuantities,
+
             triggers.GenerateSingleMuonTriggerFlags,
             triggers.GenerateSingleElectronTriggerFlags,
 
@@ -868,6 +870,9 @@ def build_config(
 
             q.lep_is_mu, q.lep_is_el,
             q.lep_pt, q.lep_eta, q.lep_phi, q.lep_mass, q.lep_is_iso, q.lep_charge, q.lep_mu_index, q.lep_el_index,
+
+            q.mu_pt, q.mu_eta, q.mu_phi, q.mu_mass, q.mu_iso, q.mu_miniiso, q.mu_tightid,
+            q.el_pt, q.el_eta, q.el_phi, q.el_mass, q.el_detasc, q.el_dxy, q.el_dz, q.el_iso, q.el_cutbasedid,
 
             triggers.GenerateSingleMuonTriggerFlags.output_group,
             triggers.GenerateSingleElectronTriggerFlags.output_group,

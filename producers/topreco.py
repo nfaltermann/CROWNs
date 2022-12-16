@@ -93,6 +93,134 @@ LeptonQuantities = ProducerGroup(
 
 
 
+
+nano_mu_pt = Producer(
+    name="nano_mu_pt",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Muon_pt],
+    output=[q.mu_pt],
+    scopes=['lep'],
+)
+nano_mu_eta = Producer(
+    name="nano_mu_eta",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Muon_eta],
+    output=[q.mu_eta],
+    scopes=['lep'],
+)
+nano_mu_phi = Producer(
+    name="nano_mu_phi",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Muon_phi],
+    output=[q.mu_phi],
+    scopes=['lep'],
+)
+nano_mu_mass = Producer(
+    name="nano_mu_mass",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Muon_mass],
+    output=[q.mu_mass],
+    scopes=['lep'],
+)
+nano_mu_iso = Producer(
+    name="nano_mu_iso",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Muon_iso],
+    output=[q.mu_iso],
+    scopes=['lep'],
+)
+nano_mu_miniiso = Producer(
+    name="nano_mu_miniiso",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Muon_miniiso],
+    output=[q.mu_miniiso],
+    scopes=['lep'],
+)
+nano_mu_tightid = Producer(
+    name="nano_mu_tightid",
+    call="basefunctions::rename<ROOT::RVec<Bool_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Muon_id_tight],
+    output=[q.mu_tightid],
+    scopes=['lep'],
+)
+nano_el_pt = Producer(
+    name="nano_el_pt",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_pt],
+    output=[q.el_pt],
+    scopes=['lep'],
+)
+nano_el_eta = Producer(
+    name="nano_el_eta",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_eta],
+    output=[q.el_eta],
+    scopes=['lep'],
+)
+nano_el_phi = Producer(
+    name="nano_el_phi",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_phi],
+    output=[q.el_phi],
+    scopes=['lep'],
+)
+nano_el_mass = Producer(
+    name="nano_el_mass",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_mass],
+    output=[q.el_mass],
+    scopes=['lep'],
+)
+nano_el_detasc = Producer(
+    name="nano_el_detasc",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_deltaEtaSC],
+    output=[q.el_detasc],
+    scopes=['lep'],
+)
+nano_el_dxy = Producer(
+    name="nano_el_dxy",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_dxy],
+    output=[q.el_dxy],
+    scopes=['lep'],
+)
+nano_el_dz = Producer(
+    name="nano_el_dz",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_dz],
+    output=[q.el_dz],
+    scopes=['lep'],
+)
+nano_el_iso = Producer(
+    name="nano_el_iso",
+    call="basefunctions::rename<ROOT::RVec<Float_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_iso],
+    output=[q.el_iso],
+    scopes=['lep'],
+)
+nano_el_cutbasedid = Producer(
+    name="nano_el_cutbasedid",
+    call="basefunctions::rename<ROOT::RVec<Int_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_IDcutbased],
+    output=[q.el_cutbasedid],
+    scopes=['lep'],
+)
+
+
+LeptonAllQuantities = ProducerGroup(
+    name="LeptonAllQuantities",
+    call=None,
+    input=None,
+    output=None,
+    scopes=['lep'],
+    subproducers=[nano_mu_pt, nano_mu_eta, nano_mu_phi, nano_mu_mass, nano_mu_iso, nano_mu_miniiso, nano_mu_tightid,
+                  nano_el_pt, nano_el_eta, nano_el_phi, nano_el_mass, nano_el_detasc, nano_el_dxy, nano_el_dz, nano_el_iso, nano_el_cutbasedid
+              ],
+)
+
+
+
 LeptonScaleFactors  = Producer(
     name="LeptonScaleFactors",
     call='topreco::LeptonScaleFactors({df}, {input}, {output}, "{muon_sf_era}", "{muon_trigger_sf_file}", "{muon_trigger_sf_file_syst}", "{muon_trigger_sf_name}", "{muon_trigger_sf_name_syst}", "{muon_iso_sf_file}", "{muon_iso_sf_file_syst}", "{muon_iso_sf_name}", "{muon_iso_sf_name_syst}", "{muon_sf_file}", "{muon_id_sf_name}", "{ele_sf_era}", "{ele_trigger_sf_file}", "{ele_trigger_sf_file_syst}", "{ele_trigger_sf_name}", "{ele_trigger_sf_name_syst}", "{ele_sf_file}", "{ele_id_sf_name}")',
