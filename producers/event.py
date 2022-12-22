@@ -88,6 +88,13 @@ is_wjets = Producer(
     output=[q.is_wjets],
     scopes=["global"],
 )
+is_qcd = Producer(
+    name="is_qcd",
+    input=[],
+    call="basefunctions::DefineQuantity({df}, {output}, {is_qcd})",
+    output=[q.is_qcd],
+    scopes=["global"],
+)
 is_data = Producer(
     name="is_data",
     input=[],
@@ -110,6 +117,7 @@ SampleFlags = ProducerGroup(
         is_diboson,
         is_dy,
         is_wjets,
+        is_qcd,
         is_data,
     ],
 )

@@ -17,6 +17,7 @@ def run(args):
         "diboson",
         "dy",
         "wjets",
+        "qcd",
         "data",
     ]
     available_eras = ["2016preVFP", "2016postVFP",  "2017", "2018"]

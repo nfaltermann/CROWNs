@@ -225,6 +225,7 @@ is_ttbar = Quantity("is_ttbar")
 is_diboson = Quantity("is_diboson")
 is_dy = Quantity("is_dy")
 is_wjets = Quantity("is_wjets")
+is_qcd = Quantity("is_qcd")
 is_data = Quantity("is_data")
 
 # Electron Weights

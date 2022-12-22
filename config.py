@@ -788,13 +788,19 @@ def build_config(
 
 
     # syst producers
-    if sample != "data":
+    if sample not in ["data","qcd"]:
         configuration.add_producers(
             "lep",
             [
                 systematics.SystPSWeights,
                 systematics.SystLHEScaleWeights,
                 systematics.SystLHEPdfWeights,
+            ],
+        )
+    if sample != "data":
+        configuration.add_producers(
+            "lep",
+            [
                 topreco.LeptonScaleFactors,
                 topreco.BTagScaleFactors,
             ],
@@ -819,6 +825,7 @@ def build_config(
             q.is_diboson,
             q.is_dy,
             q.is_wjets,
+            q.is_qcd,
             q.is_data,
             # q.npartons,
         ],
@@ -926,9 +933,7 @@ def build_config(
             ['lep'],
             [
                 nanoAOD.genWeight,
-                q.PSWeight,
-                q.LHEScaleWeight,
-                q.LHEPdfWeight,
+
                 q.puweight,
                 q.puweight_up,
                 q.puweight_down,
@@ -947,6 +952,16 @@ def build_config(
                 q.btag_sf_LFup_corr, q.btag_sf_LFup_uncorr,
                 q.btag_sf_LFdown_corr, q.btag_sf_LFdown_uncorr,
 
+            ],
+        )
+
+    if sample not in ["data","qcd"]:
+        configuration.add_outputs(
+            ['lep'],
+            [
+                q.PSWeight,
+                q.LHEScaleWeight,
+                q.LHEPdfWeight,
             ],
         )
 
