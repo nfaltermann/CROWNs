@@ -395,18 +395,18 @@ def build_config(
             ),
             "muon_trigger_sf_file": EraModifier(
                 {
-                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
-                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
-                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL.json.gz",
-                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL.json.gz",
+                    "2016preVFP": "data/custom_top_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
+                    "2016postVFP": "data/custom_top_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
+                    "2017": "data/custom_top_sf/muon/2017_UL/trigger_iso_2017_UL.json.gz",
+                    "2018": "data/custom_top_sf/muon/2018_UL/trigger_iso_2018_UL.json.gz",
                 }
             ),
             "muon_trigger_sf_file_syst": EraModifier(
                 {
-                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
-                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
-                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
-                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
+                    "2016preVFP": "data/custom_top_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
+                    "2016postVFP": "data/custom_top_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
+                    "2017": "data/custom_top_sf/muon/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
+                    "2018": "data/custom_top_sf/muon/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
                 }
             ),
             "muon_trigger_sf_name": EraModifier(
@@ -428,18 +428,18 @@ def build_config(
 
             "muon_iso_sf_file": EraModifier(
                 {
-                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
-                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
-                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL.json.gz",
-                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL.json.gz",
+                    "2016preVFP": "data/custom_top_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL.json.gz",
+                    "2016postVFP": "data/custom_top_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL.json.gz",
+                    "2017": "data/custom_top_sf/muon/2017_UL/trigger_iso_2017_UL.json.gz",
+                    "2018": "data/custom_top_sf/muon/2018_UL/trigger_iso_2018_UL.json.gz",
                 }
             ),
             "muon_iso_sf_file_syst": EraModifier(
                 {
-                    "2016preVFP": "data/custom_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
-                    "2016postVFP": "data/custom_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
-                    "2017": "data/custom_sf/muon/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
-                    "2018": "data/custom_sf/muon/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
+                    "2016preVFP": "data/custom_top_sf/muon/2016preVFP_UL/trigger_iso_2016preVFP_UL_combined_syst.json.gz",
+                    "2016postVFP": "data/custom_top_sf/muon/2016postVFP_UL/trigger_iso_2016postVFP_UL_combined_syst.json.gz",
+                    "2017": "data/custom_top_sf/muon/2017_UL/trigger_iso_2017_UL_combined_syst.json.gz",
+                    "2018": "data/custom_top_sf/muon/2018_UL/trigger_iso_2018_UL_combined_syst.json.gz",
                 }
             ),
             "muon_iso_sf_name": "NUM_VeryTightRelIso_DEN_TightIDandIPCut_abseta_pt",
@@ -457,18 +457,18 @@ def build_config(
 
             "ele_trigger_sf_file": EraModifier(
                 {
-                    "2016preVFP": "data/custom_sf/electron/2016preVFP_UL/trigger_2016preVFP.json.gz",
-                    "2016postVFP": "data/custom_sf/electron/2016postVFP_UL/trigger_2016postVFP.json.gz",
-                    "2017": "data/custom_sf/electron/2017_UL/trigger_2017.json.gz",
-                    "2018": "data/custom_sf/electron/2018_UL/trigger_2018.json.gz",
+                    "2016preVFP": "data/custom_top_sf/electron/2016preVFP_UL/trigger_2016preVFP.json.gz",
+                    "2016postVFP": "data/custom_top_sf/electron/2016postVFP_UL/trigger_2016postVFP.json.gz",
+                    "2017": "data/custom_top_sf/electron/2017_UL/trigger_2017.json.gz",
+                    "2018": "data/custom_top_sf/electron/2018_UL/trigger_2018.json.gz",
                 }
             ),
             "ele_trigger_sf_file_syst": EraModifier(
                 {
-                    "2016preVFP": "data/custom_sf/electron/2016preVFP_UL/trigger_2016preVFP_syststat.json.gz",
-                    "2016postVFP": "data/custom_sf/electron/2016postVFP_UL/trigger_2016postVFP_syststat.json.gz",
-                    "2017": "data/custom_sf/electron/2017_UL/trigger_2017_syststat.json.gz",
-                    "2018": "data/custom_sf/electron/2018_UL/trigger_2018_syststat.json.gz",
+                    "2016preVFP": "data/custom_top_sf/electron/2016preVFP_UL/trigger_2016preVFP_syststat.json.gz",
+                    "2016postVFP": "data/custom_top_sf/electron/2016postVFP_UL/trigger_2016postVFP_syststat.json.gz",
+                    "2017": "data/custom_top_sf/electron/2017_UL/trigger_2017_syststat.json.gz",
+                    "2018": "data/custom_top_sf/electron/2018_UL/trigger_2018_syststat.json.gz",
                 }
             ),
             "ele_trigger_sf_name": "h2_scaleFactorsEGamma",
@@ -586,10 +586,10 @@ def build_config(
 
             "btag_eff_file" : EraModifier(
                 {
-                    "2016preVFP": "data/custom_sf/btag_eff/2016preVFP_UL/btag_eff_2016preVFP.json.gz",
-                    "2016postVFP": "data/custom_sf/btag_eff/2016postVFP_UL/btag_eff_2016postVFP.json.gz",
-                    "2017": "data/custom_sf/btag_eff/2017_UL/btag_eff_2017.json.gz",
-                    "2018": "data/custom_sf/btag_eff/2018_UL/btag_eff_2018.json.gz",
+                    "2016preVFP": "data/custom_top_sf/btag_eff/2016preVFP_UL/btag_eff_2016preVFP.json.gz",
+                    "2016postVFP": "data/custom_top_sf/btag_eff/2016postVFP_UL/btag_eff_2016postVFP.json.gz",
+                    "2017": "data/custom_top_sf/btag_eff/2017_UL/btag_eff_2017.json.gz",
+                    "2018": "data/custom_top_sf/btag_eff/2018_UL/btag_eff_2018.json.gz",
                 }
             ),
             "btag_wp" : "M",
