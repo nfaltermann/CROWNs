@@ -62,7 +62,7 @@ for y in ${YEARS[@]}; do
     for s in ${SAMPLES[@]}; do
 	echo "###### $s $y #####" >> test_out/run_summary.log
 	echo >> test_out/run_summary.log
-	tail -n 8 test_out/run_${s}_${y}.log >> test_out/run_summary.log
+	tail -n 20 test_out/run_${s}_${y}.log >> test_out/run_summary.log
 	echo >> test_out/run_summary.log
     done
 done
