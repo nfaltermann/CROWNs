@@ -171,3 +171,7 @@ HLT_Ele35_WPTight_Gsf = NanoAODQuantity("HLT_Ele35_WPTight_Gsf")
 
 HLT_Mu20 = NanoAODQuantity("HLT_Mu20")
 HLT_Mu27 = NanoAODQuantity("HLT_Mu27")
+
+## PV
+
+PV_npvs = NanoAODQuantity("PV_npvs")

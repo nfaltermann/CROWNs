@@ -929,6 +929,8 @@ def build_config(
             q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid,
             q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id,
 
+            nanoAOD.PV_npvs,
+
         ],
     )
 
