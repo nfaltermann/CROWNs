@@ -334,6 +334,7 @@ def build_config(
             "min_loose_mu_pt": 10.0,
             "max_loose_mu_eta": 2.4,
             "loose_mu_iso": 0.2,
+            "loose_mu_id": "Muon_looseId",
         },
     )
 

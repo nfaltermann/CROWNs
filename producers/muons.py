@@ -50,6 +50,13 @@ LooseMuonEtaCut = Producer(
     output=[],
     scopes=['lep'],
 )
+LooseMuonIDCut = Producer(
+    name="MuonIDCut",
+    call='physicsobject::muon::CutID({df}, {output}, "{loose_mu_id}")',
+    input=[],
+    output=[],
+    scopes=['lep'],
+)
 LooseMuonIsoCut = Producer(
     name="LooseMuonIsoCut",
     call="physicsobject::muon::CutIsolation({df}, {output}, {input}, {loose_mu_iso})",
@@ -66,6 +73,7 @@ LooseMuons = ProducerGroup(
     subproducers=[
         LooseMuonPtCut,
         LooseMuonEtaCut,
+        LooseMuonIDCut,
         LooseMuonIsoCut,
     ],
 )
