@@ -27,7 +27,8 @@ test_dir="$current_dir/../../"
 cd $test_dir
 
 mkdir -p test_out
-rm -fr test_out/*
+rm -fr test_out/* &> /dev/null
+rm -fr build/* &> /dev/null
 
 cd build
 
@@ -51,7 +52,7 @@ for y in ${YEARS[@]}; do
     for s in ${SAMPLES[@]}; do
 	echo "---> running $s $y (bg)"
 	(build/config_${s}_${y} test_out/test_${s}_${y}.root test_in/${s}_${y}.root &> test_out/run_${s}_${y}.log) &
-	sleep 1
+	sleep 0.2s
     done
 done
 
