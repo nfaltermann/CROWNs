@@ -52,7 +52,7 @@ cd ..
 for y in ${YEARS[@]}; do
     for s in ${SAMPLES[@]}; do
 	echo "---> running $s $y (bg)"
-	(build/config_${s}_${y} test_out/test_${s}_${y}.root test_in/${s}_${y}.root &> test_out/run_${s}_${y}.log) &
+	((build/config_${s}_${y} test_out/test_${s}_${y}.root test_in/${s}_${y}.root; echo "exitcode for $y $s -> $?") &> test_out/run_${s}_${y}.log) &
 	sleep 0.2s
     done
 done
@@ -68,6 +68,7 @@ for y in ${YEARS[@]}; do
 	echo >> test_out/run_summary.log
     done
 done
+grep exitcode test_out/run_summary.log > test_out/run_exitcodes.log
 
 
 cd $current_dir
