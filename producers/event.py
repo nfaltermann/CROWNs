@@ -39,27 +39,34 @@ JSONFilter = BaseFilter(
 
 
 
-is_single_s = Producer(
-    name="is_single_s",
+is_singletop = Producer(
+    name="is_singletop",
     input=[],
-    call="basefunctions::DefineQuantity({df}, {output}, {is_single_s})",
-    output=[q.is_single_s],
+    call="basefunctions::DefineQuantity({df}, {output}, {is_singletop})",
+    output=[q.is_singletop],
     scopes=["global"],
 )
-is_single_t = Producer(
-    name="is_single_t",
-    input=[],
-    call="basefunctions::DefineQuantity({df}, {output}, {is_single_t})",
-    output=[q.is_single_t],
-    scopes=["global"],
-)
-is_single_tw = Producer(
-    name="is_single_tw",
-    input=[],
-    call="basefunctions::DefineQuantity({df}, {output}, {is_single_tw})",
-    output=[q.is_single_tw],
-    scopes=["global"],
-)
+# is_single_s = Producer(
+#     name="is_single_s",
+#     input=[],
+#     call="basefunctions::DefineQuantity({df}, {output}, {is_single_s})",
+#     output=[q.is_single_s],
+#     scopes=["global"],
+# )
+# is_single_t = Producer(
+#     name="is_single_t",
+#     input=[],
+#     call="basefunctions::DefineQuantity({df}, {output}, {is_single_t})",
+#     output=[q.is_single_t],
+#     scopes=["global"],
+# )
+# is_single_tw = Producer(
+#     name="is_single_tw",
+#     input=[],
+#     call="basefunctions::DefineQuantity({df}, {output}, {is_single_tw})",
+#     output=[q.is_single_tw],
+#     scopes=["global"],
+# )
 is_ttbar = Producer(
     name="is_ttbar",
     input=[],
@@ -74,11 +81,11 @@ is_diboson = Producer(
     output=[q.is_diboson],
     scopes=["global"],
 )
-is_dy = Producer(
-    name="is_dy",
+is_dyjets = Producer(
+    name="is_dyjets",
     input=[],
-    call="basefunctions::DefineQuantity({df}, {output}, {is_dy})",
-    output=[q.is_dy],
+    call="basefunctions::DefineQuantity({df}, {output}, {is_dyjets})",
+    output=[q.is_dyjets],
     scopes=["global"],
 )
 is_wjets = Producer(
@@ -110,12 +117,13 @@ SampleFlags = ProducerGroup(
     output=None,
     scopes=["global"],
     subproducers=[
-        is_single_s,
-        is_single_t,
-        is_single_tw,
+        is_singletop,
+        # is_single_s,
+        # is_single_t,
+        # is_single_tw,
         is_ttbar,
         is_diboson,
-        is_dy,
+        is_dyjets,
         is_wjets,
         is_qcd,
         is_data,

@@ -10,12 +10,13 @@ def run(args):
     analysis_name = "s"
 
     available_samples = [
-        "single_s",
-        "single_t",
-        "single_tw",
+        "singletop",
+        # "single_s",
+        # "single_t",
+        # "single_tw",
         "ttbar",
         "diboson",
-        "dy",
+        "dyjets",
         "wjets",
         "qcd",
         "data",

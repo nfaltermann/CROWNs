@@ -9,12 +9,13 @@ declare -a YEARS=(
 )
 
 declare -a SAMPLES=(
-"single_s"
-"single_t"
-"single_tw"
+"singletop"
+# "single_s"
+# "single_t"
+# "single_tw"
 "ttbar"
 "wjets"
-"dy"
+"dyjets"
 "qcd"
 "data"
 # "diboson"
