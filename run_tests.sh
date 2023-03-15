@@ -37,15 +37,15 @@ for y in ${YEARS[@]}; do
     for s in ${SAMPLES[@]}; do
 	echo "---> generating $s $y"
 	if [ "$s" = "data" ]; then
-	    cmake .. -DANALYSIS=s -DCONFIG=config -DSAMPLES=data -DERAS=$y -DSCOPES=lep -DSHIFTS=none -DDEBUG=false -DTHREADS=2 &> ../test_out/build_${s}_${y}.log
+	    cmake .. -DANALYSIS=s -DCONFIG=config -DSAMPLES=data -DERAS=$y -DSCOPES=lep -DSHIFTS=none -DDEBUG=false -DOPTIMIZED=false -DTHREADS=2 &> ../test_out/build_${s}_${y}.log
 	else
-	    cmake .. -DANALYSIS=s -DCONFIG=config -DSAMPLES=$s -DERAS=$y -DSCOPES=lep -DSHIFTS=none -DDEBUG=false -DTHREADS=2 &> ../test_out/build_${s}_${y}.log
-	    # cmake .. -DANALYSIS=s -DCONFIG=config -DSAMPLES=$s -DERAS=$y -DSCOPES=lep -DSHIFTS=all -DDEBUG=false -DTHREADS=2 &> ../test_out/build_${s}_${y}.log
+	    cmake .. -DANALYSIS=s -DCONFIG=config -DSAMPLES=$s -DERAS=$y -DSCOPES=lep -DSHIFTS=none -DDEBUG=false -DOPTIMIZED=false -DTHREADS=2 &> ../test_out/build_${s}_${y}.log
+	    # cmake .. -DANALYSIS=s -DCONFIG=config -DSAMPLES=$s -DERAS=$y -DSCOPES=lep -DSHIFTS=all -DDEBUG=false -DOPTIMIZED=false -DTHREADS=2 &> ../test_out/build_${s}_${y}.log
 	fi
     done
 done
 echo "---> NOW compiling"
-make install -j 32 &> ../test_out/build_install.log
+(nice make install -j 32) &> ../test_out/build_install.log
 
 cd ..
 
