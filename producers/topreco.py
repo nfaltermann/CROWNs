@@ -406,3 +406,29 @@ BTagScaleFactors  = Producer(
     ],
     scopes=['lep'],
 )
+
+
+# BTagScaleFactors  = Producer(
+#     name="BTagScaleFactors",
+#     call='topreco::BTagScaleFactorsGeneric({df}, {input}, {output}, "{btag_sf_file}", "{btag_corr_algo_HF}", "{btag_corr_algo_LF}", "{btag_eff_file}", "{btag_eff_type}", "{btag_wp}", {btag_cut}, {max_bjet_eta_sf})',
+#     input=[
+#         q.Jet_pt_corrected,
+#         nanoAOD.Jet_eta,
+#         nanoAOD.BJet_discriminator,
+#         nanoAOD.Jet_flavor,
+#         q.good_jet_collection,
+#     ],
+#     output=[
+#         q.btag_sf_vec,
+#         q.btag_sf_nom,
+#         q.btag_sf_HFup_corr,
+#         q.btag_sf_HFup_uncorr,
+#         q.btag_sf_HFdown_corr,
+#         q.btag_sf_HFdown_uncorr,
+#         q.btag_sf_LFup_corr,
+#         q.btag_sf_LFup_uncorr,
+#         q.btag_sf_LFdown_corr,
+#         q.btag_sf_LFdown_uncorr,
+#     ],
+#     scopes=['lep'],
+# )
