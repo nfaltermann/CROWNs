@@ -1,25 +1,32 @@
 
 
-
-declare -a YEARS=(
-    "2016preVFP"
-    "2016postVFP"
-    "2017"
-    "2018"
-)
-
-declare -a SAMPLES=(
-"singletop"
-# "single_s"
-# "single_t"
-# "single_tw"
-"ttbar"
-"wjets"
-"dyjets"
-"qcd"
-"data"
-# "diboson"
-)
+if [[ $1 == "fast" ]]; then
+    declare -a SAMPLES=(
+	"ttbar"
+    )
+    declare -a YEARS=(
+	"2018"
+    )
+else
+    declare -a SAMPLES=(
+	"singletop"
+	# "single_s"
+	# "single_t"
+	# "single_tw"
+	"ttbar"
+	"wjets"
+	"dyjets"
+	"qcd"
+	"data"
+	# "diboson"
+    )
+    declare -a YEARS=(
+	"2016preVFP"
+	"2016postVFP"
+	"2017"
+	"2018"
+    )
+fi
 
 
 current_dir=$(pwd)
