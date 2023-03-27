@@ -79,3 +79,15 @@ TriggerObject_id = Producer(
     output=[q.TriggerObject_id_vector],
     scopes=["lep"],
 )
+
+PrescaleValues_HLT_Mu20 = Producer(
+    name="PrescaleValues_HLT_Mu20",
+    call='trigger::GetPrescaleValues({df}, {output}, {input}, "{HLT_Mu20_prescale_file}")',
+    input=[
+        nanoAOD.HLT_Mu20,
+        nanoAOD.run,
+        nanoAOD.luminosityBlock,
+    ],
+    output=[q.HLT_Mu20_prescale],
+    scopes=["lep"],
+)

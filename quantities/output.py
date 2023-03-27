@@ -368,6 +368,7 @@ lep_sf_el_reco_down = Quantity("lep_sf_el_reco_down")
 
 # HLT
 HLT_match = Quantity("HLT_match")
+HLT_Mu20_prescale = Quantity("HLT_Mu20_prescale")
 
 TriggerObject_filterBits_vector = Quantity("TrigObj_filterBits_vector")
 TriggerObject_pt_vector = Quantity("TrigObj_pt_vector")

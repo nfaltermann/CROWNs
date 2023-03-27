@@ -225,6 +225,9 @@ def build_config(
                     ],
                 }
             ),
+
+        "HLT_Mu20_prescale_file": "data/prescale/HLT_Mu20.json"
+
         },
     )
 
@@ -795,8 +798,14 @@ def build_config(
         ],
     )
 
-
-
+    # prescale values
+    if sample == "data":
+        configuration.add_producers(
+            "lep",
+            [
+                triggers.PrescaleValues_HLT_Mu20,
+            ],
+        )
 
     # syst producers
     if sample not in ["data","qcd"]:
@@ -977,6 +986,14 @@ def build_config(
                 q.PSWeight,
                 q.LHEScaleWeight,
                 q.LHEPdfWeight,
+            ],
+        )
+
+    if sample == "data":
+        configuration.add_outputs(
+            ['lep'],
+            [
+                q.HLT_Mu20_prescale,
             ],
         )
 
