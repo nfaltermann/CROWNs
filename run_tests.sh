@@ -34,7 +34,7 @@ test_dir="$current_dir/../../"
 
 cd $test_dir
 
-mkdir -p test_out
+mkdir -p test_out build
 rm -fr test_out/* &> /dev/null
 rm -fr build/* &> /dev/null
 
