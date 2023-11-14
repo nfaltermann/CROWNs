@@ -344,6 +344,26 @@ sumht = Quantity("DNN_sumht")
 wolfram = Quantity("DNN_wolfram")
 deta_topb2_b1 = Quantity("DNN_deta_topb2_b1")
 
+# transformed input vars for DNN evaluation
+transformed_pfmet = Quantity("transformed_pfmet")
+transformed_top_mass = Quantity("transformed_top_mass")
+transformed_dphi_top_b1 = Quantity("transformed_DNN_dphi_top_b1")
+transformed_wolfram = Quantity("transformed_DNN_wolfram")
+transformed_deta_topb2_b1 = Quantity("transformed_DNN_deta_topb2_b1")
+transformed_deta_top_sb = Quantity("transformed_DNN_deta_top_sb")
+transformed_dphi_b1_b2 = Quantity("transformed_DNN_dphi_b1_b2")
+transformed_lep_pt = Quantity("transformed_lep_pt")
+transformed_deta_lep_b1 = Quantity("transformed_DNN_deta_lep_b1")
+transformed_m_lep_b2 = Quantity("transformed_DNN_m_lep_b2")
+transformed_pt_b1_b2 = Quantity("transformed_DNN_pt_b1_b2")
+transformed_costhetastar = Quantity("transformed_DNN_costhetastar")
+transformed_sumht = Quantity("transformed_DNN_sumht")
+transformed_lep_charge = Quantity("transformed_lep_charge")
+transformed_bjet_1_pt = Quantity("transformed_bjet_1_pt")
+transformed_bjet_1_eta = Quantity("transformed_bjet_1_eta")
+transformed_bjet_2_pt = Quantity("transformed_bjet_2_pt")
+transformed_bjet_2_eta = Quantity("transformed_bjet_2_eta")
+
 
 # lep SFs
 lep_sf_mu_trigger_nom = Quantity("lep_sf_mu_trigger_nom")
@@ -409,3 +429,5 @@ nano_jet_phi = Quantity("Nano_Jet_phi")
 nano_jet_mass = Quantity("Nano_Jet_mass")
 nano_jet_btag = Quantity("Nano_Jet_btagDeepFlavB")
 nano_jet_id = Quantity("Nano_Jet_jetId")
+
+dnn_output = Quantity("DNN_output")

@@ -7,6 +7,7 @@ from .producers import event as event
 from .producers import genparticles as genparticles
 from .producers import jets as jets
 from .producers import met as met
+from .producers import ml as ml
 from .producers import muons as muons
 from .producers import systematics as systematics
 #from .producers import taus as taus
@@ -626,6 +627,37 @@ def build_config(
         },
     )
 
+
+    configuration.add_config_parameters(
+        ['lep'],
+        {
+            "dnn_modelfile": EraModifier(
+                {
+                    "2016preVFP": "analysis_configurations/s/data/model/complete.h5",
+                    "2016postVFP": "analysis_configurations/s/data/model/complete.h5",
+                    "2017": "analysis_configurations/s/data/model/complete.h5",
+                    "2018": "analysis_configurations/s/data/model/complete.h5",
+                }
+            ),
+            "dnn_weightsfile": EraModifier(
+                {
+                    "2016preVFP": "analysis_configurations/s/data/model/weights.h5",
+                    "2016postVFP": "analysis_configurations/s/data/model/weights.h5",
+                    "2017": "analysis_configurations/s/data/model/weights.h5",
+                    "2018": "analysis_configurations/s/data/model/weights.h5",
+                }
+            ),
+            "dnn_transformfile": EraModifier(
+                {
+                    "2016preVFP": "analysis_configurations/s/data/model/transformation.csv",
+                    "2016postVFP": "analysis_configurations/s/data/model/transformation.csv",
+                    "2017": "analysis_configurations/s/data/model/transformation.csv",
+                    "2018": "analysis_configurations/s/data/model/transformation.csv",
+                }
+            ),
+        }
+    )
+
     ###### scope Specifics ######
 
 
@@ -795,6 +827,9 @@ def build_config(
             topreco.DNNQuantities,
 
             raw_branches.JetAllQuantities,
+
+            ml.TransformVars,
+            ml.KerasEvaluate,
         ],
     )
 
@@ -825,6 +860,7 @@ def build_config(
                 topreco.BTagScaleFactors,
             ],
         )
+
 
     ######################################################################################
     ##############################       OUTPUT      #####################################
@@ -947,6 +983,29 @@ def build_config(
             q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id,
 
             nanoAOD.PV_npvs,
+
+            q.dnn_output,
+
+            # debug
+            q.transformed_pfmet,
+            q.transformed_top_mass,
+            q.transformed_dphi_top_b1,
+            q.transformed_wolfram,
+            q.transformed_deta_topb2_b1,
+            q.transformed_deta_top_sb,
+            q.transformed_dphi_b1_b2,
+            q.transformed_lep_pt,
+            q.transformed_deta_lep_b1,
+            q.transformed_m_lep_b2,
+            q.transformed_pt_b1_b2,
+            q.transformed_costhetastar,
+            q.transformed_sumht,
+            q.transformed_lep_charge,
+            q.transformed_bjet_1_pt,
+            q.transformed_bjet_1_eta,
+            q.transformed_bjet_2_pt,
+            q.transformed_bjet_2_eta,
+
 
         ],
     )
