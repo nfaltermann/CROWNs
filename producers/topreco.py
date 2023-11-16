@@ -408,6 +408,29 @@ BTagScaleFactors  = Producer(
 )
 
 
+
+
+
+CombineDNNOutputs = Producer(
+    name="sb_mass",
+    call="topreco::CombineDNNOutputs({df}, {input}, {output})",
+    input=[
+        q.lep_is_mu,
+        q.lep_is_el,
+        q.lep_is_iso,
+        q.is_reco,
+        q.dnn_output_mu,
+        q.dnn_output_el,
+    ],
+    output=[q.dnn_output],
+    scopes=['lep'],
+)
+
+
+
+
+
+
 # BTagScaleFactors  = Producer(
 #     name="BTagScaleFactors",
 #     call='topreco::BTagScaleFactorsGeneric({df}, {input}, {output}, "{btag_sf_file}", "{btag_corr_algo_HF}", "{btag_corr_algo_LF}", "{btag_eff_file}", "{btag_eff_type}", "{btag_wp}", {btag_cut}, {max_bjet_eta_sf})',

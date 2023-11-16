@@ -631,28 +631,36 @@ def build_config(
     configuration.add_config_parameters(
         ['lep'],
         {
-            "dnn_modelfile": EraModifier(
+            "dnn_modelfile_mu": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/model/complete.h5",
-                    "2016postVFP": "analysis_configurations/s/data/model/complete.h5",
-                    "2017": "analysis_configurations/s/data/model/complete.h5",
-                    "2018": "analysis_configurations/s/data/model/complete.h5",
+                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/complete_mu.h5",
+                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/complete_mu.h5",
+                    "2017": "analysis_configurations/s/data/model/2017/complete_mu.h5",
+                    "2018": "analysis_configurations/s/data/model/2018/complete_mu.h5",
                 }
             ),
-            "dnn_weightsfile": EraModifier(
+            "dnn_modelfile_el": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/model/weights.h5",
-                    "2016postVFP": "analysis_configurations/s/data/model/weights.h5",
-                    "2017": "analysis_configurations/s/data/model/weights.h5",
-                    "2018": "analysis_configurations/s/data/model/weights.h5",
+                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/complete_el.h5",
+                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/complete_el.h5",
+                    "2017": "analysis_configurations/s/data/model/2017/complete_el.h5",
+                    "2018": "analysis_configurations/s/data/model/2018/complete_el.h5",
                 }
             ),
-            "dnn_transformfile": EraModifier(
+            "dnn_transformfile_mu": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/model/transformation.csv",
-                    "2016postVFP": "analysis_configurations/s/data/model/transformation.csv",
-                    "2017": "analysis_configurations/s/data/model/transformation.csv",
-                    "2018": "analysis_configurations/s/data/model/transformation.csv",
+                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/transformation_mu.csv",
+                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/transformation_mu.csv",
+                    "2017": "analysis_configurations/s/data/model/2017/transformation_mu.csv",
+                    "2018": "analysis_configurations/s/data/model/2018/transformation_mu.csv",
+                }
+            ),
+            "dnn_transformfile_el": EraModifier(
+                {
+                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/transformation_el.csv",
+                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/transformation_el.csv",
+                    "2017": "analysis_configurations/s/data/model/2017/transformation_el.csv",
+                    "2018": "analysis_configurations/s/data/model/2018/transformation_el.csv",
                 }
             ),
         }
@@ -828,8 +836,11 @@ def build_config(
 
             raw_branches.JetAllQuantities,
 
-            ml.TransformVars,
-            ml.KerasEvaluate,
+            ml.TransformVarsMu,
+            ml.TransformVarsEl,
+            ml.KerasEvaluateMu,
+            ml.KerasEvaluateEl,
+            topreco.CombineDNNOutputs,
         ],
     )
 
@@ -984,28 +995,9 @@ def build_config(
 
             nanoAOD.PV_npvs,
 
+            # q.dnn_output_mu,
+            # q.dnn_output_el,
             q.dnn_output,
-
-            # debug
-            q.transformed_pfmet,
-            q.transformed_top_mass,
-            q.transformed_dphi_top_b1,
-            q.transformed_wolfram,
-            q.transformed_deta_topb2_b1,
-            q.transformed_deta_top_sb,
-            q.transformed_dphi_b1_b2,
-            q.transformed_lep_pt,
-            q.transformed_deta_lep_b1,
-            q.transformed_m_lep_b2,
-            q.transformed_pt_b1_b2,
-            q.transformed_costhetastar,
-            q.transformed_sumht,
-            q.transformed_lep_charge,
-            q.transformed_bjet_1_pt,
-            q.transformed_bjet_1_eta,
-            q.transformed_bjet_2_pt,
-            q.transformed_bjet_2_eta,
-
 
         ],
     )
