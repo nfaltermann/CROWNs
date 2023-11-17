@@ -13,7 +13,7 @@ from .producers import systematics as systematics
 #from .producers import taus as taus
 from .producers import triggers as triggers
 from .producers import topreco as topreco
-from .producers import raw_branches as raw_branches
+# from .producers import raw_branches as raw_branches
 from .quantities import nanoAOD as nanoAOD
 from .quantities import output as q
 from .jet_variations import add_jetVariations
@@ -766,7 +766,7 @@ def build_config(
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
 
-            raw_branches.LeptonAllQuantities,
+            # raw_branches.LeptonAllQuantities,
 
             triggers.GenerateSingleMuonTriggerFlags,
             triggers.GenerateSingleElectronTriggerFlags,
@@ -834,7 +834,7 @@ def build_config(
             topreco.TopRecoQuantities,
             topreco.DNNQuantities,
 
-            raw_branches.JetAllQuantities,
+            # raw_branches.JetAllQuantities,
 
             ml.TransformVarsMu,
             ml.TransformVarsEl,
@@ -989,9 +989,9 @@ def build_config(
             q.wolfram,
             q.deta_topb2_b1,
 
-            q.nano_mu_pt, q.nano_mu_eta, q.nano_mu_phi, q.nano_mu_mass, q.nano_mu_iso, q.nano_mu_miniiso, q.nano_mu_tightid,
-            q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid,
-            q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id,
+            # q.nano_mu_pt, q.nano_mu_eta, q.nano_mu_phi, q.nano_mu_mass, q.nano_mu_iso, q.nano_mu_miniiso, q.nano_mu_tightid,
+            # q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid,
+            # q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id,
 
             nanoAOD.PV_npvs,
 
