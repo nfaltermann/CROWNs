@@ -175,3 +175,7 @@ HLT_Mu27 = NanoAODQuantity("HLT_Mu27")
 ## PV
 
 PV_npvs = NanoAODQuantity("PV_npvs")
+
+## PU
+
+Pileup_nTrueInt = NanoAODQuantity("Pileup_nTrueInt")

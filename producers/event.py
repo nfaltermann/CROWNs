@@ -187,6 +187,30 @@ PUweights_down = Producer(
     scopes=["global"],
 )
 
+PUweights_HLTMu20 = Producer(
+    name="PUweights_HLTMu20",
+    call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file_HLTMu20}", "{PU_reweighting_era_HLTMu20}", "nominal")',
+    input=[nanoAOD.Pileup_nTrueInt],
+    output=[q.puweight_HLTMu20],
+    scopes=["global"],
+)
+
+PUweights_HLTMu20_up = Producer(
+    name="PUweights_HLTMu20_up",
+    call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file_HLTMu20}", "{PU_reweighting_era_HLTMu20}", "up")',
+    input=[nanoAOD.Pileup_nTrueInt],
+    output=[q.puweight_HLTMu20_up],
+    scopes=["global"],
+)
+
+PUweights_HLTMu20_down = Producer(
+    name="PUweights_HLTMu20_down",
+    call='reweighting::puweights({df}, {output}, {input}, "{PU_reweighting_file_HLTMu20}", "{PU_reweighting_era_HLTMu20}", "down")',
+    input=[nanoAOD.Pileup_nTrueInt],
+    output=[q.puweight_HLTMu20_down],
+    scopes=["global"],
+)
+
 
 PUweightsFromHistogram = Producer(
     name="PUweightsFromHistogram",
