@@ -329,6 +329,9 @@ LHEPdfWeight = Quantity("LHEPdfWeight_vector")
 puweight = Quantity("puweight")
 puweight_up = Quantity("puweight_up")
 puweight_down = Quantity("puweight_down")
+puweight_HLTMu20 = Quantity("puweight_HLTMu20")
+puweight_HLTMu20_up = Quantity("puweight_HLTMu20_up")
+puweight_HLTMu20_down = Quantity("puweight_HLTMu20_down")
 
 
 

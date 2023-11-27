@@ -78,6 +78,31 @@ def build_config(
                     "2018": "data/golden_json/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt",
                 }
             ),
+                        "PU_reweighting_file_HLTMu20": EraModifier(
+                {
+                    "2016preVFP": "data/PU_HLTMu20/2016preVFP_UL/puWeights.json.gz",
+                    "2016postVFP": "data/PU_HLTMu20/2016postVFP_UL/puWeights.json.gz",
+                    "2017": "data/PU_HLTMu20/2017_UL/puWeights.json.gz",
+                    "2018": "data/PU_HLTMu20/2018_UL/puWeights.json.gz",
+                }
+            ),
+            "PU_reweighting_era_HLTMu20": EraModifier(
+                {
+                    "2016preVFP": "Collisions16_UltraLegacy_goldenJSON",
+                    "2016postVFP": "Collisions16_UltraLegacy_goldenJSON",
+                    "2017": "Collisions17_UltraLegacy_goldenJSON",
+                    "2018": "Collisions18_UltraLegacy_goldenJSON",
+                }
+            ),
+            "PU_reweighting_variation_HLTMu20": "nominal",
+            "golden_json_file": EraModifier(
+                {
+                    "2016preVFP": "data/golden_json/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt",
+                    "2016postVFP": "data/golden_json/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt",
+                    "2017": "data/golden_json/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt",
+                    "2018": "data/golden_json/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt",
+                }
+            ),
             "met_filters": EraModifier(
                 {
                     "2016preVFP": [
@@ -712,6 +737,9 @@ def build_config(
                 event.PUweights,
                 event.PUweights_up,
                 event.PUweights_down,
+                event.PUweights_HLTMu20,
+                event.PUweights_HLTMu20_up,
+                event.PUweights_HLTMu20_down,
                 jets.JetEnergyCorrection,
             ],
         )
@@ -1012,6 +1040,9 @@ def build_config(
                 q.puweight,
                 q.puweight_up,
                 q.puweight_down,
+                q.puweight_HLTMu20,
+                q.puweight_HLTMu20_up,
+                q.puweight_HLTMu20_down,
 
                 q.lep_sf_mu_trigger_nom, q.lep_sf_mu_trigger_up, q.lep_sf_mu_trigger_down,
                 q.lep_sf_mu_iso_nom, q.lep_sf_mu_iso_up, q.lep_sf_mu_iso_down,
