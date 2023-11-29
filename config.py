@@ -78,12 +78,12 @@ def build_config(
                     "2018": "data/golden_json/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt",
                 }
             ),
-                        "PU_reweighting_file_HLTMu20": EraModifier(
+            "PU_reweighting_file_HLTMu20": EraModifier(
                 {
-                    "2016preVFP": "data/PU_HLTMu20/2016preVFP_UL/puWeights.json.gz",
-                    "2016postVFP": "data/PU_HLTMu20/2016postVFP_UL/puWeights.json.gz",
-                    "2017": "data/PU_HLTMu20/2017_UL/puWeights.json.gz",
-                    "2018": "data/PU_HLTMu20/2018_UL/puWeights.json.gz",
+                    "2016preVFP": "analysis_configurations/s/data/PU_HLTMu20/2016preVFP_UL/puWeights.json.gz",
+                    "2016postVFP": "analysis_configurations/s/data/PU_HLTMu20/2016postVFP_UL/puWeights.json.gz",
+                    "2017": "analysis_configurations/s/data/PU_HLTMu20/2017_UL/puWeights.json.gz",
+                    "2018": "analysis_configurations/s/data/PU_HLTMu20/2018_UL/puWeights.json.gz",
                 }
             ),
             "PU_reweighting_era_HLTMu20": EraModifier(
@@ -252,7 +252,7 @@ def build_config(
                 }
             ),
 
-        "HLT_Mu20_prescale_file": "data/prescale/HLT_Mu20.json"
+        "HLT_Mu20_prescale_file": "analysis_configurations/s/data/prescale/HLT_Mu20.json"
 
         },
     )
