@@ -301,6 +301,7 @@ wlep_mt = Quantity("wlep_mt")
 
 # top
 is_reco = Quantity("is_reco")
+is_jj = Quantity("is_jj")
 is_jjb = Quantity("is_jjb")
 is_jjbb = Quantity("is_jjbb")
 is_jjjb = Quantity("is_jjjb")
