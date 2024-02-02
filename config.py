@@ -1000,7 +1000,7 @@ def build_config(
             q.bjet_2_pt, q.bjet_2_eta, q.bjet_2_phi, q.bjet_2_mass, q.bjet_2_btag,
 
             q.is_reco,
-            q.is_jjb, q.is_jjbb, q.is_jjjb, q.is_jjjbb,
+            q.is_jj, q.is_jjb, q.is_jjbb, q.is_jjjb, q.is_jjjbb,
 
             q.top_pt, q.top_eta, q.top_phi, q.top_mass,
             q.tb_pt, q.tb_eta, q.tb_phi, q.tb_mass,

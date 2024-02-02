@@ -211,6 +211,7 @@ TopReco = Producer(
     ],
     output=[
         q.is_reco,
+        q.is_jj,
         q.is_jjb,
         q.is_jjbb,
         q.is_jjjb,
@@ -371,6 +372,7 @@ BTagScaleFactors  = Producer(
     input=[
         q.lep_is_iso,
         q.is_reco,
+        q.is_jj,
         q.is_jjb,
         q.is_jjbb,
         q.is_jjjb,
