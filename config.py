@@ -658,34 +658,34 @@ def build_config(
         {
             "dnn_modelfile_mu": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/complete_mu.h5",
-                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/complete_mu.h5",
-                    "2017": "analysis_configurations/s/data/model/2017/complete_mu.h5",
-                    "2018": "analysis_configurations/s/data/model/2018/complete_mu.h5",
+                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/complete_mu.h5",
+                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/complete_mu.h5",
+                    "2017": "analysis_configurations/s/payloads/model/2017/complete_mu.h5",
+                    "2018": "analysis_configurations/s/payloads/model/2018/complete_mu.h5",
                 }
             ),
             "dnn_modelfile_el": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/complete_el.h5",
-                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/complete_el.h5",
-                    "2017": "analysis_configurations/s/data/model/2017/complete_el.h5",
-                    "2018": "analysis_configurations/s/data/model/2018/complete_el.h5",
+                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/complete_el.h5",
+                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/complete_el.h5",
+                    "2017": "analysis_configurations/s/payloads/model/2017/complete_el.h5",
+                    "2018": "analysis_configurations/s/payloads/model/2018/complete_el.h5",
                 }
             ),
             "dnn_transformfile_mu": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/transformation_mu.csv",
-                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/transformation_mu.csv",
-                    "2017": "analysis_configurations/s/data/model/2017/transformation_mu.csv",
-                    "2018": "analysis_configurations/s/data/model/2018/transformation_mu.csv",
+                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/transformation_mu.csv",
+                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/transformation_mu.csv",
+                    "2017": "analysis_configurations/s/payloads/model/2017/transformation_mu.csv",
+                    "2018": "analysis_configurations/s/payloads/model/2018/transformation_mu.csv",
                 }
             ),
             "dnn_transformfile_el": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/model/2016preVFP/transformation_el.csv",
-                    "2016postVFP": "analysis_configurations/s/data/model/2016postVFP/transformation_el.csv",
-                    "2017": "analysis_configurations/s/data/model/2017/transformation_el.csv",
-                    "2018": "analysis_configurations/s/data/model/2018/transformation_el.csv",
+                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/transformation_el.csv",
+                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/transformation_el.csv",
+                    "2017": "analysis_configurations/s/payloads/model/2017/transformation_el.csv",
+                    "2018": "analysis_configurations/s/payloads/model/2018/transformation_el.csv",
                 }
             ),
         }
