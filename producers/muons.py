@@ -199,9 +199,16 @@ AntiTightMuonIDCut = Producer(
     output=[],
     scopes=['lep'],
 )
-AntiTightMuonIsoCut = Producer(
-    name="AntiTightMuonIsoCut",
+AntiTightMuonMinIsoCut = Producer(
+    name="AntiTightMuonMinIsoCut",
     call="physicsobject::muon::AntiCutIsolation({df}, {output}, {input}, {mu_antiiso})",
+    input=[nanoAOD.Muon_iso],
+    output=[],
+    scopes=['lep'],
+)
+AntiTightMuonMaxIsoCut = Producer(
+    name="AntiTightMuonMaxCut",
+    call="physicsobject::muon::CutIsolation({df}, {output}, {input}, {mu_antiiso_max_iso})",
     input=[nanoAOD.Muon_iso],
     output=[],
     scopes=['lep'],
@@ -216,7 +223,8 @@ AntiTightMuons = ProducerGroup(
         AntiTightMuonPtCut,
         AntiTightMuonEtaCut,
         AntiTightMuonIDCut,
-        AntiTightMuonIsoCut,
+        AntiTightMuonMinIsoCut,
+        AntiTightMuonMaxIsoCut,
     ],
 )
 

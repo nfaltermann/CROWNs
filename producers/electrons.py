@@ -202,6 +202,7 @@ AntiTightElectronEtaCut = Producer(
     output=[],
     scopes=['lep'],
 )
+'''
 AntiTightElectronIDCut = Producer(
     name="AntiElectronIDCut",
     call='physicsobject::electron::AntiCutCBID({df}, {output}, "{el_antiid}", {el_antiid_wp})',
@@ -209,10 +210,27 @@ AntiTightElectronIDCut = Producer(
     output=[],
     scopes=['lep'],
 )
+'''
 
-AntiTightElectronIsoCut = Producer(
-    name="AntiElectronIsoCut",
+AntiTightElectronBitmapIDCut = Producer(
+    name="AntiTightElectronBitmapIDCut",
+    call='physicsobject::electron::CutCBIDBitmapNoIso({df}, {output}, {el_antiid_wp}, "{el_bitmap}")',
+    input=[],
+    output=[],
+    scopes=['lep'],
+)
+
+AntiTightElectronMaxIsoCut = Producer(
+    name="AntiElectronMaxIsoCut",
     call="physicsobject::electron::CutIsolation({df}, {output}, {input}, {el_antiiso_max_iso})",
+    input=[nanoAOD.Electron_iso],
+    output=[],
+    scopes=["lep"],
+)
+
+AntiTightElectronMinIsoCut = Producer(
+    name="AntiElectronMinIsoCut",
+    call="physicsobject::electron::AntiCutIsolation({df}, {output}, {input}, {el_antiiso})",
     input=[nanoAOD.Electron_iso],
     output=[],
     scopes=["lep"],
@@ -227,8 +245,10 @@ AntiTightElectrons = ProducerGroup(
     subproducers=[
         AntiTightElectronPtCut,
         AntiTightElectronEtaCut,
-        AntiTightElectronIDCut,
-        AntiTightElectronIsoCut,
+        #AntiTightElectronIDCut,
+        AntiTightElectronBitmapIDCut,       
+        AntiTightElectronMaxIsoCut,
+        AntiTightElectronMinIsoCut,
     ],
 )
 
