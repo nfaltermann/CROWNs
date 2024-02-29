@@ -116,6 +116,13 @@ nano_el_cutbasedid = Producer(
     scopes=['lep'],
 )
 
+nano_el_cutbasedidbitmap = Producer(
+    name="nano_el_cutbasedidbitmap",
+    call="basefunctions::rename<ROOT::RVec<Int_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Electron_IDcutbasedBitmap],
+    output=[q.nano_el_cutbasedidbitmap],
+    scopes=['lep'],
+)
 
 LeptonAllQuantities = ProducerGroup(
     name="LeptonAllQuantities",
@@ -124,10 +131,20 @@ LeptonAllQuantities = ProducerGroup(
     output=None,
     scopes=['lep'],
     subproducers=[nano_mu_pt, nano_mu_eta, nano_mu_phi, nano_mu_mass, nano_mu_iso, nano_mu_miniiso, nano_mu_tightid,
-                  nano_el_pt, nano_el_eta, nano_el_phi, nano_el_mass, nano_el_detasc, nano_el_dxy, nano_el_dz, nano_el_iso, nano_el_cutbasedid
+                  nano_el_pt, nano_el_eta, nano_el_phi, nano_el_mass, nano_el_detasc, nano_el_dxy, nano_el_dz, nano_el_iso, nano_el_cutbasedid, nano_el_cutbasedidbitmap
               ],
 )
 
+LeptonIsoQuantities = ProducerGroup(
+    name="LeptonIsoQuantities",
+    call=None,
+    input=None,
+    output=None,
+    scopes=['lep'],
+    subproducers=[nano_mu_iso,
+                  nano_el_iso
+              ],
+)
 
 
 

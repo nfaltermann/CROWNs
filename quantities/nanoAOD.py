@@ -45,6 +45,7 @@ Electron_indexToGen = NanoAODQuantity("Electron_genPartIdx")
 Electron_IDWP90 = NanoAODQuantity("Electron_mvaFall17V2noIso_WP90")
 Electron_IDWP80 = NanoAODQuantity("Electron_mvaFall17V2noIso_WP80")
 Electron_IDcutbased = NanoAODQuantity("Electron_cutBased")
+Electron_IDcutbasedBitmap = NanoAODQuantity("Electron_vidNestedWPBitmap")
 
 GenJet_pt = NanoAODQuantity("GenJet_pt")
 GenJet_eta = NanoAODQuantity("GenJet_eta")
