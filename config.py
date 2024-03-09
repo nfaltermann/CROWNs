@@ -80,10 +80,10 @@ def build_config(
             ),
             "PU_reweighting_file_HLTMu20": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/data/PU_HLTMu20/2016preVFP_UL/puWeights.json.gz",
-                    "2016postVFP": "analysis_configurations/s/data/PU_HLTMu20/2016postVFP_UL/puWeights.json.gz",
-                    "2017": "analysis_configurations/s/data/PU_HLTMu20/2017_UL/puWeights.json.gz",
-                    "2018": "analysis_configurations/s/data/PU_HLTMu20/2018_UL/puWeights.json.gz",
+                    "2016preVFP": "data/analysis_data/PU_HLTMu20/2016preVFP_UL/puWeights.json.gz",
+                    "2016postVFP": "data/analysis_data/PU_HLTMu20/2016postVFP_UL/puWeights.json.gz",
+                    "2017": "data/analysis_data/PU_HLTMu20/2017_UL/puWeights.json.gz",
+                    "2018": "data/analysis_data/PU_HLTMu20/2018_UL/puWeights.json.gz",
                 }
             ),
             "PU_reweighting_era_HLTMu20": EraModifier(
@@ -252,7 +252,7 @@ def build_config(
                 }
             ),
 
-        "HLT_Mu20_prescale_file": "analysis_configurations/s/data/prescale/HLT_Mu20.json"
+        "HLT_Mu20_prescale_file": "data/analysis_data/prescale/HLT_Mu20.json"
 
         },
     )
@@ -661,34 +661,34 @@ def build_config(
         {
             "dnn_modelfile_mu": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/complete_mu.h5",
-                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/complete_mu.h5",
-                    "2017": "analysis_configurations/s/payloads/model/2017/complete_mu.h5",
-                    "2018": "analysis_configurations/s/payloads/model/2018/complete_mu.h5",
+                    "2016preVFP": "payloads/model/2016preVFP/complete_mu.h5",
+                    "2016postVFP": "payloads/model/2016postVFP/complete_mu.h5",
+                    "2017": "payloads/model/2017/complete_mu.h5",
+                    "2018": "payloads/model/2018/complete_mu.h5",
                 }
             ),
             "dnn_modelfile_el": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/complete_el.h5",
-                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/complete_el.h5",
-                    "2017": "analysis_configurations/s/payloads/model/2017/complete_el.h5",
-                    "2018": "analysis_configurations/s/payloads/model/2018/complete_el.h5",
+                    "2016preVFP": "payloads/model/2016preVFP/complete_el.h5",
+                    "2016postVFP": "payloads/model/2016postVFP/complete_el.h5",
+                    "2017": "payloads/model/2017/complete_el.h5",
+                    "2018": "payloads/model/2018/complete_el.h5",
                 }
             ),
             "dnn_transformfile_mu": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/transformation_mu.csv",
-                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/transformation_mu.csv",
-                    "2017": "analysis_configurations/s/payloads/model/2017/transformation_mu.csv",
-                    "2018": "analysis_configurations/s/payloads/model/2018/transformation_mu.csv",
+                    "2016preVFP": "payloads/model/2016preVFP/transformation_mu.csv",
+                    "2016postVFP": "payloads/model/2016postVFP/transformation_mu.csv",
+                    "2017": "payloads/model/2017/transformation_mu.csv",
+                    "2018": "payloads/model/2018/transformation_mu.csv",
                 }
             ),
             "dnn_transformfile_el": EraModifier(
                 {
-                    "2016preVFP": "analysis_configurations/s/payloads/model/2016preVFP/transformation_el.csv",
-                    "2016postVFP": "analysis_configurations/s/payloads/model/2016postVFP/transformation_el.csv",
-                    "2017": "analysis_configurations/s/payloads/model/2017/transformation_el.csv",
-                    "2018": "analysis_configurations/s/payloads/model/2018/transformation_el.csv",
+                    "2016preVFP": "payloads/model/2016preVFP/transformation_el.csv",
+                    "2016postVFP": "payloads/model/2016postVFP/transformation_el.csv",
+                    "2017": "payloads/model/2017/transformation_el.csv",
+                    "2018": "payloads/model/2018/transformation_el.csv",
                 }
             ),
         }
@@ -797,8 +797,8 @@ def build_config(
             topreco.LeptonSelection,
             topreco.LeptonQuantities,
 
-            #raw_branches.LeptonAllQuantities,
-            raw_branches.LeptonIsoQuantities,
+            raw_branches.LeptonAllQuantities,
+            #raw_branches.LeptonIsoQuantities,
 
             triggers.GenerateSingleMuonTriggerFlags,
             triggers.GenerateSingleElectronTriggerFlags,
@@ -1021,10 +1021,10 @@ def build_config(
             q.wolfram,
             q.deta_topb2_b1,
 
-            #q.nano_mu_pt, q.nano_mu_eta, q.nano_mu_phi, q.nano_mu_mass, q.nano_mu_iso, q.nano_mu_miniiso, q.nano_mu_tightid,
-            q.nano_mu_iso,
-            #q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid, q.nano_el_cutbasedidbitmap,
-            q.nano_el_iso,
+            q.nano_mu_pt, q.nano_mu_eta, q.nano_mu_phi, q.nano_mu_mass, q.nano_mu_iso, q.nano_mu_miniiso, q.nano_mu_tightid,
+            #q.nano_mu_iso,
+            q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid, q.nano_el_cutbasedidbitmap,
+            #q.nano_el_iso,
             #q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id,
 
             nanoAOD.PV_npvs,
