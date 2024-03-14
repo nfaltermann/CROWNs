@@ -252,7 +252,7 @@ def build_config(
                 }
             ),
 
-        "HLT_Mu20_prescale_file": "data/analysis_data/prescale/HLT_Mu20.json"
+        "HLT_Mu20_prescale_file": "data/prescale/HLT_Mu20.json"
 
         },
     )
