@@ -409,6 +409,9 @@ lep_sf_el_reco_nom = Quantity("lep_sf_el_reco_nom")
 lep_sf_el_reco_up = Quantity("lep_sf_el_reco_up")
 lep_sf_el_reco_down = Quantity("lep_sf_el_reco_down")
 
+# top pT
+toppt_weight = Quantity("toppt_weight")
+
 # HLT
 HLT_match = Quantity("HLT_match")
 HLT_Mu20_prescale = Quantity("HLT_Mu20_prescale")

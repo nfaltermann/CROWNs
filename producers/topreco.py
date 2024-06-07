@@ -414,7 +414,7 @@ BTagScaleFactors  = Producer(
 
 
 CombineDNNOutputs = Producer(
-    name="sb_mass",
+    name="CombineDNNOutputs",
     call="topreco::CombineDNNOutputs({df}, {input}, {output})",
     input=[
         q.lep_is_mu,
@@ -429,8 +429,17 @@ CombineDNNOutputs = Producer(
 )
 
 
-
-
+TopPtReweighting = Producer(
+    name="TopPtReweighting",
+    call='reweighting::topptreweighting({df}, {output}, {input})',
+    input=[
+        nanoAOD.GenParticle_pdgId,
+        nanoAOD.GenParticle_statusFlags,
+        nanoAOD.GenParticle_pt,
+    ],
+    output=[q.toppt_weight],
+    scopes=['lep'],
+)
 
 
 # BTagScaleFactors  = Producer(

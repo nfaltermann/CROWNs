@@ -885,6 +885,15 @@ def build_config(
             ],
         )
 
+    # top pT for ttbar
+    if sample == "ttbar":
+        configuration.add_producers(
+            "lep",
+            [
+                topreco.TopPtReweighting,
+            ],
+        )
+
     # syst producers
     if sample not in ["data","qcd"]:
         configuration.add_producers(
@@ -1066,6 +1075,15 @@ def build_config(
 
             ],
         )
+
+    if sample == "ttbar":
+        configuration.add_outputs(
+            ['lep'],
+            [
+                q.toppt_weight
+            ],
+        )
+
 
     if sample not in ["data","qcd"]:
         configuration.add_outputs(
