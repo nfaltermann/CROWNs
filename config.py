@@ -17,6 +17,7 @@ from .producers import raw_branches as raw_branches
 from .quantities import nanoAOD as nanoAOD
 from .quantities import output as q
 from .jet_variations import add_jetVariations
+from .qcdiso_variations import add_qcdisoVariations
 from .btag_variations import add_btagVariations
 from .jec_data import add_jetCorrectionData
 from code_generation.configuration import Configuration
@@ -1137,6 +1138,11 @@ def build_config(
     # Jet energy resolution and jet energy scale
     #########################
     add_jetVariations(configuration, available_sample_types, era)
+
+    #########################
+    # QCD shape variations
+    #########################
+    add_qcdisoVariations(configuration, available_sample_types, era)
 
     #########################
     # systs related to leptons
