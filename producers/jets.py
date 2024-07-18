@@ -206,8 +206,8 @@ GoodNonBJets= ProducerGroup(
 ####################
 VetoOverlappingJets = Producer(
     name="VetoOverlappingJets",
-    call="jet::VetoOverlappingJetsIsoLepOnly({df}, {output}, {input}, {deltaR_jet_lep_veto})",
-    input=[nanoAOD.Jet_eta, nanoAOD.Jet_phi, q.lep_p4, q.lep_is_iso],
+    call="jet::VetoOverlappingJets({df}, {output}, {input}, {deltaR_jet_lep_veto})",
+    input=[nanoAOD.Jet_eta, nanoAOD.Jet_phi, q.lep_p4],#, q.lep_is_iso],
     output=[q.jet_overlap_veto_mask],
     scopes=['lep']
 )

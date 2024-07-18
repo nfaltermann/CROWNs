@@ -24,7 +24,12 @@ def add_qcdisoVariations(
             },
             producers={"lep": [muons.LooseMuons, muons.NumberOfLooseMuons, muons.TightMuons, muons.NumberOfTightMuons, muons.AntiTightMuons, muons.NumberOfAntiTightMuons]},
         ),
-       samples=["data"]
+       #samples=["data"]
+        samples=[
+            sample
+            for sample in available_sample_types
+            if sample not in ["embedding", "embedding_mc"]
+        ],
     )
     configuration.add_shift(
         SystematicShift(
@@ -34,7 +39,12 @@ def add_qcdisoVariations(
             },
             producers={"lep": [electrons.LooseElectrons, electrons.NumberOfLooseElectrons, electrons.TightElectrons, electrons.NumberOfTightElectrons, electrons.AntiTightElectrons, electrons.NumberOfAntiTightElectrons]},
         ),
-        samples=["data"]
+        #samples=["data"]
+        samples=[
+            sample
+            for sample in available_sample_types
+            if sample not in ["embedding", "embedding_mc"]
+        ],
     )
     configuration.add_shift(
         SystematicShift(
@@ -44,7 +54,12 @@ def add_qcdisoVariations(
             },
             producers={"lep": [muons.LooseMuons, muons.NumberOfLooseMuons, muons.TightMuons, muons.NumberOfTightMuons, muons.AntiTightMuons, muons.NumberOfAntiTightMuons]},
         ),
-        samples=["data"]
+        #samples=["data"]
+        samples=[
+            sample
+            for sample in available_sample_types
+            if sample not in ["embedding", "embedding_mc"]
+        ],
     )
     configuration.add_shift(
         SystematicShift(
@@ -54,7 +69,12 @@ def add_qcdisoVariations(
             },
             producers={"lep": [electrons.LooseElectrons, electrons.NumberOfLooseElectrons, electrons.TightElectrons, electrons.NumberOfTightElectrons, electrons.AntiTightElectrons, electrons.NumberOfAntiTightElectrons]},
         ),
-        samples=["data"]
+        #samples=["data"]
+        samples=[
+            sample
+            for sample in available_sample_types
+            if sample not in ["embedding", "embedding_mc"]
+        ],
     )
 
 

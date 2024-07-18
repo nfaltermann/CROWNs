@@ -192,6 +192,21 @@ nano_jet_id = Producer(
     scopes=['lep'],
 )
 
+nano_jet_hadflav = Producer(
+    name="nano_jet_hadflav",
+    call="basefunctions::rename<ROOT::RVec<Int_t>>({df}, {input}, {output})",
+    input=[nanoAOD.Jet_flavor],
+    output=[q.nano_jet_hadflav],
+    scopes=['lep'],
+)
+
+nano_njet = Producer(
+    name="nano_njet",
+    call="basefunctions::rename<ROOT::RVec<Int_t>>({df}, {input}, {output})",
+    input=[nanoAOD.nJet],
+    output=[q.nano_njet],
+    scopes=['lep'],
+)
 
 JetAllQuantities = ProducerGroup(
     name="JetAllQuantities",
@@ -199,5 +214,15 @@ JetAllQuantities = ProducerGroup(
     input=None,
     output=None,
     scopes=['lep'],
-    subproducers=[nano_jet_pt, nano_jet_eta, nano_jet_phi, nano_jet_mass, nano_jet_btag, nano_jet_id],
+    subproducers=[nano_jet_pt, nano_jet_eta, nano_jet_phi, nano_jet_mass, nano_jet_btag, nano_jet_id, nano_njet],
 )
+
+JetAllQuantities_w_flav = ProducerGroup(
+    name="JetAllQuantities_w_flav",
+    call=None,
+    input=None,
+    output=None,
+    scopes=['lep'],
+    subproducers=[nano_jet_pt, nano_jet_eta, nano_jet_phi, nano_jet_mass, nano_jet_btag, nano_jet_id, nano_njet, nano_jet_hadflav],
+)
+
