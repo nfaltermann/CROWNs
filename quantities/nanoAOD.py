@@ -62,6 +62,7 @@ Jet_ID = NanoAODQuantity("Jet_jetId")
 Jet_PUID = NanoAODQuantity("Jet_puId")
 Jet_associatedGenJet = NanoAODQuantity("Jet_genJetIdx")
 BJet_discriminator = NanoAODQuantity("Jet_btagDeepFlavB")
+nJet = NanoAODQuantity("nJet")
 
 Pileup_nTrueInt = NanoAODQuantity("Pileup_nTrueInt")
 rho = NanoAODQuantity("fixedGridRhoFastjetAll")

@@ -81,10 +81,10 @@ def build_config(
             ),
             "PU_reweighting_file_HLTMu20": EraModifier(
                 {
-                    "2016preVFP": "data/analysis_data/PU_HLTMu20/2016preVFP_UL/puWeights.json.gz",
-                    "2016postVFP": "data/analysis_data/PU_HLTMu20/2016postVFP_UL/puWeights.json.gz",
-                    "2017": "data/analysis_data/PU_HLTMu20/2017_UL/puWeights.json.gz",
-                    "2018": "data/analysis_data/PU_HLTMu20/2018_UL/puWeights.json.gz",
+                    "2016preVFP": "payloads/PU_HLTMu20/2016preVFP_UL/puWeights.json.gz",
+                    "2016postVFP": "payloads/PU_HLTMu20/2016postVFP_UL/puWeights.json.gz",
+                    "2017": "payloads/PU_HLTMu20/2017_UL/puWeights.json.gz",
+                    "2018": "payloads/PU_HLTMu20/2018_UL/puWeights.json.gz",
                 }
             ),
             "PU_reweighting_era_HLTMu20": EraModifier(
@@ -253,7 +253,7 @@ def build_config(
                 }
             ),
 
-        "HLT_Mu20_prescale_file": "data/prescale/HLT_Mu20.json"
+        "HLT_Mu20_prescale_file": "payloads/prescale/HLT_Mu20.json"
 
         },
     )
@@ -841,6 +841,7 @@ def build_config(
                 # jets.BasicJetQuantitiesData,
                 jets.BasicBJetQuantitiesData,
                 jets.BasicNonBJetQuantitiesData,
+                raw_branches.JetAllQuantities,
             ],
         )
     else:
@@ -850,6 +851,7 @@ def build_config(
                 # jets.BasicJetQuantitiesMC,
                 jets.BasicBJetQuantitiesMC,
                 jets.BasicNonBJetQuantitiesMC,
+                raw_branches.JetAllQuantities_w_flav,
             ],
         )
 
@@ -867,7 +869,7 @@ def build_config(
             topreco.TopRecoQuantities,
             topreco.DNNQuantities,
 
-            # raw_branches.JetAllQuantities,
+            #raw_branches.JetAllQuantities_w_flav,
 
             ml.TransformVarsMu,
             ml.TransformVarsEl,
@@ -1031,11 +1033,11 @@ def build_config(
             q.wolfram,
             q.deta_topb2_b1,
 
-            q.nano_mu_pt, q.nano_mu_eta, q.nano_mu_phi, q.nano_mu_mass, q.nano_mu_iso, q.nano_mu_miniiso, q.nano_mu_tightid,
+            #q.nano_mu_pt, q.nano_mu_eta, q.nano_mu_phi, q.nano_mu_mass, q.nano_mu_iso, q.nano_mu_miniiso, q.nano_mu_tightid,
             #q.nano_mu_iso,
-            q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid, q.nano_el_cutbasedidbitmap,
+            #q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid, q.nano_el_cutbasedidbitmap,
             #q.nano_el_iso,
-            #q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id,
+            q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id, q.nano_njet, #q.nano_jet_hadflav,
 
             nanoAOD.PV_npvs,
 
@@ -1073,7 +1075,8 @@ def build_config(
                 q.btag_sf_HFdown_corr, q.btag_sf_HFdown_uncorr,
                 q.btag_sf_LFup_corr, q.btag_sf_LFup_uncorr,
                 q.btag_sf_LFdown_corr, q.btag_sf_LFdown_uncorr,
-
+            
+                q.nano_jet_hadflav,
             ],
         )
 

@@ -456,6 +456,8 @@ nano_jet_phi = Quantity("Nano_Jet_phi")
 nano_jet_mass = Quantity("Nano_Jet_mass")
 nano_jet_btag = Quantity("Nano_Jet_btagDeepFlavB")
 nano_jet_id = Quantity("Nano_Jet_jetId")
+nano_jet_hadflav = Quantity("Nano_Jet_hadronFlavour")
+nano_njet = Quantity("Nano_nJet")
 
 dnn_output_mu = Quantity("DNN_output_mu")
 dnn_output_el = Quantity("DNN_output_el")
