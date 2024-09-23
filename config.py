@@ -1037,7 +1037,7 @@ def build_config(
             #q.nano_mu_iso,
             #q.nano_el_pt, q.nano_el_eta, q.nano_el_phi, q.nano_el_mass, q.nano_el_detasc, q.nano_el_dxy, q.nano_el_dz, q.nano_el_iso, q.nano_el_cutbasedid, q.nano_el_cutbasedidbitmap,
             #q.nano_el_iso,
-            q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id, q.nano_njet, #q.nano_jet_hadflav,
+            #q.nano_jet_pt, q.nano_jet_eta, q.nano_jet_phi, q.nano_jet_mass, q.nano_jet_btag, q.nano_jet_id, q.nano_njet, #q.nano_jet_hadflav,
 
             nanoAOD.PV_npvs,
 
@@ -1076,7 +1076,7 @@ def build_config(
                 q.btag_sf_LFup_corr, q.btag_sf_LFup_uncorr,
                 q.btag_sf_LFdown_corr, q.btag_sf_LFdown_uncorr,
             
-                q.nano_jet_hadflav,
+                #q.nano_jet_hadflav,
             ],
         )
 
