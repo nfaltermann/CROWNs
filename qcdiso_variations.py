@@ -20,7 +20,7 @@ def add_qcdisoVariations(
         SystematicShift(
             name="QCDIsoMuUncUp",
             shift_config={
-                "lep": {"mu_antiiso": 0.25},
+                "lep": {"mu_antiiso": 0.25, "mu_antiiso_max_iso" : 0.3},#, "loose_mu_iso" : 0.25},
             },
             producers={"lep": [muons.LooseMuons, muons.NumberOfLooseMuons, muons.TightMuons, muons.NumberOfTightMuons, muons.AntiTightMuons, muons.NumberOfAntiTightMuons]},
         ),
@@ -35,7 +35,7 @@ def add_qcdisoVariations(
         SystematicShift(
             name="QCDIsoElUncUp",
             shift_config={
-                "lep": {"el_antiiso": 0.25},
+                "lep": {"el_antiiso": 0.25, "el_antiiso_max_iso" : 0.3},
             },
             producers={"lep": [electrons.LooseElectrons, electrons.NumberOfLooseElectrons, electrons.TightElectrons, electrons.NumberOfTightElectrons, electrons.AntiTightElectrons, electrons.NumberOfAntiTightElectrons]},
         ),
@@ -50,7 +50,7 @@ def add_qcdisoVariations(
         SystematicShift(
             name="QCDIsoMuUncDown",
             shift_config={
-                "lep": {"mu_antiiso": 0.15, "loose_mu_iso": 0.15},
+                "lep": {"mu_antiiso": 0.15, "mu_antiiso_max_iso" : 0.2, "loose_mu_iso": 0.15},
             },
             producers={"lep": [muons.LooseMuons, muons.NumberOfLooseMuons, muons.TightMuons, muons.NumberOfTightMuons, muons.AntiTightMuons, muons.NumberOfAntiTightMuons]},
         ),
@@ -65,7 +65,7 @@ def add_qcdisoVariations(
         SystematicShift(
             name="QCDIsoElUncDown",
             shift_config={
-                "lep": {"el_antiiso": 0.15},
+                "lep": {"el_antiiso": 0.15, "el_antiiso_max_iso" : 0.2},
             },
             producers={"lep": [electrons.LooseElectrons, electrons.NumberOfLooseElectrons, electrons.TightElectrons, electrons.NumberOfTightElectrons, electrons.AntiTightElectrons, electrons.NumberOfAntiTightElectrons]},
         ),
